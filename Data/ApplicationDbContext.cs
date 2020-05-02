@@ -4,13 +4,17 @@ using System.Text;
 using EmpowerHealthyStudents.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace EmpowerHealthyStudents.Data
 
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) 
+        {
+        }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
@@ -24,47 +28,47 @@ namespace EmpowerHealthyStudents.Data
 
         public DbSet<BlogComment> BlogComments { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelbuilder)
-        //{
-        //    base.OnModelCreating(modelbuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
 
-        //    ApplicationUser user = new ApplicationUser
-        //    {
-        //        FirstName = "April",
-        //        LastName = "Crenshaw",
-        //        UserName = "admin@admin.com",
-        //        IsAdmin = true,
-        //        NormalizedUserName = "ADMIN@ADMIN.COM",
-        //        Email = "admin@admin.com",
-        //        NormalizedEmail = "ADMIN@ADMIN.COM",
-        //        EmailConfirmed = true,
-        //        LockoutEnabled = false,
-        //        SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
-        //        Id = "00000000-ffff-ffff-ffff-ffffffffffff"
-        //    };
-        //    var passwordHash = new PasswordHasher<ApplicationUser>();
-        //    user.PasswordHash = passwordHash.HashPassword(user, "Admin8*");
-        //    modelBuilder.Entity<ApplicationUser>().HasData(user);
+            ApplicationUser user = new ApplicationUser
+            {
+                FirstName = "April",
+                LastName = "Crenshaw",
+                UserName = "admin@admin.com",
+                IsAdmin = true,
+                NormalizedUserName = "ADMIN@ADMIN.COM",
+                Email = "admin@admin.com",
+                NormalizedEmail = "ADMIN@ADMIN.COM",
+                EmailConfirmed = true,
+                LockoutEnabled = false,
+                SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
+                Id = "10000000-ffff-ffff-ffff-ffffffffffff"
+            };
+            var passwordHash = new PasswordHasher<ApplicationUser>();
+            user.PasswordHash = passwordHash.HashPassword(user, "Admin8*");
+            modelBuilder.Entity<ApplicationUser>().HasData(user);
 
-        //    ApplicationUser user2 = new ApplicationUser
-        //    {
-        //        FirstName = "Amon",
-        //        LastName = "Arnoth",
-        //        UserName = "amon@arnoth.com",
-        //        IsAdmin = false,
-        //        NormalizedUserName = "AMON@ARNOTH.COM",
-        //        Email = "amon@arnoth.com",
-        //        NormalizedEmail = "AMON@ARNOTH.COM",
-        //        EmailConfirmed = true,
-        //        LockoutEnabled = false,
-        //        SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
-        //        Id = "00000000-ffff-ffff-ffff-ffffffffffff"
-        //    };
-        //    var passwordHash = new PasswordHasher<ApplicationUser>();
-        //    user.PasswordHash = passwordHash.HashPassword(user, "Admin8*");
-        //    modelBuilder.Entity<ApplicationUser>().HasData(user);
+            //ApplicationUser user2 = new ApplicationUser
+            //{
+            //    FirstName = "Amon",
+            //    LastName = "Arnoth",
+            //    UserName = "amon@arnoth.com",
+            //    IsAdmin = false,
+            //    NormalizedUserName = "AMON@ARNOTH.COM",
+            //    Email = "amon@arnoth.com",
+            //    NormalizedEmail = "AMON@ARNOTH.COM",
+            //    EmailConfirmed = true,
+            //    LockoutEnabled = false,
+            //    SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
+            //    Id = "00000000-ffff-ffff-ffff-ffffffffffff"
+            //};
+            //var passwordHash2 = new PasswordHasher<ApplicationUser>();
+            //user.PasswordHash = passwordHash2.HashPassword(user, "Admin8*");
+            //modelBuilder.Entity<ApplicationUser>().HasData(user);
 
-        //}
+        }
     }
 }

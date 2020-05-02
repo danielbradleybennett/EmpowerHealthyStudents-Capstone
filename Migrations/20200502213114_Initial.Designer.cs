@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200502200649_Initial")]
+    [Migration("20200502213114_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,6 +95,27 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "10000000-ffff-ffff-ffff-ffffffffffff",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ae03a904-4304-43c4-bd7c-08bb2323966d",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            FirstName = "April",
+                            IsAdmin = true,
+                            LastName = "Crenshaw",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGa8C42TGHClgRGwUtZDoC0j2xrubDqhUPpYH1Mo85vW68t73o2xTgGbHUziQcNYbg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        });
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogComment", b =>
