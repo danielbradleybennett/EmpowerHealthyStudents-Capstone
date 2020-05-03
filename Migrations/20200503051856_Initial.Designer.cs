@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200503042109_Initial")]
+    [Migration("20200503051856_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7542181c-d333-4421-b02c-f7f59763dc2a",
+                            ConcurrencyStamp = "b55607ab-2728-4c1d-8abc-564b4af5d11e",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMrFWUNRNqSD1xjihCPw5e39y/5neb7gQA641AN+36hB9heRX0DcW4lgLbf3BLyvMw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECRsCpDOJhnpYK+hhzqRzjCkCfVD+sLNrrYH8tm4+7pBUZarkdNTi00BJXLmlnXOpw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -125,10 +125,10 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogPostId")
+                    b.Property<int?>("BlogPostId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CommentId")
+                    b.Property<int?>("CommentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -138,6 +138,14 @@ namespace EmpowerHealthyStudents.Migrations
                     b.HasIndex("CommentId");
 
                     b.ToTable("BlogComments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BlogPostId = 1,
+                            CommentId = 1
+                        });
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogPost", b =>
@@ -197,6 +205,15 @@ namespace EmpowerHealthyStudents.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "You are a Godsend.",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Event", b =>
@@ -469,15 +486,11 @@ namespace EmpowerHealthyStudents.Migrations
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.BlogPost", "BlogPost")
                         .WithMany()
-                        .HasForeignKey("BlogPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BlogPostId");
 
                     b.HasOne("EmpowerHealthyStudents.Models.Comment", "Comment")
-                        .WithMany()
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("BlogComments")
+                        .HasForeignKey("CommentId");
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogPost", b =>

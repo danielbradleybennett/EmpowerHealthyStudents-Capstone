@@ -20,5 +20,7 @@ namespace EmpowerHealthyStudents.Models
         public DateTime Date { get; set; }
 
         public ApplicationUser User { get; set; }
+
+        public List<BlogComment> BlogComments { get; set; }
     }
 }

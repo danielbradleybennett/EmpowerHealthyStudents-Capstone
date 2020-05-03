@@ -33,6 +33,18 @@ namespace EmpowerHealthyStudents.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            
+
+            //modelBuilder.Entity<Comment>()
+            //    .HasMany(c => c.BlogComment)
+            //    .WithOne(l => l.Comment)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            //modelBuilder.Entity<Order>()
+            //    .HasMany(o => o.OrderProducts)
+            //    .WithOne(l => l.Order)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
 
             ApplicationUser user = new ApplicationUser
             {

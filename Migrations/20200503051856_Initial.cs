@@ -247,8 +247,8 @@ namespace EmpowerHealthyStudents.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommentId = table.Column<int>(nullable: false),
-                    BlogPostId = table.Column<int>(nullable: false)
+                    CommentId = table.Column<int>(nullable: true),
+                    BlogPostId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -258,24 +258,29 @@ namespace EmpowerHealthyStudents.Migrations
                         column: x => x.BlogPostId,
                         principalTable: "BlogPosts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_BlogComments_Comments_CommentId",
                         column: x => x.CommentId,
                         principalTable: "Comments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "7542181c-d333-4421-b02c-f7f59763dc2a", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEMrFWUNRNqSD1xjihCPw5e39y/5neb7gQA641AN+36hB9heRX0DcW4lgLbf3BLyvMw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "b55607ab-2728-4c1d-8abc-564b4af5d11e", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAECRsCpDOJhnpYK+hhzqRzjCkCfVD+sLNrrYH8tm4+7pBUZarkdNTi00BJXLmlnXOpw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "BlogPosts",
                 columns: new[] { "Id", "Blog", "Date", "UserId" },
                 values: new object[] { 1, "Teaching In Quarantine: How Do I Stay Motivated? Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine: 1.Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 2.Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear! 3.Connect with friends and family each day 4.Exercise for at least 30 minutes 5.Journal 6.Get enough sleep 7.Drinks LOTS of water 8.Avoid social media during “work” hours 9.Connect with other teachers 10.Give yourself some grace!", new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "10000000-ffff-ffff-ffff-ffffffffffff" });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Date", "Text", "UserId" },
+                values: new object[] { 1, new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000000-ffff-ffff-ffff-ffffffffffff" });
 
             migrationBuilder.InsertData(
                 table: "Events",
@@ -300,6 +305,11 @@ namespace EmpowerHealthyStudents.Migrations
                     { 2, "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!", null, null, "Ten Tips To Build Your Resilience", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 3, "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!", null, null, "Hamlet Character Smackdown: Roleplay Lesson", "10000000-ffff-ffff-ffff-ffffffffffff" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "BlogComments",
+                columns: new[] { "Id", "BlogPostId", "CommentId" },
+                values: new object[] { 1, 1, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
