@@ -15,11 +15,11 @@ namespace EmpowerHealthyStudents.Models
         [Required]
         public string Description { get; set; }
 
-        [Required]
+        public string File { get; set; }
         public string ImagePath { get; set; }
-
+        [Required]
         public ApplicationUser User { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

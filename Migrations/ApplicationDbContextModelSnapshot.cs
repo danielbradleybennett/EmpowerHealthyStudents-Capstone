@@ -99,7 +99,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae03a904-4304-43c4-bd7c-08bb2323966d",
+                            ConcurrencyStamp = "b55607ab-2728-4c1d-8abc-564b4af5d11e",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -108,7 +108,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGa8C42TGHClgRGwUtZDoC0j2xrubDqhUPpYH1Mo85vW68t73o2xTgGbHUziQcNYbg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECRsCpDOJhnpYK+hhzqRzjCkCfVD+sLNrrYH8tm4+7pBUZarkdNTi00BJXLmlnXOpw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -123,10 +123,10 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogPostId")
+                    b.Property<int?>("BlogPostId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CommentId")
+                    b.Property<int?>("CommentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -136,6 +136,14 @@ namespace EmpowerHealthyStudents.Migrations
                     b.HasIndex("CommentId");
 
                     b.ToTable("BlogComments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BlogPostId = 1,
+                            CommentId = 1
+                        });
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogPost", b =>
@@ -145,24 +153,31 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Essay")
+                    b.Property<string>("Blog")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("BlogPosts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Blog = "Teaching In Quarantine: How Do I Stay Motivated? Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine: 1.Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 2.Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear! 3.Connect with friends and family each day 4.Exercise for at least 30 minutes 5.Journal 6.Get enough sleep 7.Drinks LOTS of water 8.Avoid social media during “work” hours 9.Connect with other teachers 10.Give yourself some grace!",
+                            Date = new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Comment", b =>
@@ -179,17 +194,24 @@ namespace EmpowerHealthyStudents.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "You are a Godsend.",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Event", b =>
@@ -206,17 +228,66 @@ namespace EmpowerHealthyStudents.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Events");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2020, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Location = "SEL Teacher Conference: Phoenix, Arizona",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2020, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Location = "Professinal Development Seminar: Atlanta, Georgia",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = new DateTime(2020, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Location = "High School Leadership Conference: Orlando, FLorida",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Date = new DateTime(2020, 7, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Location = "Literacy and SEL Seminar: Nashville, Tennessee",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Date = new DateTime(2020, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Location = "Teacher Creator Conference: Cleveland, Orlando",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Date = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Location = "Secondary SEL Seminar: Seatle, Washington",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Date = new DateTime(2020, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Location = "National Educator Conference: Chicago, Illinois",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Product", b =>
@@ -230,25 +301,48 @@ namespace EmpowerHealthyStudents.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("File")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!",
+                            Name = "Making Healthy Choices",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!",
+                            Name = "Ten Tips To Build Your Resilience",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!",
+                            Name = "Hamlet Character Smackdown: Roleplay Lesson",
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -390,43 +484,47 @@ namespace EmpowerHealthyStudents.Migrations
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.BlogPost", "BlogPost")
                         .WithMany()
-                        .HasForeignKey("BlogPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BlogPostId");
 
                     b.HasOne("EmpowerHealthyStudents.Models.Comment", "Comment")
-                        .WithMany()
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("BlogComments")
+                        .HasForeignKey("CommentId");
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogPost", b =>
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("BlogPosts")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Comment", b =>
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Event", b =>
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Events")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Product", b =>
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Products")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
