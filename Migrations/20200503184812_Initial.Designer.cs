@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200503051856_Initial")]
+    [Migration("20200503184812_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b55607ab-2728-4c1d-8abc-564b4af5d11e",
+                            ConcurrencyStamp = "d8b36871-ecbd-402e-8c92-6f80def16a37",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECRsCpDOJhnpYK+hhzqRzjCkCfVD+sLNrrYH8tm4+7pBUZarkdNTi00BJXLmlnXOpw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGWrlgYojvfRok5xNKcLu7SinKRxNykPR3U9NdRNXTF5F5ebf/cdSut4ee36whAtLA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -137,7 +137,7 @@ namespace EmpowerHealthyStudents.Migrations
 
                     b.HasIndex("CommentId");
 
-                    b.ToTable("BlogComments");
+                    b.ToTable("BlogComment");
 
                     b.HasData(
                         new
@@ -170,7 +170,7 @@ namespace EmpowerHealthyStudents.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BlogPosts");
+                    b.ToTable("BlogPost");
 
                     b.HasData(
                         new
@@ -204,7 +204,7 @@ namespace EmpowerHealthyStudents.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comment");
 
                     b.HasData(
                         new
@@ -238,7 +238,7 @@ namespace EmpowerHealthyStudents.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Events");
+                    b.ToTable("Event");
 
                     b.HasData(
                         new
@@ -321,7 +321,7 @@ namespace EmpowerHealthyStudents.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
 
                     b.HasData(
                         new

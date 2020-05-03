@@ -17,17 +17,17 @@ namespace EmpowerHealthyStudents.Data
         {
         }
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Product { get; set; }
 
-        public DbSet<Event> Events { get; set; }
+        public DbSet<Event> Event { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Comment> Comment { get; set; }
 
-        public DbSet<BlogPost> BlogPosts { get; set; }
+        public DbSet<BlogPost> BlogPost { get; set; }
 
-        public DbSet<BlogComment> BlogComments { get; set; }
+        public DbSet<BlogComment> BlogComment { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
