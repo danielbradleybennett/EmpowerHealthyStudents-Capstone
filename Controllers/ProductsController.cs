@@ -67,62 +67,108 @@ namespace EmpowerHealthyStudents.Controllers
             }
         }
 
-        //// POST: Products/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] Product product)
-        //{
-        //    try
-        //    {
-        //        //gets the current user, uses custom method created at bottom
-        //        //you will plug in the user.Id in the product
-        //        var user = await GetCurrentUserAsync();
+        // POST: Products/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] Product product)
+        {
+            try
+            {
+                //gets the current user, uses custom method created at bottom
+                //you will plug in the user.Id in the product
+                var user = await GetCurrentUserAsync();
 
-        //        //builds up our new product using the data submitted from the form, 
-        //        //represented here as "productViewModel"
-        //        var products = new Product
-        //        {
-        //            Id = product.Id,
-        //            Name = product.Name,
-        //            Description = product.Description,
-        //            UserId = user.Id
-                   
-        //        };
-        //        if (product.File != null && product.File.Length > 0)
-        //        {
-        //            //creates the file name and makes it unique by generating a Guid and adding that to the file name
-        //            var fileName = Guid.NewGuid().ToString() + Path.GetFileName(product.File.FileName);
-        //            //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
-        //            //which is where our images are stored
-        //            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                //builds up our new product using the data submitted from the form, 
+                //represented here as "productViewModel"
+                var products = new Product
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+                    UserId = user.Id
 
-        //            //adds the newly created fileName to the product object we built up above to be stored in 
-        //            //the database as the ImagePath
-        //            products.ImagePath = fileName;
+                };
+                //if (product.File != null && product.File.Length > 0)
+                //{
+                //    //creates the file name and makes it unique by generating a Guid and adding that to the file name
+                //    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(product.File.FileName);
+                //    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
+                //    //which is where our images are stored
+                //    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
 
-        //            //what actually allows us to save the file to the folder path
-        //            using (var stream = new FileStream(filePath, FileMode.Create))
-        //            {
-        //                await product.File.CopyToAsync(stream);
-        //            }
+                //    //adds the newly created fileName to the product object we built up above to be stored in 
+                //    //the database as the ImagePath
+                //    products.ImagePath = fileName;
 
-        //        }
+                //    //what actually allows us to save the file to the folder path
+                //    using (var stream = new FileStream(filePath, FileMode.Create))
+                //    {
+                //        await product.File.CopyToAsync(stream);
+                //    }
 
-        //        //adds the newly built product object to the Product table using _context.Product.Add
-        //        _context.Product.Add(products);
-        //        //You have to used SaveChangesAsync in order to actually submit the data to the database
-        //        await _context.SaveChangesAsync();
+                //}
 
-        //        //returns user to the product Details view of the newly created product
-        //        return RedirectToAction("Details", new { id = products.Id });
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+                //adds the newly built product object to the Product table using _context.Product.Add
+                _context.Product.Add(products);
+                //You have to used SaveChangesAsync in order to actually submit the data to the database
+                await _context.SaveChangesAsync();
 
-        //// GET: AdminProducts/Edit/5
+                //returns user to the product Details view of the newly created product
+                return RedirectToAction("Details", new { id = products.Id });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Prducts/Edit/5
+        public async Task<ActionResult> Edit(int id)
+        {
+            var user = await GetCurrentUserAsync();
+            var product = new Product();
+            var book = await _context.BlogPost.FirstOrDefaultAsync(c => c.Id == id);
+
+
+            product.Name = product.Name;
+            product.Description = product.Description;
+
+
+
+            return View(product);
+        }
+
+        // POST: Products/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, Product product)
+        {
+            try
+            {
+                var productToUpdate = new Product()
+                {
+                    Id = product.Id,
+                    Description = product.Description,
+                    Name = product.Description
+
+                };
+
+                var user = await GetCurrentUserAsync();
+                productToUpdate.UserId = user.Id;
+
+                _context.Product.Update(productToUpdate);
+                await _context.SaveChangesAsync();
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
+
+        //// GET: Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,13 +192,9 @@ namespace EmpowerHealthyStudents.Controllers
             return View(product);
         }
 
-        //// GET: AdminProducts/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        
 
-        //// POST: AdminProducts/Delete/5
+        //// POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
