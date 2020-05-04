@@ -59,24 +59,14 @@ namespace EmpowerHealthyStudents.Controllers
         //// GET: BlogPosts/Create
         public async Task<ActionResult> Create()
         {
-            var BlogPostTypeOptions = await _context.BlogPost
-                .Select(bp => new SelectListItem()
-                {
-                    Text = base[.Label,
-                    Value = pt.BlogPost.ToString()
-                })
-                .ToListAsync();
-
-            var viewModel = new BlogPost();
-            viewModel.BlogPostOptions = BlogPostOptions;
-
-            return View(viewModel);
+            var user = await GetCurrentUserAsync();
+            return View();
         }
 
         // POST: BlogPosts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] BlogPost blogPost)
+        public async Task<ActionResult> Create([Bind("Id,Blog,Date,UserId")] BlogPost blogPost)
         {
             try
             {
@@ -85,50 +75,73 @@ namespace EmpowerHealthyStudents.Controllers
                 var user = await GetCurrentUserAsync();
 
                 //builds up our new BlogPost using the data submitted from the form, 
-                //represented here as "BlogPostViewModel"
-                var BlogPosts = new BlogPost
+                //represented here as "BlogPos"
+                var blogPosts = new BlogPost
                 {
                     Id = blogPost.Id,
-                    Name = blogPost.Name,
-                    Description = blogPost.Description,
-                    UserId = user.Id
+                    Blog = blogPost.Blog,
+                    UserId = user.Id,
+                    Date = blogPost.Date
 
                 };
-                if (blogPost.File != null && blogPost.File.Length > 0)
-                {
-                    //creates the file name and makes it unique by generating a Guid and adding that to the file name
-                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(blogPost.File.FileName);
-                    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
-                    //which is where our images are stored
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
-
-                    //adds the newly created fileName to the BlogPost object we built up above to be stored in 
-                    //the database as the ImagePath
-                    BlogPosts.ImagePath = fileName;
-
-                    //what actually allows us to save the file to the folder path
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await blogPost.File.CopyToAsync(stream);
-                    }
-
-                }
-
-                //adds the newly built BlogPost object to the BlogPost table using _context.BlogPost.Add
-                _context.BlogPost.Add(BlogPosts);
-                //You have to used SaveChangesAsync in order to actually submit the data to the database
+                _context.BlogPost.Add(blogPosts);
                 await _context.SaveChangesAsync();
 
-                //returns user to the BlogPost Details view of the newly created BlogPost
-                return RedirectToAction("Details", new { id = BlogPosts.Id });
+                return RedirectToAction(nameof(Index));
+
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
         }
 
-        //// GET: BlogPosts/Edit/5
+       
+        // GET: Books/Edit/5
+        public async Task<ActionResult> Edit(int id)
+        {
+            var user = await GetCurrentUserAsync();
+            var blogPost = new BlogPost();
+            var book = await _context.BlogPost.FirstOrDefaultAsync(c => c.Id == id);
+
+
+            blogPost.Blog = blogPost.Blog;
+
+
+
+            return View(blogPost);
+        }
+
+        // POST: Books/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, BlogPost blogPost)
+        {
+            try
+            {
+                var blogPostToUpdate = new BlogPost()
+                {
+                    Id = blogPost.Id,
+                    Blog = blogPost.Blog,
+
+                };
+
+                var user = await GetCurrentUserAsync();
+                blogPostToUpdate.UserId = user.Id;
+
+                _context.BlogPost.Update(blogPostToUpdate);
+                await _context.SaveChangesAsync();
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
+
+        //// GET: Comments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,27 +149,23 @@ namespace EmpowerHealthyStudents.Controllers
                 return NotFound();
             }
             var user = await GetCurrentUserAsync();
-            var BlogPost = await _context.BlogPost
+            var blogPost = await _context.BlogPost
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
-            if (BlogPost == null)
+            if (blogPost == null)
             {
                 return NotFound();
             }
 
-            if (BlogPost.UserId != user.Id)
+            if (blogPost.UserId != user.Id)
             {
                 return NotFound();
             }
 
-            return View(BlogPost);
+            return View(blogPost);
+
         }
 
-        //// GET: BlogPosts/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
         //// POST: BlogPost/Delete/5
         [HttpPost, ActionName("Delete")]

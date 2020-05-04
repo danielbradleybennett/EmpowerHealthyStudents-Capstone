@@ -17,6 +17,7 @@ namespace EmpowerHealthyStudents.Models
         public string UserId { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         public ApplicationUser User { get; set; }

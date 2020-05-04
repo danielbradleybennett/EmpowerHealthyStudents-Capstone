@@ -27,7 +27,7 @@ namespace EmpowerHealthyStudents.Controllers
             _context = context;
             _userManager = userManager;
         }
-        // GET: AdminProducts
+        // GET: Products
         public async Task<ActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
@@ -37,7 +37,7 @@ namespace EmpowerHealthyStudents.Controllers
                 return View(products);
         }
 
-        //// GET: AdminProducts/Details/5
+        //// GET: Products/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -60,74 +60,67 @@ namespace EmpowerHealthyStudents.Controllers
         //// GET: AdminProducts/Create
         public async Task<ActionResult> Create()
         {
-            var productTypeOptions = await _context.ProductType
-                .Select(pt => new SelectListItem()
-                {
-                    Text = pt.Label,
-                    Value = pt.ProductTypeId.ToString()
-                })
-                .ToListAsync();
-
-            var viewModel = new ProductFormViewModel();
-            viewModel.ProductTypeOptions = productTypeOptions;
-
-            return View(viewModel);
-        }
-
-        // POST: Products/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] Product product)
-        {
-            try
+           
             {
-                //gets the current user, uses custom method created at bottom
-                //you will plug in the user.Id in the product
                 var user = await GetCurrentUserAsync();
-
-                //builds up our new product using the data submitted from the form, 
-                //represented here as "productViewModel"
-                var products = new Product
-                {
-                    Id = product.Id,
-                    Name = product.Name,
-                    Description = product.Description,
-                    UserId = user.Id
-                   
-                };
-                if (product.File != null && product.File.Length > 0)
-                {
-                    //creates the file name and makes it unique by generating a Guid and adding that to the file name
-                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(product.File.FileName);
-                    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
-                    //which is where our images are stored
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
-
-                    //adds the newly created fileName to the product object we built up above to be stored in 
-                    //the database as the ImagePath
-                    products.ImagePath = fileName;
-
-                    //what actually allows us to save the file to the folder path
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await product.File.CopyToAsync(stream);
-                    }
-
-                }
-
-                //adds the newly built product object to the Product table using _context.Product.Add
-                _context.Product.Add(products);
-                //You have to used SaveChangesAsync in order to actually submit the data to the database
-                await _context.SaveChangesAsync();
-
-                //returns user to the product Details view of the newly created product
-                return RedirectToAction("Details", new { id = products.Id });
-            }
-            catch
-            {
                 return View();
             }
         }
+
+        //// POST: Products/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] Product product)
+        //{
+        //    try
+        //    {
+        //        //gets the current user, uses custom method created at bottom
+        //        //you will plug in the user.Id in the product
+        //        var user = await GetCurrentUserAsync();
+
+        //        //builds up our new product using the data submitted from the form, 
+        //        //represented here as "productViewModel"
+        //        var products = new Product
+        //        {
+        //            Id = product.Id,
+        //            Name = product.Name,
+        //            Description = product.Description,
+        //            UserId = user.Id
+                   
+        //        };
+        //        if (product.File != null && product.File.Length > 0)
+        //        {
+        //            //creates the file name and makes it unique by generating a Guid and adding that to the file name
+        //            var fileName = Guid.NewGuid().ToString() + Path.GetFileName(product.File.FileName);
+        //            //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
+        //            //which is where our images are stored
+        //            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+
+        //            //adds the newly created fileName to the product object we built up above to be stored in 
+        //            //the database as the ImagePath
+        //            products.ImagePath = fileName;
+
+        //            //what actually allows us to save the file to the folder path
+        //            using (var stream = new FileStream(filePath, FileMode.Create))
+        //            {
+        //                await product.File.CopyToAsync(stream);
+        //            }
+
+        //        }
+
+        //        //adds the newly built product object to the Product table using _context.Product.Add
+        //        _context.Product.Add(products);
+        //        //You have to used SaveChangesAsync in order to actually submit the data to the database
+        //        await _context.SaveChangesAsync();
+
+        //        //returns user to the product Details view of the newly created product
+        //        return RedirectToAction("Details", new { id = products.Id });
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         //// GET: AdminProducts/Edit/5
         public async Task<IActionResult> Delete(int? id)
@@ -170,7 +163,6 @@ namespace EmpowerHealthyStudents.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }
