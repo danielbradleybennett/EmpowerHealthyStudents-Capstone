@@ -156,7 +156,7 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BlogPosts",
+                name: "BlogPost",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -167,9 +167,9 @@ namespace EmpowerHealthyStudents.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlogPosts", x => x.Id);
+                    table.PrimaryKey("PK_BlogPost", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogPosts_AspNetUsers_UserId",
+                        name: "FK_BlogPost_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -177,7 +177,7 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
+                name: "Comment",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -188,9 +188,9 @@ namespace EmpowerHealthyStudents.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_Comment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_AspNetUsers_UserId",
+                        name: "FK_Comment_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -198,7 +198,7 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Events",
+                name: "Event",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -209,9 +209,9 @@ namespace EmpowerHealthyStudents.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.Id);
+                    table.PrimaryKey("PK_Event", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Events_AspNetUsers_UserId",
+                        name: "FK_Event_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -219,7 +219,7 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Product",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -232,9 +232,9 @@ namespace EmpowerHealthyStudents.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Product", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_AspNetUsers_UserId",
+                        name: "FK_Product_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -242,7 +242,7 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BlogComments",
+                name: "BlogComment",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -252,17 +252,17 @@ namespace EmpowerHealthyStudents.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlogComments", x => x.Id);
+                    table.PrimaryKey("PK_BlogComment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogComments_BlogPosts_BlogPostId",
+                        name: "FK_BlogComment_BlogPost_BlogPostId",
                         column: x => x.BlogPostId,
-                        principalTable: "BlogPosts",
+                        principalTable: "BlogPost",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_BlogComments_Comments_CommentId",
+                        name: "FK_BlogComment_Comment_CommentId",
                         column: x => x.CommentId,
-                        principalTable: "Comments",
+                        principalTable: "Comment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -270,20 +270,20 @@ namespace EmpowerHealthyStudents.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "b55607ab-2728-4c1d-8abc-564b4af5d11e", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAECRsCpDOJhnpYK+hhzqRzjCkCfVD+sLNrrYH8tm4+7pBUZarkdNTi00BJXLmlnXOpw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "d8b36871-ecbd-402e-8c92-6f80def16a37", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEGWrlgYojvfRok5xNKcLu7SinKRxNykPR3U9NdRNXTF5F5ebf/cdSut4ee36whAtLA==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
-                table: "BlogPosts",
+                table: "BlogPost",
                 columns: new[] { "Id", "Blog", "Date", "UserId" },
                 values: new object[] { 1, "Teaching In Quarantine: How Do I Stay Motivated? Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine: 1.Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 2.Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear! 3.Connect with friends and family each day 4.Exercise for at least 30 minutes 5.Journal 6.Get enough sleep 7.Drinks LOTS of water 8.Avoid social media during “work” hours 9.Connect with other teachers 10.Give yourself some grace!", new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "10000000-ffff-ffff-ffff-ffffffffffff" });
 
             migrationBuilder.InsertData(
-                table: "Comments",
+                table: "Comment",
                 columns: new[] { "Id", "Date", "Text", "UserId" },
                 values: new object[] { 1, new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000000-ffff-ffff-ffff-ffffffffffff" });
 
             migrationBuilder.InsertData(
-                table: "Events",
+                table: "Event",
                 columns: new[] { "Id", "Date", "Location", "UserId" },
                 values: new object[,]
                 {
@@ -297,7 +297,7 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Products",
+                table: "Product",
                 columns: new[] { "Id", "Description", "File", "ImagePath", "Name", "UserId" },
                 values: new object[,]
                 {
@@ -307,7 +307,7 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "BlogComments",
+                table: "BlogComment",
                 columns: new[] { "Id", "BlogPostId", "CommentId" },
                 values: new object[] { 1, 1, 1 });
 
@@ -351,33 +351,33 @@ namespace EmpowerHealthyStudents.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogComments_BlogPostId",
-                table: "BlogComments",
+                name: "IX_BlogComment_BlogPostId",
+                table: "BlogComment",
                 column: "BlogPostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogComments_CommentId",
-                table: "BlogComments",
+                name: "IX_BlogComment_CommentId",
+                table: "BlogComment",
                 column: "CommentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogPosts_UserId",
-                table: "BlogPosts",
+                name: "IX_BlogPost_UserId",
+                table: "BlogPost",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_UserId",
-                table: "Comments",
+                name: "IX_Comment_UserId",
+                table: "Comment",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_UserId",
-                table: "Events",
+                name: "IX_Event_UserId",
+                table: "Event",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_UserId",
-                table: "Products",
+                name: "IX_Product_UserId",
+                table: "Product",
                 column: "UserId");
         }
 
@@ -399,22 +399,22 @@ namespace EmpowerHealthyStudents.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BlogComments");
+                name: "BlogComment");
 
             migrationBuilder.DropTable(
-                name: "Events");
+                name: "Event");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "BlogPosts");
+                name: "BlogPost");
 
             migrationBuilder.DropTable(
-                name: "Comments");
+                name: "Comment");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
