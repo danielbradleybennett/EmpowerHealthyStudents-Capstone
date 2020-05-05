@@ -30,10 +30,40 @@ namespace EmpowerHealthyStudents.Controllers
         public async Task<ActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
+            var blogPosts = await _context.BlogPost
+                .ToListAsync();
+            if (user != null)
+            {
+                if (user.IsAdmin == true)
+                {
+                    return RedirectToAction(nameof(AdminIndex));
+                }
+
+                else
+                {
+                    return View(blogPosts);
+
+                }
+            }
+            else
+            {
+                return View(blogPosts);
+            }
+
+
+        }
+
+        public async Task<ActionResult> AdminIndex()
+        {
+            var user = await GetCurrentUserAsync();
             var BlogPosts = await _context.BlogPost
                 .ToListAsync();
             return View(BlogPosts);
         }
+
+
+
+
 
         //// GET: BlogPosts/Details/5
         public async Task<ActionResult> Details(int? id)
@@ -59,7 +89,22 @@ namespace EmpowerHealthyStudents.Controllers
         public async Task<ActionResult> Create()
         {
             var user = await GetCurrentUserAsync();
-            return View();
+            if (user != null)
+            {
+                if (user.IsAdmin == true)
+
+                {
+                    return View();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // POST: BlogPosts/Create
@@ -96,23 +141,39 @@ namespace EmpowerHealthyStudents.Controllers
         }
 
        
-        // GET: Books/Edit/5
+        // GET: BlogPosts/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
             var user = await GetCurrentUserAsync();
-            var blogPost = new BlogPost();
-            var book = await _context.BlogPost.FirstOrDefaultAsync(c => c.Id == id);
+            //var blogPost = new BlogPost();
+            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(c => c.Id == id);
 
 
             blogPost.Blog = blogPost.Blog;
             blogPost.Date = blogPost.Date;
+            if (user != null)
+            {
 
+                if (user.IsAdmin == true)
+                {
+                    return View(blogPost);
+                }
+                else
+                {
 
+                    return RedirectToAction(nameof(Index));
+                }
 
-            return View(blogPost);
+            }
+
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
         }
 
-        // POST: Books/Edit/5
+        // POST: BlogPosts/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, BlogPost blogPost)
@@ -142,7 +203,7 @@ namespace EmpowerHealthyStudents.Controllers
             }
         }
 
-        //// GET: Comments/Delete/5
+        //// GET: BlogPost/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -158,12 +219,24 @@ namespace EmpowerHealthyStudents.Controllers
                 return NotFound();
             }
 
-            if (blogPost.UserId != user.Id)
+            if (user != null)
             {
-                return NotFound();
+                if (user.IsAdmin == true)
+                {
+                    return View(blogPost);
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
+
             }
 
-            return View(blogPost);
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
 
         }
 

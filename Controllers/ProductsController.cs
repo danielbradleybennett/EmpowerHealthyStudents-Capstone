@@ -187,8 +187,8 @@ namespace EmpowerHealthyStudents.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var user = await GetCurrentUserAsync();
-            var product = new Product();
-            
+            var product = await _context.Product.FirstOrDefaultAsync(p => p.Id == id);
+
 
             product.Name = product.Name;
             product.Description = product.Description;
