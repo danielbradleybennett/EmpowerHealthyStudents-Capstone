@@ -31,7 +31,6 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
             var BlogPosts = await _context.BlogPost
-                .Where(p => p.UserId == user.Id)
                 .ToListAsync();
             return View(BlogPosts);
         }
