@@ -31,7 +31,6 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
             var Events = await _context.Event
-                .Where(p => p.UserId == user.Id)
                 .ToListAsync();
             return View(Events);
         }

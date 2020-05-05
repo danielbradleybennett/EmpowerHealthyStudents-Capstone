@@ -27,19 +27,86 @@ namespace EmpowerHealthyStudents.Controllers
             _context = context;
             _userManager = userManager;
         }
-        // GET: Products
-        public async Task<ActionResult> Index()
+
+        public async Task<ActionResult> Index(bool IsAdmin)
         {
+
+            
+            var user = await GetCurrentUserAsync();
+            var products = await _context.Product
+             .ToListAsync();
+
+            if (user != null)
+            {
+                if (user.IsAdmin == true)
+                {
+                    return RedirectToAction(nameof(AdminIndex));
+                }
+
+                else if (user.IsAdmin == false)
+                {
+                    return RedirectToAction(nameof(FollowerIndex));
+                }
+
+                else
+                {
+                    return View(products);
+
+                }   
+            } 
+            else
+            {
+                return View(products);
+            }
+        }
+
+        public async Task<ActionResult> AdminIndex()
+        {
+
             var user = await GetCurrentUserAsync();
             var products = await _context.Product
                 .Where(p => p.UserId == user.Id)
                 .ToListAsync();
-                return View(products);
+            
+            return View(products);
         }
+
+        public async Task<ActionResult> FollowerIndex()
+        {
+
+            var user = await GetCurrentUserAsync();
+            var products = await _context.Product
+                .ToListAsync();
+
+            return View(products);
+        }
+
+
+
+        // GET: Products
+        //public async Task<ActionResult> AdminIndex()
+        //{
+
+        //    var user = await GetCurrentUserAsync();
+        //    if(user.IsAdmin == false)
+        //        {
+
+        //        return NotFound();
+        //        }
+
+        //         var products = await _context.Product
+        //        .Where(p => p.UserId == user.Id)
+        //        .ToListAsync();
+        //        return View(products);
+
+        //}
+
+
 
         //// GET: Products/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -61,10 +128,25 @@ namespace EmpowerHealthyStudents.Controllers
         public async Task<ActionResult> Create()
         {
            
+            var user = await GetCurrentUserAsync();
+            if (user != null)
             {
-                var user = await GetCurrentUserAsync();
-                return View();
+                if (user.IsAdmin == true)
+
+                {
+                    return View();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            
         }
 
         // POST: Products/Create
@@ -133,6 +215,10 @@ namespace EmpowerHealthyStudents.Controllers
             product.Name = product.Name;
             product.Description = product.Description;
 
+            if(user.IsAdmin == false)
+            {
+                return RedirectToAction(nameof(Index));
+            }
 
 
             return View(product);
@@ -171,11 +257,21 @@ namespace EmpowerHealthyStudents.Controllers
         //// GET: Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
             }
+            
             var user = await GetCurrentUserAsync();
+            if(user.IsAdmin == false)
+            
+                if (user.IsAdmin == false)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            
+            
             var product = await _context.Product
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
