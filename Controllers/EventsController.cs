@@ -215,14 +215,26 @@ namespace EmpowerHealthyStudents.Controllers
                 return NotFound();
             }
 
-            if (events.UserId != user.Id)
+            if (user != null)
             {
-                return NotFound();
+                if (user.IsAdmin == true)
+                {
+                    return View(events);
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
             }
 
-            return View(events);
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        
 
-        }
+    }
 
         //// POST: Event/Delete/5
         [HttpPost, ActionName("Delete")]

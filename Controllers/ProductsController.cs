@@ -263,10 +263,7 @@ namespace EmpowerHealthyStudents.Controllers
                 return NotFound();
             }
 
-            //if (product.UserId != user.Id)
-            //{
-            //    return NotFound();
-            //}
+           
             if (user != null)
             {
                 if (user.IsAdmin == true)
