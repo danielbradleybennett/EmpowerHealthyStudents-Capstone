@@ -180,3 +180,4 @@ C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\D
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\AdminIndex.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\FollowerIndex.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Events\AdminIndex.cshtml.g.cs
+C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\BlogPosts\AdminIndex.cshtml.g.cs
