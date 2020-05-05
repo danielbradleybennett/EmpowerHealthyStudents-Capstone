@@ -30,8 +30,30 @@ namespace EmpowerHealthyStudents.Controllers
         public async Task<ActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
+
             var Events = await _context.Event
                 .ToListAsync();
+            if(user != null)
+            {
+                if(user.IsAdmin == true)
+                {
+                    return RedirectToAction(nameof(AdminIndex));
+                }
+
+                return View(Events);
+
+
+            }
+            return View(Events);
+        }
+
+        public async Task<ActionResult> AdminIndex()
+        {
+            var user = await GetCurrentUserAsync();
+            var Events = await _context.Event
+                .Where(e => e.UserId == user.Id)
+                .ToListAsync();
+
             return View(Events);
         }
 
