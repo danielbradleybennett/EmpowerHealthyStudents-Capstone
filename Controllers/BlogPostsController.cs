@@ -105,6 +105,7 @@ namespace EmpowerHealthyStudents.Controllers
 
 
             blogPost.Blog = blogPost.Blog;
+            blogPost.Date = blogPost.Date;
 
 
 
@@ -122,6 +123,7 @@ namespace EmpowerHealthyStudents.Controllers
                 {
                     Id = blogPost.Id,
                     Blog = blogPost.Blog,
+                    Date = blogPost.Date
 
                 };
 
