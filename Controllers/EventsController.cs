@@ -141,8 +141,8 @@ namespace EmpowerHealthyStudents.Controllers
 
 
             var user = await GetCurrentUserAsync();
-            var events = new Event();
-            var book = await _context.Event.FirstOrDefaultAsync(c => c.Id == id);
+            //var events = new Event();
+            var events = await _context.Event.FirstOrDefaultAsync(e => e.Id == id);
 
             events.Location = events.Location;
             events.Date = events.Date;
