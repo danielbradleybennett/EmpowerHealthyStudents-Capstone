@@ -82,27 +82,6 @@ namespace EmpowerHealthyStudents.Controllers
         }
 
 
-
-        // GET: Products
-        //public async Task<ActionResult> AdminIndex()
-        //{
-
-        //    var user = await GetCurrentUserAsync();
-        //    if(user.IsAdmin == false)
-        //        {
-
-        //        return NotFound();
-        //        }
-
-        //         var products = await _context.Product
-        //        .Where(p => p.UserId == user.Id)
-        //        .ToListAsync();
-        //        return View(products);
-
-        //}
-
-
-
         //// GET: Products/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -209,19 +188,30 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
             var product = new Product();
-            var book = await _context.BlogPost.FirstOrDefaultAsync(c => c.Id == id);
-
+            
 
             product.Name = product.Name;
             product.Description = product.Description;
 
-            if(user.IsAdmin == false)
+            if (user != null)
+            {
+
+                if (user.IsAdmin == true)
+                {
+                    return View(product);
+                }
+                else
+                {
+
+                    return RedirectToAction(nameof(Index));
+                }
+
+            }
+
+            else
             {
                 return RedirectToAction(nameof(Index));
             }
-
-
-            return View(product);
         }
 
         // POST: Products/Edit/5
@@ -262,30 +252,36 @@ namespace EmpowerHealthyStudents.Controllers
             {
                 return NotFound();
             }
-            
+
             var user = await GetCurrentUserAsync();
-            if(user.IsAdmin == false)
-            
-                if (user.IsAdmin == false)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-            
-            
             var product = await _context.Product
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
+
             if (product == null)
             {
                 return NotFound();
             }
 
-            if (product.UserId != user.Id)
+           
+            if (user != null)
             {
-                return NotFound();
+                if (user.IsAdmin == true)
+                {
+                    return View(product);
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
+
             }
 
-            return View(product);
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         

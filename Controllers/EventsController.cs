@@ -26,12 +26,35 @@ namespace EmpowerHealthyStudents.Controllers
             _context = context;
             _userManager = userManager;
         }
-        // GET: Events
+        // GET: Events/Function is set up to see if general viewer or admin and redirect them to that view
         public async Task<ActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
+
             var Events = await _context.Event
                 .ToListAsync();
+            if(user != null)
+            {
+                if(user.IsAdmin == true)
+                {
+                    return RedirectToAction(nameof(AdminIndex));
+                }
+
+                return View(Events);
+
+
+            }
+            return View(Events);
+        }
+
+        // Admin view
+        public async Task<ActionResult> AdminIndex()
+        {
+            var user = await GetCurrentUserAsync();
+            var Events = await _context.Event
+                .Where(e => e.UserId == user.Id)
+                .ToListAsync();
+
             return View(Events);
         }
 
@@ -55,11 +78,28 @@ namespace EmpowerHealthyStudents.Controllers
             return View(Events);
         }
 
-        //// GET: Events/Create
+        //// GET: Events/Create/Set it  up where only the Admin can create a new event
         public async Task<ActionResult> Create()
         {
+
             var user = await GetCurrentUserAsync();
-            return View();
+            if (user != null)
+            {
+                if (user.IsAdmin == true)
+                {
+                    return View();
+
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // POST: Events/Create
@@ -98,17 +138,35 @@ namespace EmpowerHealthyStudents.Controllers
         // GET: Books/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
+
+
             var user = await GetCurrentUserAsync();
             var events = new Event();
             var book = await _context.Event.FirstOrDefaultAsync(c => c.Id == id);
 
-
             events.Location = events.Location;
             events.Date = events.Date;
+            if (user != null)
+            {
 
+                if (user.IsAdmin == true)
+                {
+                    return View(events);
+                }
+                else
+                {
+                    
+                    return RedirectToAction(nameof(Index));
+                }
 
+            }
 
-            return View(events);
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            
         }
 
         // POST: Books/Edit/5
@@ -157,14 +215,26 @@ namespace EmpowerHealthyStudents.Controllers
                 return NotFound();
             }
 
-            if (events.UserId != user.Id)
+            if (user != null)
             {
-                return NotFound();
+                if (user.IsAdmin == true)
+                {
+                    return View(events);
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
             }
 
-            return View(events);
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        
 
-        }
+    }
 
         //// POST: Event/Delete/5
         [HttpPost, ActionName("Delete")]
