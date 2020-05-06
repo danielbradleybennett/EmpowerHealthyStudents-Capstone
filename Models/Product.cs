@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmpowerHealthyStudents.Models
 {
@@ -14,8 +16,8 @@ namespace EmpowerHealthyStudents.Models
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-
-        public string File { get; set; }
+        [NotMapped]
+        public IFormFile File { get; set; }
         public string ImagePath { get; set; }
         [Required]
         public ApplicationUser User { get; set; }

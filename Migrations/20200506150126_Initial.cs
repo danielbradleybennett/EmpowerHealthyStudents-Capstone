@@ -226,7 +226,6 @@ namespace EmpowerHealthyStudents.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    File = table.Column<string>(nullable: true),
                     ImagePath = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -270,7 +269,7 @@ namespace EmpowerHealthyStudents.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "d8b36871-ecbd-402e-8c92-6f80def16a37", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEGWrlgYojvfRok5xNKcLu7SinKRxNykPR3U9NdRNXTF5F5ebf/cdSut4ee36whAtLA==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "ac6e4a29-9f0c-4964-8d7c-5ed7c7d4a062", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEAmK09YijAhRpu+P+138hnuArxPpxiTJGaDYYmS6kOivU6kjWUOaNGPPwo4U1X5oFw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "BlogPost",
@@ -298,12 +297,12 @@ namespace EmpowerHealthyStudents.Migrations
 
             migrationBuilder.InsertData(
                 table: "Product",
-                columns: new[] { "Id", "Description", "File", "ImagePath", "Name", "UserId" },
+                columns: new[] { "Id", "Description", "ImagePath", "Name", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!", null, null, "Making Healthy Choices", "10000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 2, "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!", null, null, "Ten Tips To Build Your Resilience", "10000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 3, "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!", null, null, "Hamlet Character Smackdown: Roleplay Lesson", "10000000-ffff-ffff-ffff-ffffffffffff" }
+                    { 1, "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!", null, "Making Healthy Choices", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 2, "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!", null, "Ten Tips To Build Your Resilience", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 3, "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!", null, "Hamlet Character Smackdown: Roleplay Lesson", "10000000-ffff-ffff-ffff-ffffffffffff" }
                 });
 
             migrationBuilder.InsertData(
