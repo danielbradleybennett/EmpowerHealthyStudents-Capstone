@@ -14,6 +14,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.IO;
 
 
+
 namespace EmpowerHealthyStudents.Controllers
 {
     public class ProductsController : Controller
@@ -146,7 +147,8 @@ namespace EmpowerHealthyStudents.Controllers
                     Id = product.Id,
                     Name = product.Name,
                     Description = product.Description,
-                    UserId = user.Id
+                    UserId = user.Id,
+                    ImagePath = product.ImagePath
 
                 };
                 if (product.File != null && product.File.Length > 0)
@@ -182,6 +184,38 @@ namespace EmpowerHealthyStudents.Controllers
                 return View();
             }
         }
+
+        //public ActionResult Download()
+        //{
+        //    string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), "wwwroot\\images");
+        //    for (int i = 0; i < files.Length; i++)
+        //    {
+        //        files[i] = Path.GetFileName(files[i]);
+        //    }
+        //    ViewBag.Files = files;
+        //    return View();
+        //}
+        public FileResult DownloadFile(string fileName)
+        {
+            var filepath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+            return File(filepath, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //string path = AppDomain.CurrentDomain.BaseDirectory + "wwwroot\\images";
+        //byte[] fileBytes = System.IO.File.ReadAllBytes(path + "filename");
+        //string fileName = "fileName";
+        //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
+
 
         // GET: Prducts/Edit/5
         public async Task<ActionResult> Edit(int id)

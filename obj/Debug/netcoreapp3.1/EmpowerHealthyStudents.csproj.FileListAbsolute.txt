@@ -180,3 +180,4 @@ C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\D
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.dll
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.pdb
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.genruntimeconfig.cache
+C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.csprojAssemblyReference.cache
