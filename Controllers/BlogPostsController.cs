@@ -145,8 +145,7 @@ namespace EmpowerHealthyStudents.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var user = await GetCurrentUserAsync();
-            //var blogPost = new BlogPost();
-            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(c => c.Id == id);
+            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
 
 
             blogPost.Blog = blogPost.Blog;

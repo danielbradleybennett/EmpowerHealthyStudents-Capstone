@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using System.Runtime.InteropServices.ComTypes;
 using System.IO;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace EmpowerHealthyStudents.Controllers
 {
@@ -31,7 +32,6 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
             var comments = await _context.Comment
-                .Where(p => p.UserId == user.Id)
                 .ToListAsync();
             return View(comments);
         }
@@ -57,12 +57,20 @@ namespace EmpowerHealthyStudents.Controllers
         }
 
         //// GET: Comments/Create
-        public async Task<ActionResult> Create()
+        public async Task<ActionResult> Create(int id)
         {
+            var user = await GetCurrentUserAsync();
+            var comment = await _context.Comment.FindAsync(id);
+            if (user != null)
             
             {
-                var user = await GetCurrentUserAsync();
                 return View();
+               
+            }
+            
+            else
+            {
+                return RedirectToAction(nameof(Index));
             }
         }
 
@@ -102,20 +110,26 @@ namespace EmpowerHealthyStudents.Controllers
 
        
 
-        // GET: Books/Edit/5
+        // GET: Comments/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
             var user = await GetCurrentUserAsync();
-            var comment = new Comment();
-            var book = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
-
-
+            var comment = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
             comment.Text = comment.Text;
             comment.Date = comment.Date;
 
+            if (user != null)
 
-           
-            return View(comment);
+            {
+                return View(comment);
+
+            }
+
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
         }
 
         // POST: Books/Edit/5
@@ -150,11 +164,24 @@ namespace EmpowerHealthyStudents.Controllers
         //// GET: Comments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var user = await GetCurrentUserAsync();
+            if (user != null)
+
+            {
+                return View();
+
+            }
+
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+
             if (id == null)
             {
                 return NotFound();
             }
-            var user = await GetCurrentUserAsync();
             var comment = await _context.Comment
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(p => p.Id == id);

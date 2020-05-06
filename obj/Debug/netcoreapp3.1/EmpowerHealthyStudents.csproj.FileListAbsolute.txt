@@ -140,6 +140,7 @@ C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\D
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\BlogPosts\AdminIndex.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\BlogPosts\Create.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\BlogPosts\Delete.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\BlogPosts\Details.cshtml.g.cs
@@ -149,6 +150,7 @@ C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\D
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Delete.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Edit.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs
+C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Events\AdminIndex.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Events\Create.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Events\Delete.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Events\Details.cshtml.g.cs
@@ -156,10 +158,12 @@ C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\D
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Events\Index.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\AdminIndex.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\Create.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\Delete.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\Details.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\Edit.cshtml.g.cs
+C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\FollowerIndex.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\Index.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -176,8 +180,3 @@ C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\D
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.dll
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.pdb
 C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.genruntimeconfig.cache
-C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\EmpowerHealthyStudents.csprojAssemblyReference.cache
-C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\AdminIndex.cshtml.g.cs
-C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Products\FollowerIndex.cshtml.g.cs
-C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\Events\AdminIndex.cshtml.g.cs
-C:\Users\Daniel\source\repos\EmpowerHealthyStudents\EmpowerHealthyStudents\obj\Debug\netcoreapp3.1\Razor\Views\BlogPosts\AdminIndex.cshtml.g.cs

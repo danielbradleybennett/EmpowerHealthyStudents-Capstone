@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200503184812_Initial")]
+    [Migration("20200506150126_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d8b36871-ecbd-402e-8c92-6f80def16a37",
+                            ConcurrencyStamp = "ac6e4a29-9f0c-4964-8d7c-5ed7c7d4a062",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGWrlgYojvfRok5xNKcLu7SinKRxNykPR3U9NdRNXTF5F5ebf/cdSut4ee36whAtLA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAmK09YijAhRpu+P+138hnuArxPpxiTJGaDYYmS6kOivU6kjWUOaNGPPwo4U1X5oFw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -301,9 +301,6 @@ namespace EmpowerHealthyStudents.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("File")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")

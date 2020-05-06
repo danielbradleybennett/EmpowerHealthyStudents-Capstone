@@ -149,25 +149,25 @@ namespace EmpowerHealthyStudents.Controllers
                     UserId = user.Id
 
                 };
-                //if (product.File != null && product.File.Length > 0)
-                //{
-                //    //creates the file name and makes it unique by generating a Guid and adding that to the file name
-                //    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(product.File.FileName);
-                //    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
-                //    //which is where our images are stored
-                //    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                if (product.File != null && product.File.Length > 0)
+                {
+                    //creates the file name and makes it unique by generating a Guid and adding that to the file name
+                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(product.File.FileName);
+                    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
+                    //which is where our images are stored
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
 
-                //    //adds the newly created fileName to the product object we built up above to be stored in 
-                //    //the database as the ImagePath
-                //    products.ImagePath = fileName;
+                    //adds the newly created fileName to the product object we built up above to be stored in 
+                    //the database as the ImagePath
+                    products.ImagePath = fileName;
 
-                //    //what actually allows us to save the file to the folder path
-                //    using (var stream = new FileStream(filePath, FileMode.Create))
-                //    {
-                //        await product.File.CopyToAsync(stream);
-                //    }
+                    //what actually allows us to save the file to the folder path
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await product.File.CopyToAsync(stream);
+                    }
 
-                //}
+                }
 
                 //adds the newly built product object to the Product table using _context.Product.Add
                 _context.Product.Add(products);
