@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200507023828_Initial")]
+    [Migration("20200507041758_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fe3705ac-738e-4004-8334-aa7e4944183e",
+                            ConcurrencyStamp = "168934cc-6887-4e2f-9c76-2aa9d0a08002",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM0AWYR5QzeaNV0tRcO3vj6jO3ByVpyKtDn05EF+nJKS9gkTYFgAVkXXGdzKQOKxtw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENNcwXkoVHaXmqjbK/2Uv2yk7iyavONRvyD29iJao6ruVQZlWRKnpUMiNCi46EFj0A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,

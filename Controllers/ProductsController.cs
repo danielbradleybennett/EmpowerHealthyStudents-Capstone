@@ -162,7 +162,7 @@ namespace EmpowerHealthyStudents.Controllers
 
                     //adds the newly created fileName to the product object we built up above to be stored in 
                     //the database as the ImagePath
-                    products.ImagePath = fileName;
+                    productViewModel.ImagePath = fileName;
 
                     //what actually allows us to save the file to the folder path
                     using (var stream = new FileStream(filePath, FileMode.Create))
@@ -186,36 +186,9 @@ namespace EmpowerHealthyStudents.Controllers
             }
         }
 
-        //public ActionResult Download()
-        //{
-        //    string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), "wwwroot\\images");
-        //    for (int i = 0; i < files.Length; i++)
-        //    {
-        //        files[i] = Path.GetFileName(files[i]);
-        //    }
-        //    ViewBag.Files = files;
-        //    return View();
-        //}
-        public FileResult DownloadFile(string fileName)
-        {
-            var filepath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
-            return File(filepath, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
-        }
+       
 
 
-
-
-
-
-
-
-
-
-
-        //string path = AppDomain.CurrentDomain.BaseDirectory + "wwwroot\\images";
-        //byte[] fileBytes = System.IO.File.ReadAllBytes(path + "filename");
-        //string fileName = "fileName";
-        //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
 
 
         // GET: Prducts/Edit/5

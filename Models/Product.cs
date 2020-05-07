@@ -22,5 +22,7 @@ namespace EmpowerHealthyStudents.Models
         public ApplicationUser User { get; set; }
         [Required]
         public string UserId { get; set; }
+
+       
     }
 }
