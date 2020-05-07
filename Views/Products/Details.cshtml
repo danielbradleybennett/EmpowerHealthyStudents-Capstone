@@ -1,4 +1,4 @@
-﻿@model EmpowerHealthyStudents.Models.Product;
+﻿@model EmpowerHealthyStudents.Models.Product
 
 @{
     ViewData["Title"] = "Details";
@@ -10,31 +10,42 @@
     <h4>Product</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
+        <dd class="col-sm-10">
+            <img src="~/images/@Model.ImagePath" />
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Id)
-        </dd>
+        <tbody>
+            <td>
+                <tr>
+                        <a href="~/images/@Model.ImagePath" target="_blank">Click Here To Download</a>
+
+
+
+
+                        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@Model.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
     </dl>
 </div>
 <div>

@@ -41,23 +41,7 @@
 
 
             <td>
-                @*@{
-                ViewBag.Title = "Download Files";
-                var Files = (ViewBag.ImagePath as string[]);
-                if (Files != null && Files.Any())
-                {
-                    foreach (var file in Files)
-                    {
-                        <br />
-                        @Html.ActionLink(file, "DownloadFile", new { fileName = file })
-                        <br />
-                    }
-                }
-                else
-                {
-                    <label>No File(s) to Download</label>
-                }
-            }*@
+                
                 <a href="~/images/@item.ImagePath" target="_blank">Click Here To Download</a>
 
 

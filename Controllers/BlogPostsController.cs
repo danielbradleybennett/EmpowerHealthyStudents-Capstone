@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpowerHealthyStudents.Data;
 using EmpowerHealthyStudents.Models;
+using EmpowerHealthyStudents.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
@@ -27,10 +28,13 @@ namespace EmpowerHealthyStudents.Controllers
             _userManager = userManager;
         }
         // GET: BlogPosts
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(BlogPostViewModels blogPostViewModels)
         {
             var user = await GetCurrentUserAsync();
             var blogPosts = await _context.BlogPost
+                .Include(bg => bg.Comments)
+                
+                
                 .ToListAsync();
             if (user != null)
             {
@@ -57,6 +61,8 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
             var BlogPosts = await _context.BlogPost
+                .Include(bg => bg.BlogComments)
+                    .ThenInclude(bc => bc.Comment)
                 .ToListAsync();
             return View(BlogPosts);
         }
@@ -66,16 +72,20 @@ namespace EmpowerHealthyStudents.Controllers
 
 
         //// GET: BlogPosts/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
             var user = await GetCurrentUserAsync();
             var BlogPosts = await _context.BlogPost
-                .FirstOrDefaultAsync(p => p.Id == id);
+                .Include(bg => bg.BlogComments)
+                    .ThenInclude(bc => bc.Comment)
+                //.FirstOrDefaultAsync(p => p.Id == id)
+                .ToListAsync();
+            return View(BlogPosts);
 
             if (BlogPosts == null)
             {

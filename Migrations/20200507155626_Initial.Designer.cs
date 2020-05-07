@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200507041758_Initial")]
+    [Migration("20200507155626_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "168934cc-6887-4e2f-9c76-2aa9d0a08002",
+                            ConcurrencyStamp = "c0ac0b14-1afb-42b8-9bf7-416fa26dce36",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENNcwXkoVHaXmqjbK/2Uv2yk7iyavONRvyD29iJao6ruVQZlWRKnpUMiNCi46EFj0A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJeMsELo0tb6aWvAfQAWCHMRd+97jjvTmju+wrC4aFZvTRJdNfYBVuNOyoLme7XS/g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -189,6 +189,12 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BlogPostId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BlogPostViewModelsId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -201,6 +207,10 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BlogPostId");
+
+                    b.HasIndex("BlogPostViewModelsId");
 
                     b.HasIndex("UserId");
 
@@ -344,6 +354,31 @@ namespace EmpowerHealthyStudents.Migrations
                         });
                 });
 
+            modelBuilder.Entity("EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Blog")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BlogPostViewModels");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -482,7 +517,7 @@ namespace EmpowerHealthyStudents.Migrations
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogComment", b =>
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.BlogPost", "BlogPost")
-                        .WithMany()
+                        .WithMany("BlogComments")
                         .HasForeignKey("BlogPostId");
 
                     b.HasOne("EmpowerHealthyStudents.Models.Comment", "Comment")
@@ -501,6 +536,14 @@ namespace EmpowerHealthyStudents.Migrations
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Comment", b =>
                 {
+                    b.HasOne("EmpowerHealthyStudents.Models.BlogPost", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogPostId");
+
+                    b.HasOne("EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogPostViewModelsId");
+
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
@@ -521,6 +564,15 @@ namespace EmpowerHealthyStudents.Migrations
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Products")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels", b =>
+                {
+                    b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
