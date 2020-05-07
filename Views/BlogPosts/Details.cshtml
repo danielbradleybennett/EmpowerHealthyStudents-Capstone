@@ -30,15 +30,10 @@
 
         </dd>
         <dd class="col-sm-10">
-            @foreach (var comment in Model.BlogComments)
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => comment.Comment.Text)
-                </td>
-            }
+           
+            @Html.DisplayFor(model => model.BlogComments.Comment.Text)
 
-        </dd>
-
+            Are you working!!!!
 
     </dl>
 </div>
