@@ -162,7 +162,7 @@ namespace EmpowerHealthyStudents.Controllers
 
                     //adds the newly created fileName to the product object we built up above to be stored in 
                     //the database as the ImagePath
-                    productViewModel.ImagePath = fileName;
+                    products.ImagePath = fileName;
 
                     //what actually allows us to save the file to the folder path
                     using (var stream = new FileStream(filePath, FileMode.Create))
