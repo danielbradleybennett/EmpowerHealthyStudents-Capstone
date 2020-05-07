@@ -269,7 +269,7 @@ namespace EmpowerHealthyStudents.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "ac6e4a29-9f0c-4964-8d7c-5ed7c7d4a062", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEAmK09YijAhRpu+P+138hnuArxPpxiTJGaDYYmS6kOivU6kjWUOaNGPPwo4U1X5oFw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "168934cc-6887-4e2f-9c76-2aa9d0a08002", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAENNcwXkoVHaXmqjbK/2Uv2yk7iyavONRvyD29iJao6ruVQZlWRKnpUMiNCi46EFj0A==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "BlogPost",

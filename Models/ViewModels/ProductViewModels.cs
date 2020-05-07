@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EmpowerHealthyStudents.Models
+namespace EmpowerHealthyStudents.Models.ViewModels
 {
-    public class Product
+    public class ProductViewModels
     {
         [Key]
         public int Id { get; set; }
@@ -16,7 +15,8 @@ namespace EmpowerHealthyStudents.Models
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        
+        [NotMapped]
+        public IFormFile File { get; set; }
         public string ImagePath { get; set; }
         [Required]
         public ApplicationUser User { get; set; }
