@@ -10,6 +10,7 @@ using EmpowerHealthyStudents.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using EmpowerHealthyStudents.Models.ViewModels;
 using System.Runtime.InteropServices.ComTypes;
 using System.IO;
 
@@ -29,7 +30,7 @@ namespace EmpowerHealthyStudents.Controllers
             _userManager = userManager;
         }
 
-        public async Task<ActionResult> Index(bool IsAdmin)
+        public async Task<ActionResult> Index()
         {
 
             
@@ -132,7 +133,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] Product product)
+        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] ProductViewModels productViewModel)
         {
             try
             {
@@ -144,17 +145,17 @@ namespace EmpowerHealthyStudents.Controllers
                 //represented here as "productViewModel"
                 var products = new Product
                 {
-                    Id = product.Id,
-                    Name = product.Name,
-                    Description = product.Description,
-                    UserId = user.Id,
-                    ImagePath = product.ImagePath
+                    Id = productViewModel.Id,
+                    Name = productViewModel.Name,
+                    Description = productViewModel.Description,
+                    UserId = user.Id
+                    
 
                 };
-                if (product.File != null && product.File.Length > 0)
+                if (productViewModel.File != null && productViewModel.File.Length > 0)
                 {
                     //creates the file name and makes it unique by generating a Guid and adding that to the file name
-                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(product.File.FileName);
+                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.File.FileName);
                     //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
                     //which is where our images are stored
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
@@ -166,7 +167,7 @@ namespace EmpowerHealthyStudents.Controllers
                     //what actually allows us to save the file to the folder path
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await product.File.CopyToAsync(stream);
+                        await productViewModel.File.CopyToAsync(stream);
                     }
 
                 }

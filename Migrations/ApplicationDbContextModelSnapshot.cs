@@ -99,7 +99,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ac6e4a29-9f0c-4964-8d7c-5ed7c7d4a062",
+                            ConcurrencyStamp = "fe3705ac-738e-4004-8334-aa7e4944183e",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -108,7 +108,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAmK09YijAhRpu+P+138hnuArxPpxiTJGaDYYmS6kOivU6kjWUOaNGPPwo4U1X5oFw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM0AWYR5QzeaNV0tRcO3vj6jO3ByVpyKtDn05EF+nJKS9gkTYFgAVkXXGdzKQOKxtw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,

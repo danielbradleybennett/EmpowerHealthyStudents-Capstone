@@ -1,4 +1,4 @@
-﻿@model EmpowerHealthyStudents.Models.Product
+﻿@model EmpowerHealthyStudents.Models.ViewModels.ProductViewModels
 
 @{
     ViewData["Title"] = "Create";
@@ -23,12 +23,26 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             @*the div that contains the image upload*@
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="File" class="control-label"></label>
                 <input asp-for="File" type="file" class="form-control" />
+                <input asp-for="File" type="file" class="form-control" />
+
                 <span asp-validation-for="File" class="text-danger"></span>
-            </div>
+            </div>*@
            
+                @*<div id="multiple">
+                    <input type="file" class="multiple" name="files" multiple />
+                </div>*@
+                <div id="single">
+                    <input type="file" class="single" name="files" /><br />
+                    <input type="file" class="single" name="files" /><br />
+                    <input type="file" class="single" name="files" /><br />
+                </div>
+                @*<button class="btn btn-default">Upload</button>*@
+            }
+
+
 
 
 
