@@ -72,7 +72,7 @@ namespace EmpowerHealthyStudents.Controllers
 
 
         //// GET: BlogPosts/Details/5
-        public async Task<ActionResult> Details()
+        public async Task<ActionResult> Details(int id)
         {
             //if (id == null)
             //{
@@ -83,8 +83,8 @@ namespace EmpowerHealthyStudents.Controllers
             var BlogPosts = await _context.BlogPost
                 .Include(bg => bg.BlogComments)
                     .ThenInclude(bc => bc.Comment)
-                //.FirstOrDefaultAsync(p => p.Id == id)
-                .ToListAsync();
+                .FirstOrDefaultAsync(p => p.Id == id);
+                
             return View(BlogPosts);
 
             if (BlogPosts == null)
