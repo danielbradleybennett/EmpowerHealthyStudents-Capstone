@@ -177,20 +177,20 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
+                name: "BlogPostViewModels",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Text = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false)
+                    Blog = table.Column<string>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.PrimaryKey("PK_BlogPostViewModels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comment_AspNetUsers_UserId",
+                        name: "FK_BlogPostViewModels_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -241,6 +241,41 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Comment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Text = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    BlogPostId = table.Column<int>(nullable: true),
+                    BlogPostViewModelsId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comment_BlogPost_BlogPostId",
+                        column: x => x.BlogPostId,
+                        principalTable: "BlogPost",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comment_BlogPostViewModels_BlogPostViewModelsId",
+                        column: x => x.BlogPostViewModelsId,
+                        principalTable: "BlogPostViewModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comment_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "BlogComment",
                 columns: table => new
                 {
@@ -269,7 +304,7 @@ namespace EmpowerHealthyStudents.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "168934cc-6887-4e2f-9c76-2aa9d0a08002", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAENNcwXkoVHaXmqjbK/2Uv2yk7iyavONRvyD29iJao6ruVQZlWRKnpUMiNCi46EFj0A==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "c0ac0b14-1afb-42b8-9bf7-416fa26dce36", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEJeMsELo0tb6aWvAfQAWCHMRd+97jjvTmju+wrC4aFZvTRJdNfYBVuNOyoLme7XS/g==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "BlogPost",
@@ -278,8 +313,8 @@ namespace EmpowerHealthyStudents.Migrations
 
             migrationBuilder.InsertData(
                 table: "Comment",
-                columns: new[] { "Id", "Date", "Text", "UserId" },
-                values: new object[] { 1, new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000000-ffff-ffff-ffff-ffffffffffff" });
+                columns: new[] { "Id", "BlogPostId", "BlogPostViewModelsId", "Date", "Text", "UserId" },
+                values: new object[] { 1, null, null, new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000000-ffff-ffff-ffff-ffffffffffff" });
 
             migrationBuilder.InsertData(
                 table: "Event",
@@ -365,6 +400,21 @@ namespace EmpowerHealthyStudents.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BlogPostViewModels_UserId",
+                table: "BlogPostViewModels",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comment_BlogPostId",
+                table: "Comment",
+                column: "BlogPostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comment_BlogPostViewModelsId",
+                table: "Comment",
+                column: "BlogPostViewModelsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comment_UserId",
                 table: "Comment",
                 column: "UserId");
@@ -410,10 +460,13 @@ namespace EmpowerHealthyStudents.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Comment");
+
+            migrationBuilder.DropTable(
                 name: "BlogPost");
 
             migrationBuilder.DropTable(
-                name: "Comment");
+                name: "BlogPostViewModels");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

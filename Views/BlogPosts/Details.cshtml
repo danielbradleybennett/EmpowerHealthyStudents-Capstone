@@ -1,4 +1,4 @@
-﻿@model EmpowerHealthyStudents.Models.BlogPost
+﻿@model EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels
 
 @{
     ViewData["Title"] = "Details";
@@ -10,24 +10,36 @@
     <h4>BlogPost</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Blog)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Blog)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Date)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Date)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.User)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.User.Id)
+
         </dd>
+        <dd class="col-sm-10">
+            @foreach (var comment in Model.BlogComments)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => comment.Comment.Text)
+                </td>
+            }
+
+        </dd>
+
+
     </dl>
 </div>
 <div>

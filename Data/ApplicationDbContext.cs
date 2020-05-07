@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using EmpowerHealthyStudents.Models.ViewModels;
 
 namespace EmpowerHealthyStudents.Data
 
@@ -171,6 +172,8 @@ namespace EmpowerHealthyStudents.Data
                     }
                 );
         }
+
+        public DbSet<EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels> BlogPostViewModels { get; set; }
     }
 }
 
