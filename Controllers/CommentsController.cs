@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using System.Runtime.InteropServices.ComTypes;
 using System.IO;
 using Microsoft.Extensions.Configuration.UserSecrets;
+using NuGet.Frameworks;
 
 namespace EmpowerHealthyStudents.Controllers
 {
@@ -57,14 +58,24 @@ namespace EmpowerHealthyStudents.Controllers
         }
 
         //// GET: Comments/Create
+        [HttpGet]
+        [Route("Comments/Create/{id}")]
         public async Task<ActionResult> Create(int id)
         {
             var user = await GetCurrentUserAsync();
-            var comment = await _context.Comment.FindAsync(id);
+            
+            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
+
+            var view = new Comment
+            {
+                Date = DateTime.Now,
+                BlogPostId = blogPost.Id
+            };
+
             if (user != null)
             
             {
-                return View();
+                return View(view);
                
             }
             
@@ -77,29 +88,33 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Comments/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Text,Date,UserId")] Comment comment)
+        public async Task<ActionResult> AddComment([Bind("Id,Text,Date,UserId")] Comment comment, int id)
         {
             try
             {
                 //gets the current user, uses custom method created at bottom
                 //you will plug in the user.Id in the product
                 var user = await GetCurrentUserAsync();
+                var blogPost = await _context.BlogPost.FindAsync(id);
+                
 
                 //builds up our new product using the data submitted from the form, 
                 //represented here as "productViewModel"
                 var comments = new Comment
                 {
-                    Id = comment.Id,
+                    
                     Text = comment.Text,
                     Date = comment.Date,
-                    UserId = user.Id
+                    UserId = user.Id,
+                    BlogPostId = id
 
                 };
 
                 _context.Comment.Add(comments);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("Details", "BlogPosts", new { id = id }); ;
 
             }
             catch

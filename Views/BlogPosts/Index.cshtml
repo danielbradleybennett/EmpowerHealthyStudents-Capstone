@@ -4,11 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Blog Posts</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Comments/Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -18,26 +19,35 @@
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
+
+
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Blog)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            
-        </tr>
-}
+        <body>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Blog)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    @foreach (var comment in item.Comments)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => comment.Text)
+                        </td>
+                    }
+
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                </tr>
+            }
+
+        </body>
     </tbody>
 </table>

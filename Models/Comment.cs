@@ -13,8 +13,8 @@ namespace EmpowerHealthyStudents.Models
 
         [Required]
         public string Text { get; set; }
-        [Required]
-        public string UserId { get; set; }
+        
+        public string? UserId { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -22,6 +22,8 @@ namespace EmpowerHealthyStudents.Models
 
         public ApplicationUser User { get; set; }
 
-        public List<BlogComment> BlogComments { get; set; }
+        public int? BlogPostId { get; set; }
+
+       
     }
 }

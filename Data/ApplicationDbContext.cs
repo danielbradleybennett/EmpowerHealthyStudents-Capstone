@@ -28,7 +28,6 @@ namespace EmpowerHealthyStudents.Data
 
         public DbSet<BlogPost> BlogPost { get; set; }
 
-        public DbSet<BlogComment> BlogComment { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -149,6 +148,7 @@ namespace EmpowerHealthyStudents.Data
                 new BlogPost()
                 {
                     Id = 1,
+                    Title = "Teaching in Quarantine",
                     Blog = "Teaching In Quarantine: How Do I Stay Motivated? Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine: 1.Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 2.Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear! 3.Connect with friends and family each day 4.Exercise for at least 30 minutes 5.Journal 6.Get enough sleep 7.Drinks LOTS of water 8.Avoid social media during “work” hours 9.Connect with other teachers 10.Give yourself some grace!",
                     Date = DateTime.Parse("04/21/20"),
                     UserId = user.Id
@@ -160,20 +160,14 @@ namespace EmpowerHealthyStudents.Data
                     Id = 1,
                     Text = "You are a Godsend.",
                     Date = DateTime.Parse("05/21/20"),
-                    UserId = user.Id
+                    UserId = user.Id,
+                    BlogPostId = 1
                 });
 
-            modelBuilder.Entity<BlogComment>().HasData(
-                    new BlogComment()
-                    {
-                        Id = 1,
-                        BlogPostId = 1,
-                        CommentId = 1
-                    }
-                );
+           
         }
 
-        public DbSet<EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels> BlogPostViewModels { get; set; }
+       
     }
 }
 
