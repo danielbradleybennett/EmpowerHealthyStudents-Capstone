@@ -91,6 +91,16 @@ namespace EmpowerHealthyStudents.Controllers
                 return NotFound();
             }
 
+            if (user != null)
+            {
+                ViewBag.IsAdmin = user.IsAdmin;
+            }
+
+            else
+            {
+                ViewBag.IsAdmin = false;
+            }
+
             return View(BlogPosts);
         }
 
@@ -222,6 +232,7 @@ namespace EmpowerHealthyStudents.Controllers
             var user = await GetCurrentUserAsync();
             var blogPost = await _context.BlogPost
                 .Include(p => p.User)
+                .Include(c => c.Comments)
                 .FirstOrDefaultAsync(p => p.Id == id);
             if (blogPost == null)
             {

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EmpowerHealthyStudents.Models;
+using System.IO;
 
 namespace EmpowerHealthyStudents
 {
@@ -51,6 +52,12 @@ namespace EmpowerHealthyStudents
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\files"));
+            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images"));
+
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

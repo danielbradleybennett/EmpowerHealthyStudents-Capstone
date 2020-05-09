@@ -14,15 +14,15 @@ namespace EmpowerHealthyStudents.Models
         [Required]
         public string Text { get; set; }
         
-        public string? UserId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
-        public int? BlogPostId { get; set; }
+        public int BlogPostId { get; set; }
 
        
     }
