@@ -28,14 +28,14 @@ namespace EmpowerHealthyStudents.Controllers
             _userManager = userManager;
         }
         // GET: BlogPosts
-        public async Task<ActionResult> Index(BlogPostViewModels blogPostViewModels)
+        public async Task<ActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
             var blogPosts = await _context.BlogPost
                 .Include(bg => bg.Comments)
-                
-                
+                    
                 .ToListAsync();
+           
             if (user != null)
             {
                 if (user.IsAdmin == true)
@@ -61,8 +61,8 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
             var BlogPosts = await _context.BlogPost
-                .Include(bg => bg.BlogComments)
-                    .ThenInclude(bc => bc.Comment)
+                .Include(bg => bg.Comments)
+                    
                 .ToListAsync();
             return View(BlogPosts);
         }
@@ -72,20 +72,19 @@ namespace EmpowerHealthyStudents.Controllers
 
 
         //// GET: BlogPosts/Details/5
-        public async Task<ActionResult> Details()
+        public async Task<ActionResult> Details(int? id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
             var user = await GetCurrentUserAsync();
             var BlogPosts = await _context.BlogPost
-                .Include(bg => bg.BlogComments)
-                    .ThenInclude(bc => bc.Comment)
-                //.FirstOrDefaultAsync(p => p.Id == id)
-                .ToListAsync();
-            return View(BlogPosts);
+                .Include(bg => bg.Comments)   
+                .FirstOrDefaultAsync(p => p.Id == id);
+                
+           
 
             if (BlogPosts == null)
             {
@@ -120,7 +119,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: BlogPosts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Blog,Date,UserId")] BlogPost blogPost)
+        public async Task<ActionResult> Create([Bind("Id,Title,Blog,Date,UserId")] BlogPost blogPost)
         {
             try
             {
@@ -133,6 +132,7 @@ namespace EmpowerHealthyStudents.Controllers
                 var blogPosts = new BlogPost
                 {
                     Id = blogPost.Id,
+                    Title = blogPost.Title,
                     Blog = blogPost.Blog,
                     UserId = user.Id,
                     Date = blogPost.Date

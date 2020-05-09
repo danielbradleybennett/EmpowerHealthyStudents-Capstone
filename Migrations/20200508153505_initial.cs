@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmpowerHealthyStudents.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -161,6 +161,7 @@ namespace EmpowerHealthyStudents.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: false),
                     Blog = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<string>(nullable: false)
@@ -170,27 +171,6 @@ namespace EmpowerHealthyStudents.Migrations
                     table.PrimaryKey("PK_BlogPost", x => x.Id);
                     table.ForeignKey(
                         name: "FK_BlogPost_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BlogPostViewModels",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Blog = table.Column<string>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BlogPostViewModels", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BlogPostViewModels_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -247,10 +227,9 @@ namespace EmpowerHealthyStudents.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    BlogPostId = table.Column<int>(nullable: true),
-                    BlogPostViewModelsId = table.Column<int>(nullable: true)
+                    BlogPostId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -262,41 +241,9 @@ namespace EmpowerHealthyStudents.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comment_BlogPostViewModels_BlogPostViewModelsId",
-                        column: x => x.BlogPostViewModelsId,
-                        principalTable: "BlogPostViewModels",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Comment_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BlogComment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CommentId = table.Column<int>(nullable: true),
-                    BlogPostId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BlogComment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BlogComment_BlogPost_BlogPostId",
-                        column: x => x.BlogPostId,
-                        principalTable: "BlogPost",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_BlogComment_Comment_CommentId",
-                        column: x => x.CommentId,
-                        principalTable: "Comment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -304,17 +251,12 @@ namespace EmpowerHealthyStudents.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "c0ac0b14-1afb-42b8-9bf7-416fa26dce36", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEJeMsELo0tb6aWvAfQAWCHMRd+97jjvTmju+wrC4aFZvTRJdNfYBVuNOyoLme7XS/g==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "aaee5217-b702-486f-b555-2b7abbaef7e7", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEJ6YzTe0g+5ECAFy97fUcoW9DxpzEHUxBbc3Ho7yXypOVjGBFbeApeGtMo2gM1sHVQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "BlogPost",
-                columns: new[] { "Id", "Blog", "Date", "UserId" },
-                values: new object[] { 1, "Teaching In Quarantine: How Do I Stay Motivated? Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine: 1.Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 2.Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear! 3.Connect with friends and family each day 4.Exercise for at least 30 minutes 5.Journal 6.Get enough sleep 7.Drinks LOTS of water 8.Avoid social media during “work” hours 9.Connect with other teachers 10.Give yourself some grace!", new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "10000000-ffff-ffff-ffff-ffffffffffff" });
-
-            migrationBuilder.InsertData(
-                table: "Comment",
-                columns: new[] { "Id", "BlogPostId", "BlogPostViewModelsId", "Date", "Text", "UserId" },
-                values: new object[] { 1, null, null, new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000000-ffff-ffff-ffff-ffffffffffff" });
+                columns: new[] { "Id", "Blog", "Date", "Title", "UserId" },
+                values: new object[] { 1, "Teaching In Quarantine: How Do I Stay Motivated? Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine: 1.Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 2.Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear! 3.Connect with friends and family each day 4.Exercise for at least 30 minutes 5.Journal 6.Get enough sleep 7.Drinks LOTS of water 8.Avoid social media during “work” hours 9.Connect with other teachers 10.Give yourself some grace!", new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "Teaching in Quarantine", "10000000-ffff-ffff-ffff-ffffffffffff" });
 
             migrationBuilder.InsertData(
                 table: "Event",
@@ -341,9 +283,9 @@ namespace EmpowerHealthyStudents.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "BlogComment",
-                columns: new[] { "Id", "BlogPostId", "CommentId" },
-                values: new object[] { 1, 1, 1 });
+                table: "Comment",
+                columns: new[] { "Id", "BlogPostId", "Date", "Text", "UserId" },
+                values: new object[] { 1, 1, new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000000-ffff-ffff-ffff-ffffffffffff" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -385,34 +327,14 @@ namespace EmpowerHealthyStudents.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogComment_BlogPostId",
-                table: "BlogComment",
-                column: "BlogPostId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BlogComment_CommentId",
-                table: "BlogComment",
-                column: "CommentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_BlogPost_UserId",
                 table: "BlogPost",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BlogPostViewModels_UserId",
-                table: "BlogPostViewModels",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_BlogPostId",
                 table: "Comment",
                 column: "BlogPostId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comment_BlogPostViewModelsId",
-                table: "Comment",
-                column: "BlogPostViewModelsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_UserId",
@@ -448,7 +370,7 @@ namespace EmpowerHealthyStudents.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BlogComment");
+                name: "Comment");
 
             migrationBuilder.DropTable(
                 name: "Event");
@@ -460,13 +382,7 @@ namespace EmpowerHealthyStudents.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Comment");
-
-            migrationBuilder.DropTable(
                 name: "BlogPost");
-
-            migrationBuilder.DropTable(
-                name: "BlogPostViewModels");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

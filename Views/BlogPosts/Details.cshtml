@@ -1,4 +1,4 @@
-﻿@model EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels
+﻿@model EmpowerHealthyStudents.Models.BlogPost;
 
 @{
     ViewData["Title"] = "Details";
@@ -30,12 +30,26 @@
 
         </dd>
         <dd class="col-sm-10">
-           
-            @Html.DisplayFor(model => model.BlogComments.Comment.Text)
+            @foreach (var comment in Model.Comments)
+            {
+
+                <td>
+                    @Html.DisplayFor(modelItem => comment.Text)
+                </td>
+                <td>
+                <a asp-controller="Comments" asp-action="Delete" asp-route-id="@Model.Comments">Delete</a>
+
+                </td>
+
+            }
+
+            <p>
+                <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
+            </p>
 
             Are you working!!!!
 
-    </dl>
+</dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200507155626_Initial")]
-    partial class Initial
+    [Migration("20200508153505_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c0ac0b14-1afb-42b8-9bf7-416fa26dce36",
+                            ConcurrencyStamp = "aaee5217-b702-486f-b555-2b7abbaef7e7",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,41 +110,11 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJeMsELo0tb6aWvAfQAWCHMRd+97jjvTmju+wrC4aFZvTRJdNfYBVuNOyoLme7XS/g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ6YzTe0g+5ECAFy97fUcoW9DxpzEHUxBbc3Ho7yXypOVjGBFbeApeGtMo2gM1sHVQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
-                        });
-                });
-
-            modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogComment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("BlogPostId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CommentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogPostId");
-
-                    b.HasIndex("CommentId");
-
-                    b.ToTable("BlogComment");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BlogPostId = 1,
-                            CommentId = 1
                         });
                 });
 
@@ -162,6 +132,10 @@ namespace EmpowerHealthyStudents.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -178,6 +152,7 @@ namespace EmpowerHealthyStudents.Migrations
                             Id = 1,
                             Blog = "Teaching In Quarantine: How Do I Stay Motivated? Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine: 1.Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 2.Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear! 3.Connect with friends and family each day 4.Exercise for at least 30 minutes 5.Journal 6.Get enough sleep 7.Drinks LOTS of water 8.Avoid social media during “work” hours 9.Connect with other teachers 10.Give yourself some grace!",
                             Date = new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Teaching in Quarantine",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
@@ -192,9 +167,6 @@ namespace EmpowerHealthyStudents.Migrations
                     b.Property<int?>("BlogPostId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BlogPostViewModelsId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -203,14 +175,11 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BlogPostId");
-
-                    b.HasIndex("BlogPostViewModelsId");
 
                     b.HasIndex("UserId");
 
@@ -220,6 +189,7 @@ namespace EmpowerHealthyStudents.Migrations
                         new
                         {
                             Id = 1,
+                            BlogPostId = 1,
                             Date = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Text = "You are a Godsend.",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -352,31 +322,6 @@ namespace EmpowerHealthyStudents.Migrations
                             Name = "Hamlet Character Smackdown: Roleplay Lesson",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
                         });
-                });
-
-            modelBuilder.Entity("EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Blog")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("BlogPostViewModels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -514,17 +459,6 @@ namespace EmpowerHealthyStudents.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogComment", b =>
-                {
-                    b.HasOne("EmpowerHealthyStudents.Models.BlogPost", "BlogPost")
-                        .WithMany("BlogComments")
-                        .HasForeignKey("BlogPostId");
-
-                    b.HasOne("EmpowerHealthyStudents.Models.Comment", "Comment")
-                        .WithMany("BlogComments")
-                        .HasForeignKey("CommentId");
-                });
-
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogPost", b =>
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
@@ -540,15 +474,9 @@ namespace EmpowerHealthyStudents.Migrations
                         .WithMany("Comments")
                         .HasForeignKey("BlogPostId");
 
-                    b.HasOne("EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("BlogPostViewModelsId");
-
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("EmpowerHealthyStudents.Models.Event", b =>
@@ -564,15 +492,6 @@ namespace EmpowerHealthyStudents.Migrations
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Products")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EmpowerHealthyStudents.Models.ViewModels.BlogPostViewModels", b =>
-                {
-                    b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
-                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

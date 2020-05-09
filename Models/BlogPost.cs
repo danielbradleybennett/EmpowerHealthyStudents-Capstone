@@ -12,6 +12,8 @@ namespace EmpowerHealthyStudents.Models
         public int Id { get; set; }
 
         [Required]
+        public string Title { get; set; }
+        [Required]
         public string Blog { get; set; }
 
         [Required]
@@ -23,8 +25,7 @@ namespace EmpowerHealthyStudents.Models
 
         public ApplicationUser User { get; set; }
 
-        public List<BlogComment> BlogComments { get; set; }
-
+        
         public List<Comment> Comments { get; set; }
 
 
