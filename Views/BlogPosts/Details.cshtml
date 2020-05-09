@@ -36,6 +36,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => comment.Text)
                 </td>
+                <td>
+                <a asp-controller="Comments" asp-action="Delete" asp-route-id="@Model.Comments">Delete</a>
+
+                </td>
 
             }
 

@@ -28,7 +28,7 @@ namespace EmpowerHealthyStudents.Models
 
         public virtual List<Event> Events { get; set; }
 
-        public virtual List<BlogPost> BlogPosts { get; set;  }
+        public virtual List<BlogPost> BlogPost { get; set;  }
 
     }
 }

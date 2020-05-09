@@ -177,54 +177,60 @@ namespace EmpowerHealthyStudents.Controllers
         }
 
         //// GET: Comments/Delete/5
+        [HttpGet]
+        [Route("Comments/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
+            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
+
             var user = await GetCurrentUserAsync();
+            var comment = await _context.Comment
+                .Include(c => c.User)
+                   .ThenInclude(c => c.BlogPost)
+                
+                .Where(c => c.Id == id && c.BlogPostId == blogPost);
             if (user != null)
 
             {
-                return View();
+                return View(comments);
 
             }
-
-            else
-            {
-                return RedirectToAction(nameof(Index));
-            }
-
 
             if (id == null)
             {
                 return NotFound();
             }
-            var comment = await _context.Comment
-                .Include(p => p.User)
-                .FirstOrDefaultAsync(p => p.Id == id);
-            if (comment == null)
-            {
-                return NotFound();
-            }
 
-            if (comment.UserId != user.Id)
-            {
-                return NotFound();
-            }
 
-            return View(comment);
+            //if (comment == null)
+            //{
+            //    return NotFound();
+            //}
 
+            //if (comment.UserId != user.Id)
+            //{
+            //    return NotFound();
+            //}
+
+            
+           
+                return RedirectToAction(nameof(Index));
+            
         }
 
 
 
         //// POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var comment = await _context.Comment.FindAsync(id);
             _context.Comment.Remove(comment);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+
+            return RedirectToAction("Details", "BlogPosts");
         }
 
 
