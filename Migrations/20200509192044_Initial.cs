@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmpowerHealthyStudents.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -229,7 +229,7 @@ namespace EmpowerHealthyStudents.Migrations
                     Text = table.Column<string>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    BlogPostId = table.Column<int>(nullable: true)
+                    BlogPostId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -239,7 +239,7 @@ namespace EmpowerHealthyStudents.Migrations
                         column: x => x.BlogPostId,
                         principalTable: "BlogPost",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comment_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -251,7 +251,7 @@ namespace EmpowerHealthyStudents.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "aaee5217-b702-486f-b555-2b7abbaef7e7", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEJ6YzTe0g+5ECAFy97fUcoW9DxpzEHUxBbc3Ho7yXypOVjGBFbeApeGtMo2gM1sHVQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "e99f86e3-bc8b-497e-a3a9-c77b90a2ffbd", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEEwbApydFHMZWiNUyfUHbHpgaa1HwT1UXyzIPwuRXAK81bWBbNUvYIVyNxj6S3nZuQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "BlogPost",

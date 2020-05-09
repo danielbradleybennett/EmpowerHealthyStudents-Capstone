@@ -13,8 +13,7 @@ using Microsoft.AspNetCore.Http;
 using EmpowerHealthyStudents.Models.ViewModels;
 using System.Runtime.InteropServices.ComTypes;
 using System.IO;
-
-
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EmpowerHealthyStudents.Controllers
 {
@@ -133,7 +132,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,ImagePath")] ProductViewModels productViewModel)
+        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,Image")] ProductViewModels productViewModel)
         {
             try
             {
@@ -143,7 +142,7 @@ namespace EmpowerHealthyStudents.Controllers
 
                 //builds up our new product using the data submitted from the form, 
                 //represented here as "productViewModel"
-                var products = new Product
+                var product = new Product
                 {
                     Id = productViewModel.Id,
                     Name = productViewModel.Name,
@@ -155,14 +154,34 @@ namespace EmpowerHealthyStudents.Controllers
                 if (productViewModel.File != null && productViewModel.File.Length > 0)
                 {
                     //creates the file name and makes it unique by generating a Guid and adding that to the file name
-                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.File.FileName);
+                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.Image.FileName);
                     //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
                     //which is where our images are stored
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
 
                     //adds the newly created fileName to the product object we built up above to be stored in 
                     //the database as the ImagePath
-                    products.ImagePath = fileName;
+                    product.Image = fileName;
+
+                    //what actually allows us to save the file to the folder path
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await productViewModel.File.CopyToAsync(stream);
+                    }
+
+                }
+
+                if (productViewModel.File != null && productViewModel.File.Length > 0)
+                {
+                    //creates the file name and makes it unique by generating a Guid and adding that to the file name
+                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.File.FileName);
+                    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
+                    //which is where our images are stored
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\files", fileName);
+
+                    //adds the newly created fileName to the product object we built up above to be stored in 
+                    //the database as the ImagePath
+                    product.File = fileName;
 
                     //what actually allows us to save the file to the folder path
                     using (var stream = new FileStream(filePath, FileMode.Create))
@@ -173,12 +192,12 @@ namespace EmpowerHealthyStudents.Controllers
                 }
 
                 //adds the newly built product object to the Product table using _context.Product.Add
-                _context.Product.Add(products);
+                _context.Product.Add(product);
                 //You have to used SaveChangesAsync in order to actually submit the data to the database
                 await _context.SaveChangesAsync();
 
                 //returns user to the product Details view of the newly created product
-                return RedirectToAction("Details", new { id = products.Id });
+                return RedirectToAction("Details", new { id = product.Id });
             }
             catch
             {
@@ -197,6 +216,17 @@ namespace EmpowerHealthyStudents.Controllers
             var user = await GetCurrentUserAsync();
             var product = await _context.Product.FirstOrDefaultAsync(p => p.Id == id);
 
+            ProductViewModels pvm = new ProductViewModels();
+            pvm.Name = product.Name;
+            pvm.Id = product.Id;
+            pvm.Description = product.Description;
+            pvm.UserId = product.UserId;
+            pvm.FilePath = product.File;
+            pvm.ImagePath = product.Image;
+
+
+
+
 
             product.Name = product.Name;
             product.Description = product.Description;
@@ -206,7 +236,7 @@ namespace EmpowerHealthyStudents.Controllers
 
                 if (user.IsAdmin == true)
                 {
-                    return View(product);
+                    return View(pvm);
                 }
                 else
                 {
@@ -225,22 +255,63 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, Product product)
+        public async Task<ActionResult> Edit([Bind("Id,Name,Description,UserId,File,Image")] ProductViewModels productViewModel)
         {
             try
             {
-                var productToUpdate = new Product()
-                {
-                    Id = product.Id,
-                    Description = product.Description,
-                    Name = product.Description
+                var product = await _context.Product
+                    .FirstOrDefaultAsync(p => p.Id == productViewModel.Id);
 
-                };
 
                 var user = await GetCurrentUserAsync();
-                productToUpdate.UserId = user.Id;
 
-                _context.Product.Update(productToUpdate);
+
+                product.UserId = user.Id;
+                product.Name = productViewModel.Name;
+                product.Description = productViewModel.Description;
+
+                if (productViewModel.File != null && productViewModel.File.Length > 0)
+                {
+                    //creates the file name and makes it unique by generating a Guid and adding that to the file name
+                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.Image.FileName);
+                    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
+                    //which is where our images are stored
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+
+                    //adds the newly created fileName to the product object we built up above to be stored in 
+                    //the database as the ImagePath
+                    product.Image = fileName;
+
+                    //what actually allows us to save the file to the folder path
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await productViewModel.File.CopyToAsync(stream);
+                    }
+
+                }
+
+                if (productViewModel.File != null && productViewModel.File.Length > 0)
+                {
+                    //creates the file name and makes it unique by generating a Guid and adding that to the file name
+                    var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.File.FileName);
+                    //defines the filepath by adding the fileName above and combines it with the wwwroot directory 
+                    //which is where our images are stored
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\files", fileName);
+
+                    //adds the newly created fileName to the product object we built up above to be stored in 
+                    //the database as the ImagePath
+                    product.File = fileName;
+
+                    //what actually allows us to save the file to the folder path
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await productViewModel.File.CopyToAsync(stream);
+                    }
+
+                }
+
+               
+                _context.Product.Update(product);
                 await _context.SaveChangesAsync();
 
 
@@ -302,6 +373,10 @@ namespace EmpowerHealthyStudents.Controllers
             var product = await _context.Product.FindAsync(id);
             _context.Product.Remove(product);
             await _context.SaveChangesAsync();
+            System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", product.Image));
+            System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\files", product.File));
+
+
             return RedirectToAction(nameof(Index));
         }
 

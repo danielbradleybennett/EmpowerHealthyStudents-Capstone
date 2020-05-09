@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200508153505_initial")]
-    partial class initial
+    [Migration("20200509221316_images")]
+    partial class images
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aaee5217-b702-486f-b555-2b7abbaef7e7",
+                            ConcurrencyStamp = "d311b9b2-c9a8-43ac-87a7-de3ccc42dd58",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ6YzTe0g+5ECAFy97fUcoW9DxpzEHUxBbc3Ho7yXypOVjGBFbeApeGtMo2gM1sHVQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA16TJX6LWjPDkOayaLM45c6FdjlKjWEmv1ECR2qSV4hOjQ+ex4aLtgBJ0KATMddTA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -164,7 +164,7 @@ namespace EmpowerHealthyStudents.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BlogPostId")
+                    b.Property<int>("BlogPostId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -283,7 +283,10 @@ namespace EmpowerHealthyStudents.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagePath")
+                    b.Property<string>("File")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -462,7 +465,7 @@ namespace EmpowerHealthyStudents.Migrations
             modelBuilder.Entity("EmpowerHealthyStudents.Models.BlogPost", b =>
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
-                        .WithMany("BlogPosts")
+                        .WithMany("BlogPost")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -472,7 +475,9 @@ namespace EmpowerHealthyStudents.Migrations
                 {
                     b.HasOne("EmpowerHealthyStudents.Models.BlogPost", null)
                         .WithMany("Comments")
-                        .HasForeignKey("BlogPostId");
+                        .HasForeignKey("BlogPostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EmpowerHealthyStudents.Models.ApplicationUser", "User")
                         .WithMany("Comments")
