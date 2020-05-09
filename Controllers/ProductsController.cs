@@ -151,7 +151,7 @@ namespace EmpowerHealthyStudents.Controllers
                     
 
                 };
-                if (productViewModel.File != null && productViewModel.File.Length > 0)
+                if (productViewModel.Image != null && productViewModel.Image.Length > 0)
                 {
                     //creates the file name and makes it unique by generating a Guid and adding that to the file name
                     var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.Image.FileName);
@@ -166,7 +166,7 @@ namespace EmpowerHealthyStudents.Controllers
                     //what actually allows us to save the file to the folder path
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await productViewModel.File.CopyToAsync(stream);
+                        await productViewModel.Image.CopyToAsync(stream);
                     }
 
                 }
