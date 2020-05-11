@@ -33,6 +33,7 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
             var comments = await _context.Comment
+                .Include(c => c.User)
                 .ToListAsync();
             return View(comments);
         }
@@ -47,6 +48,7 @@ namespace EmpowerHealthyStudents.Controllers
 
             var user = await GetCurrentUserAsync();
             var comments = await _context.Comment
+                .Include(c => c.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (comments == null)
@@ -104,7 +106,7 @@ namespace EmpowerHealthyStudents.Controllers
                 {
                     
                     Text = comment.Text,
-                    Date = comment.Date,
+                    Date = DateTime.Now,
                     UserId = user.Id,
                     BlogPostId = id
 
