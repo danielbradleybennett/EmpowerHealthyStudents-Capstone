@@ -117,7 +117,7 @@ namespace EmpowerHealthyStudents.Controllers
                 }
                 else
                 {
-                    return NotFound();
+                    return RedirectToAction(nameof(Index));
                 }
             }
             else

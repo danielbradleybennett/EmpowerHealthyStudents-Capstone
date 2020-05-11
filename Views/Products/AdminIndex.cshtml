@@ -4,7 +4,7 @@
     ViewData["Title"] = "AdminIndex";
 }
 
-<h1>AdminIndex</h1>
+<h1>April's Curriculum</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -19,9 +19,6 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             
-           
-           
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -39,13 +36,9 @@
                 <img src="~/images/@item.Image" style="max-height: 75px; max-width: 75px;" />
             </td>
 
-
             <td>
                 
                 <a href="~/files/@item.File" target="_blank">Click Here To Download</a>
-
-
-
 
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

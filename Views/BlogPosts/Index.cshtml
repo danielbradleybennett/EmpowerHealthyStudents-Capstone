@@ -6,13 +6,13 @@
 
 <h1>Blog Posts</h1>
 
-<p>
-    <a asp-action="Comments/Create">Create New</a>
-</p>
 
 <table class="table">
     <thead>
         <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Title)
+            </td>
             <th>
                 @Html.DisplayNameFor(model => model.Blog)
             </th>
@@ -29,23 +29,20 @@
         <body>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Blog)
-                    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Blog)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    @foreach (var comment in item.Comments)
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => comment.Text)
-                        </td>
-                    }
 
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                </tr>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </tr>
             }
 
         </body>
