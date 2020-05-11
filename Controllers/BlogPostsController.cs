@@ -81,7 +81,8 @@ namespace EmpowerHealthyStudents.Controllers
 
             var user = await GetCurrentUserAsync();
             var BlogPosts = await _context.BlogPost
-                .Include(bg => bg.Comments)   
+                .Include(bg => bg.Comments)
+                .ThenInclude(c => c.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
                 
            

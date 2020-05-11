@@ -44,14 +44,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
-                @foreach (var comment in item.Comments)
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => comment.Text)
-                    </td>
-                }
-
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+              
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
             </tr>
             }
 

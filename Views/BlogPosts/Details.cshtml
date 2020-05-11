@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Identity;
 @inject UserManager<ApplicationUser> userMan;
 
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -31,39 +32,49 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Date)
         </dd>
-        <dt class="col-sm-2">
+        @*<dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.User)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.User.Id)
 
-        </dd>
+        </dd>*@
         <dd class="col-sm-10">
             @foreach (var comment in Model.Comments)
             {
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelitem => comment.User.FirstName)
+            </dd>
+            <td>
+                @Html.DisplayFor(modelItem => comment.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => comment.Date)
+            </td>
+            <td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => comment.Text)
-                </td>
-                <td>
+                @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+                {
+                    <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
 
-                    @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-                    {
-                        <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
+                }
 
-                    }
+            </td>
 
-                </td>
+        }
+
+
+            @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
+            {
+
+                <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
+
 
             }
 
-            <p>
-                <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
-            </p>
 
 
-
-    </dl>
+        </dl>
 </div>
 <div>
 
