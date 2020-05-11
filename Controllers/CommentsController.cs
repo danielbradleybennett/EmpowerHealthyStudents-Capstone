@@ -181,18 +181,20 @@ namespace EmpowerHealthyStudents.Controllers
         [Route("Comments/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
-            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
+            
 
             var user = await GetCurrentUserAsync();
             var comment = await _context.Comment
                 .Include(c => c.User)
                    .ThenInclude(c => c.BlogPost)
+                   .Where(c => c.Id == id)
+                   .FirstOrDefaultAsync();
                 
-                .Where(c => c.Id == id && c.BlogPostId == blogPost);
+                
             if (user != null)
 
             {
-                return View(comments);
+                return View(comment);
 
             }
 
@@ -230,7 +232,7 @@ namespace EmpowerHealthyStudents.Controllers
             await _context.SaveChangesAsync();
 
 
-            return RedirectToAction("Details", "BlogPosts");
+            return RedirectToAction("Details", "BlogPosts", new { id = comment.BlogPostId });
         }
 
 

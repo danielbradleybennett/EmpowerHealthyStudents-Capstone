@@ -1,10 +1,13 @@
 ﻿@model EmpowerHealthyStudents.Models.BlogPost;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> userMan;
 
 @{
     ViewData["Title"] = "Details";
 }
 
 <h1>Details</h1>
+<a  asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 
 <div>
     <h4>BlogPost</h4>
@@ -37,7 +40,12 @@
                     @Html.DisplayFor(modelItem => comment.Text)
                 </td>
                 <td>
-                <a asp-controller="Comments" asp-action="Delete" asp-route-id="@Model.Comments">Delete</a>
+                
+                    @if (comment.UserId == userMan.GetUserId(User)||ViewBag.IsAdmin == true)
+                    {
+                        <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
+
+                    }
 
                 </td>
 
@@ -47,7 +55,7 @@
                 <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
             </p>
 
-            Are you working!!!!
+            
 
 </dl>
 </div>

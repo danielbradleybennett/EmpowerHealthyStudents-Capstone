@@ -26,7 +26,7 @@ namespace EmpowerHealthyStudents.Models
         public ApplicationUser User { get; set; }
 
         
-        public List<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
 
     }

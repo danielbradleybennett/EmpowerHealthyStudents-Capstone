@@ -16,8 +16,9 @@ namespace EmpowerHealthyStudents.Models
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        
-        public string ImagePath { get; set; }
+
+        public string File { get; set; }
+        public string Image { get; set; }
         [Required]
         public ApplicationUser User { get; set; }
         [Required]
