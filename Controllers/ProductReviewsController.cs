@@ -17,28 +17,28 @@ using NuGet.Frameworks;
 
 namespace EmpowerHealthyStudents.Controllers
 {
-    public class CommentsController : Controller
+    public class ProductReviewsController : Controller
     {
 
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public CommentsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public ProductReviewsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
-        // GET: Comments
+        // GET: ProductReviews
         public async Task<ActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
-            var comments = await _context.Comment
+            var ProductReviews = await _context.ProductReview
                 .Include(c => c.User)
                 .ToListAsync();
-            return View(comments);
+            return View(ProductReviews);
         }
 
-        //// GET: Comments/Details/5
+        //// GET: ProductReviews/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,76 +47,75 @@ namespace EmpowerHealthyStudents.Controllers
             }
 
             var user = await GetCurrentUserAsync();
-            var comments = await _context.Comment
+            var productReviews = await _context.ProductReview
                 .Include(c => c.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
-            if (comments == null)
+            if (productReviews == null)
             {
                 return NotFound();
             }
 
-            return View(comments);
+            return View(productReviews);
         }
 
-        //// GET: Comments/Create
+        //// GET: ProductReviews/Create
         [HttpGet]
-        [Route("Comments/Create/{id}")]
+        [Route("ProductReviews/Create/{id}")]
         public async Task<ActionResult> Create(int id)
         {
             var user = await GetCurrentUserAsync();
-            
-            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
 
-            var view = new Comment
+            var product = await _context.Product.FirstOrDefaultAsync(b => b.Id == id);
+
+            var view = new ProductReview
             {
-                Date = DateTime.Now,
-                BlogPostId = blogPost.Id
+                
+                ProductId = product.Id
             };
 
             if (user != null)
-            
+
             {
                 return View(view);
-               
+
             }
-            
+
             else
             {
                 return RedirectToAction(nameof(Index));
             }
         }
 
-        // POST: Comments/Create
+        // POST: ProductReviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddComment([Bind("Id,Text,Date,UserId")] Comment comment, int id)
+        public async Task<ActionResult> AddProductReview([Bind("Id,Text,Date,UserId")] ProductReview ProductReview, int id)
         {
             try
             {
                 //gets the current user, uses custom method created at bottom
                 //you will plug in the user.Id in the product
                 var user = await GetCurrentUserAsync();
-                var blogPost = await _context.BlogPost.FindAsync(id);
-                
+                var product = await _context.Product.FindAsync(id);
+
 
                 //builds up our new product using the data submitted from the form, 
                 //represented here as "productViewModel"
-                var comments = new Comment
+                var productReviews = new ProductReview
                 {
-                    
-                    Text = comment.Text,
-                    Date = DateTime.Now,
+
+                    Comment = ProductReview.Comment,
                     UserId = user.Id,
-                    BlogPostId = id
+                    ProductId = id
 
                 };
 
-                _context.Comment.Add(comments);
+                _context.ProductReview.Add(productReviews);
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction("Details", "BlogPosts", new { id = id }); 
+                return RedirectToAction("Details", "Product", new { id = id }); ;
 
             }
             catch
@@ -127,24 +126,18 @@ namespace EmpowerHealthyStudents.Controllers
 
 
 
-        // GET: Comments/Edit/5
-        [HttpGet]
-        [Route("Comments/Edit/{id}")]
+        // GET: ProductReviews/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
             var user = await GetCurrentUserAsync();
-
-            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
-
-            var comment = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
-            comment.Text = comment.Text;
-            comment.Date = comment.Date;
-            comment.BlogPostId = comment.BlogPostId;
+            var productReview = await _context.ProductReview.FirstOrDefaultAsync(c => c.Id == id);
+            productReview.Comment = productReview.Comment;
+            
 
             if (user != null)
 
             {
-                return View();
+                return View(productReview);
 
             }
 
@@ -152,79 +145,57 @@ namespace EmpowerHealthyStudents.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
+
         }
-
-
-        //{
-        //    var user = await GetCurrentUserAsync();
-        //    var comment = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
-        //    comment.Text = comment.Text;
-        //    comment.Date = comment.Date;
-
-        //    if (user != null)
-
-        //    {
-        //        return View(comment);
-
-        //    }
-
-        //    else
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //}
 
         // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, Comment comment)
+        public async Task<ActionResult> Edit(int id, ProductReview ProductReview)
         {
             try
             {
-                var blogPost = await _context.BlogPost.FindAsync(id);
-                var commentToUpdate = new Comment()
+                var ProductReviewToUpdate = new ProductReview()
                 {
-                    Id = comment.Id,
-                    Text = comment.Text,
-                    BlogPostId = id
-                   
+                    Id = ProductReview.Id,
+                    Comment = ProductReview.Comment,
+
                 };
 
                 var user = await GetCurrentUserAsync();
-                commentToUpdate.UserId = user.Id;
+                ProductReviewToUpdate.UserId = user.Id;
 
-                _context.Comment.Update(commentToUpdate);
+                _context.ProductReview.Update(ProductReviewToUpdate);
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction("Details", "BlogPosts", new { id = id });
+                return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return View();
             }
         }
 
-        //// GET: Comments/Delete/5
+        //// GET: ProductReviews/Delete/5
         [HttpGet]
-        [Route("Comments/Delete/{id}")]
+        [Route("ProductReviews/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
-            
+
 
             var user = await GetCurrentUserAsync();
-            var comment = await _context.Comment
+            var productReview = await _context.ProductReview
                 .Include(c => c.User)
-                   .ThenInclude(c => c.BlogPost)
+                   .ThenInclude(c => c.Products)
                    .Where(c => c.Id == id)
                    .FirstOrDefaultAsync();
-                
-                
+
+
             if (user != null)
 
             {
-                return View(comment);
+                return View(productReview);
 
             }
 
@@ -234,35 +205,35 @@ namespace EmpowerHealthyStudents.Controllers
             }
 
 
-            //if (comment == null)
+            //if (ProductReview == null)
             //{
             //    return NotFound();
             //}
 
-            //if (comment.UserId != user.Id)
+            //if (ProductReview.UserId != user.Id)
             //{
             //    return NotFound();
             //}
 
-            
-           
-                return RedirectToAction(nameof(Index));
-            
+
+
+            return RedirectToAction(nameof(Index));
+
         }
 
 
 
-        //// POST: Comments/Delete/5
+        //// POST: ProductReviews/Delete/5
         [HttpPost, ActionName("Delete")]
-        
+
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comment = await _context.Comment.FindAsync(id);
-            _context.Comment.Remove(comment);
+            var productReview = await _context.ProductReview.FindAsync(id);
+            _context.ProductReview.Remove(productReview);
             await _context.SaveChangesAsync();
 
 
-            return RedirectToAction("Details", "BlogPosts", new { id = comment.BlogPostId });
+            return RedirectToAction("Details", "BlogPosts", new { id = productReview.ProductId });
         }
 
 

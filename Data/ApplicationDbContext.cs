@@ -28,6 +28,8 @@ namespace EmpowerHealthyStudents.Data
 
         public DbSet<BlogPost> BlogPost { get; set; }
 
+        public DbSet<ProductReview> ProductReview { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -163,8 +165,16 @@ namespace EmpowerHealthyStudents.Data
                     UserId = user.Id,
                     BlogPostId = 1
                 });
+            modelBuilder.Entity<ProductReview>().HasData(
+                new ProductReview()
+                {
+                    Id = 1,
+                    Comment = "You are a Godsend.",
+                    UserId = user.Id,
+                    ProductId = 1
+                });
 
-           
+
         }
 
        

@@ -4,14 +4,16 @@ using EmpowerHealthyStudents.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200511185357_review")]
+    partial class review
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f84ef977-aba9-4ab8-a611-810cacad1de1",
+                            ConcurrencyStamp = "6a0228a5-996f-4434-b712-57ba6029aa03",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -108,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP+EKKBi7kt1eM748qymk/T/C4wwYQKd35S2gcuU8elR6ZV0dtWi3j7uc2RI+f22lg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKijrWTacw17iI0I6DCayhA8Ww36JFGyC3M1GpHAjOxsCed1QPxLlEbQ4dZ2xwT5Eg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -349,15 +351,6 @@ namespace EmpowerHealthyStudents.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ProductReview");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Comment = "You are a Godsend.",
-                            ProductId = 1,
-                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
