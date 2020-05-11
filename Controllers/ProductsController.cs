@@ -44,16 +44,12 @@ namespace EmpowerHealthyStudents.Controllers
                     return RedirectToAction(nameof(AdminIndex));
                 }
 
-                else if (user.IsAdmin == false)
-                {
-                    return RedirectToAction(nameof(FollowerIndex));
-                }
 
                 else
                 {
                     return View(products);
 
-                }   
+                }
             } 
             else
             {
@@ -71,17 +67,6 @@ namespace EmpowerHealthyStudents.Controllers
             
             return View(products);
         }
-
-        public async Task<ActionResult> FollowerIndex()
-        {
-
-            var user = await GetCurrentUserAsync();
-            var products = await _context.Product
-                .ToListAsync();
-
-            return View(products);
-        }
-
 
         //// GET: Products/Details/5
         public async Task<ActionResult> Details(int? id)
@@ -270,7 +255,7 @@ namespace EmpowerHealthyStudents.Controllers
                 product.Name = productViewModel.Name;
                 product.Description = productViewModel.Description;
 
-                if (productViewModel.File != null && productViewModel.File.Length > 0)
+                if (productViewModel.Image != null && productViewModel.Image.Length > 0)
                 {
                     //creates the file name and makes it unique by generating a Guid and adding that to the file name
                     var fileName = Guid.NewGuid().ToString() + Path.GetFileName(productViewModel.Image.FileName);
@@ -285,7 +270,7 @@ namespace EmpowerHealthyStudents.Controllers
                     //what actually allows us to save the file to the folder path
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await productViewModel.File.CopyToAsync(stream);
+                        await productViewModel.Image.CopyToAsync(stream);
                     }
 
                 }
@@ -310,7 +295,7 @@ namespace EmpowerHealthyStudents.Controllers
 
                 }
 
-               
+
                 _context.Product.Update(product);
                 await _context.SaveChangesAsync();
 

@@ -40,11 +40,11 @@ namespace EmpowerHealthyStudents.Controllers
                     return RedirectToAction(nameof(AdminIndex));
                 }
 
-                return View(Events);
+                return View(Events.OrderByDescending(e => e.Date));
 
 
             }
-            return View(Events);
+            return View(Events.OrderByDescending(e => e.Date));
         }
 
         // Admin view
@@ -55,7 +55,7 @@ namespace EmpowerHealthyStudents.Controllers
                 .Where(e => e.UserId == user.Id)
                 .ToListAsync();
 
-            return View(Events);
+            return View(Events.OrderByDescending(e => e.Date));
         }
 
         //// GET: Events/Details/5
