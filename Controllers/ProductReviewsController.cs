@@ -90,7 +90,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: ProductReviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddProductReview([Bind("Id,Text,Date,UserId")] ProductReview ProductReview, int id)
+        public async Task<ActionResult> Create([Bind("Id,Comment,UserId,ProductId")] ProductReview productReview, int id)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace EmpowerHealthyStudents.Controllers
                 var productReviews = new ProductReview
                 {
 
-                    Comment = ProductReview.Comment,
+                    Comment = productReview.Comment,
                     UserId = user.Id,
                     ProductId = id
 
@@ -115,7 +115,7 @@ namespace EmpowerHealthyStudents.Controllers
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction("Details", "Product", new { id = id }); ;
+                return RedirectToAction("Details", "Products", new { id = id }); ;
 
             }
             catch

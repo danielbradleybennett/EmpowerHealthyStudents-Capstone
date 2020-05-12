@@ -80,6 +80,7 @@ namespace EmpowerHealthyStudents.Controllers
             var user = await GetCurrentUserAsync();
             var products = await _context.Product
                 .Include(p => p.ProductReviews)
+                .ThenInclude(c => c.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (products == null)

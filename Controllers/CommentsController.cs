@@ -134,17 +134,27 @@ namespace EmpowerHealthyStudents.Controllers
         {
             var user = await GetCurrentUserAsync();
 
-            var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
+            
+            var comments = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
+            
+            var view = new Comment()
+            {
+                Text = comments.Text,
+                BlogPostId = comments.BlogPostId
+            };
 
-            var comment = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
-            comment.Text = comment.Text;
-            comment.Date = comment.Date;
-            comment.BlogPostId = comment.BlogPostId;
+            //var blogPost = await _context.BlogPost.FindAsync(id);
+
+            //var comment = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
+            //comment.Text = comment.Text;
+            //comment.Date = comment.Date;
+            //comment.BlogPostId = id;
+
 
             if (user != null)
 
             {
-                return View();
+                return View(comments);
 
             }
 
@@ -178,27 +188,29 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, Comment comment)
+        public async Task<ActionResult> Edit([Bind("Id,Text,BlogPostId,UserId,Date")]Comment comment, int id)
         {
             try
             {
-                var blogPost = await _context.BlogPost.FindAsync(id);
-                var commentToUpdate = new Comment()
-                {
-                    Id = comment.Id,
-                    Text = comment.Text,
-                    BlogPostId = id
+                var comments = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
+
+
+                comments.Id = comment.Id;
+                comments.Text = comment.Text;
+                comments.BlogPostId = comments.BlogPostId;
+                comments.UserId = comment.UserId;
+                comments.Date = DateTime.Now;
                    
-                };
+                
 
                 var user = await GetCurrentUserAsync();
-                commentToUpdate.UserId = user.Id;
+                comments.UserId = user.Id;
 
-                _context.Comment.Update(commentToUpdate);
+                _context.Comment.Update(comments);
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction("Details", "BlogPosts", new { id = id });
+                return RedirectToAction("Details", "BlogPosts", new { id = comments.BlogPostId });
             }
             catch (Exception ex)
             {
