@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-EmpowerHealthyStudents-19A0F2EA-95D7-43A4-B4BB-F5F4FEC06F32</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\About\**" />
+    <Content Remove="Views\About\**" />
+    <EmbeddedResource Remove="Views\About\**" />
+    <None Remove="Views\About\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
@@ -18,9 +25,13 @@
 
 
   <ItemGroup>
-    <Folder Include="Views\About\" />
     <Folder Include="wwwroot\images\" />
 	<Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="Views\About\About.cshtml" />
   </ItemGroup>
 
 </Project>
