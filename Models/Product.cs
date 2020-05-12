@@ -24,6 +24,8 @@ namespace EmpowerHealthyStudents.Models
         [Required]
         public string UserId { get; set; }
 
-       
+        public virtual ICollection<ProductReview> ProductReviews { get; set; }
+
+
     }
 }

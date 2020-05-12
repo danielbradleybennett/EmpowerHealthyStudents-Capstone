@@ -36,17 +36,43 @@
                     @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                     {
                         <a href="~/images/@Model.File" target="_blank">Click Here To Download</a>
-                        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+                        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
                         <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
                     }
 
                 </td>
             </tr>
-            
+
         </tbody>
+        <dd class="col-sm-10">
+            @foreach (var review in Model.ProductReviews)
+            {
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelitem => review.User.FirstName)
+            </dd>
+            <td>
+                @Html.DisplayFor(modelItem => review.Comment)
+            </td>
+            <td>
+
+                @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+                {
+                    <a asp-controller="Comments" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
+
+                }
+
+            </td>
+
+        }
+
+            @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
+            {
+
+                <a asp-route-id="@Model.Id" asp-controller="ProductReviews" asp-action="Create">Add Comment</a>
+            }
 
 
-    </dl>
+        </dl>
 </div>
 <div>
     <a asp-action="Index">Back to List</a>

@@ -168,7 +168,7 @@ namespace EmpowerHealthyStudents.Controllers
             var user = await GetCurrentUserAsync();
             var blogPost = await _context.BlogPost.FirstOrDefaultAsync(b => b.Id == id);
 
-
+            blogPost.Title = blogPost.Title;
             blogPost.Blog = blogPost.Blog;
             blogPost.Date = blogPost.Date;
             if (user != null)
@@ -200,9 +200,12 @@ namespace EmpowerHealthyStudents.Controllers
         {
             try
             {
+               
+
                 var blogPostToUpdate = new BlogPost()
                 {
                     Id = blogPost.Id,
+                    Title = blogPost.Title,
                     Blog = blogPost.Blog,
                     Date = blogPost.Date
 
@@ -215,7 +218,7 @@ namespace EmpowerHealthyStudents.Controllers
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "BlogPosts", new { id = id });
             }
             catch (Exception ex)
             {
