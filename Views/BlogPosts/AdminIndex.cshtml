@@ -12,36 +12,22 @@
 </p>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
+    
     <tbody>
-        <body>
+        <div>
             @foreach (var item in Model)
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    <a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem=> item.Title)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
               
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                </td>
             </tr>
             }
 
-        </body>
+        </div>
     </tbody>
 </table>

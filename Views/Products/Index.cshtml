@@ -8,7 +8,6 @@
 
 <h1>Curriculum</h1>
 
-
 <table class="table">
     <thead>
         <tr>
@@ -26,21 +25,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-
-
-                <td class="col-sm-10">
-                    <img src="~/images/@item.Image" style="max-height: 50px; max-width: 50px;" />
-                </td>
-
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-
+                    <img src="~/images/@item.Image" style="max-height: 75px; max-width: 75px;" />
                 </td>
+
+
             </tr>
         }
     </tbody>
