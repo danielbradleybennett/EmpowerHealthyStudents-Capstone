@@ -127,17 +127,25 @@ namespace EmpowerHealthyStudents.Controllers
 
 
         // GET: ProductReviews/Edit/5
+        [HttpGet]
+        [Route("ProductReviews/Edit/{id}")]
         public async Task<ActionResult> Edit(int id)
         {
             var user = await GetCurrentUserAsync();
-            var productReview = await _context.ProductReview.FirstOrDefaultAsync(c => c.Id == id);
-            productReview.Comment = productReview.Comment;
-            
+
+
+            var reviews = await _context.ProductReview.FirstOrDefaultAsync(pr => pr.Id == id);
+
+            var view = new ProductReview()
+            {
+                Comment = reviews.Comment,
+                ProductId = reviews.ProductId
+            };
 
             if (user != null)
 
             {
-                return View(productReview);
+                return View(reviews);
 
             }
 
@@ -145,37 +153,39 @@ namespace EmpowerHealthyStudents.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-
         }
+
 
         // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, ProductReview productReview)
+        public async Task<ActionResult> Edit([Bind("Id,Comment,BlogPostId,UserId")]ProductReview productReview, int id)
         {
             try
             {
                 var reviews = await _context.ProductReview.FirstOrDefaultAsync(c => c.Id == id);
-                var ProductReviewToUpdate = new ProductReview()
-                {
-                    Id = productReview.Id,
-                    Comment = productReview.Comment,
-                    ProductId = 
 
-                };
+
+                reviews.Id = productReview.Id;
+                reviews.Comment = productReview.Comment;
+                reviews.ProductId = reviews.ProductId;
+                reviews.UserId = productReview.UserId;
+                
+
+
 
                 var user = await GetCurrentUserAsync();
-                ProductReviewToUpdate.UserId = user.Id;
+                reviews.UserId = user.Id;
 
-                _context.ProductReview.Update(ProductReviewToUpdate);
+                _context.ProductReview.Update(reviews);
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction("Details", "BlogPosts", new { id = productReview.ProductId });
+                return RedirectToAction("Details", "Products", new { id = reviews.ProductId });
             }
             catch (Exception ex)
             {
-                return View();
+                return NotFound();
             }
         }
 
@@ -235,7 +245,7 @@ namespace EmpowerHealthyStudents.Controllers
             await _context.SaveChangesAsync();
 
 
-            return RedirectToAction("Details", "BlogPosts", new { id = productReview.ProductId });
+            return RedirectToAction("Details", "Products", new { id = productReview.ProductId });
         }
 
 
