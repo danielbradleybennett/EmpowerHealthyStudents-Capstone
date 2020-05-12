@@ -10,6 +10,15 @@
 
 <div>
     <h4>Product</h4>
+    <td>
+        @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+        {
+            
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        }
+
+    </td>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -48,16 +57,14 @@
             @foreach (var review in Model.ProductReviews)
             {
             <dd class="col-sm-10">
-                @Html.DisplayFor(modelitem => review.User.FirstName)
+                @Html.DisplayFor(modelitem => review.User.FirstName): @Html.DisplayFor(modelItem => review.Comment)
             </dd>
-            <td>
-                @Html.DisplayFor(modelItem => review.Comment)
-            </td>
             <td>
 
                 @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                 {
-                    <a asp-controller="Comments" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
+
+                    <a asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a> <a asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
 
                 }
 
@@ -73,7 +80,7 @@
 
 
         </dl>
-</div>
+    </div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

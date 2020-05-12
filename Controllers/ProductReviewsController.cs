@@ -151,14 +151,16 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, ProductReview ProductReview)
+        public async Task<ActionResult> Edit(int id, ProductReview productReview)
         {
             try
             {
+                var reviews = await _context.ProductReview.FirstOrDefaultAsync(c => c.Id == id);
                 var ProductReviewToUpdate = new ProductReview()
                 {
-                    Id = ProductReview.Id,
-                    Comment = ProductReview.Comment,
+                    Id = productReview.Id,
+                    Comment = productReview.Comment,
+                    ProductId = 
 
                 };
 
@@ -169,7 +171,7 @@ namespace EmpowerHealthyStudents.Controllers
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "BlogPosts", new { id = productReview.ProductId });
             }
             catch (Exception ex)
             {
