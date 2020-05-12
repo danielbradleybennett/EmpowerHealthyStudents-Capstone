@@ -57,7 +57,9 @@
 
                 @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                 {
-                    <a asp-controller="Comments" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
+                    
+                    <a asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a> 
+                    <a asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
 
                 }
 

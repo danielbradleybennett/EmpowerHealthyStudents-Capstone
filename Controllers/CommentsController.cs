@@ -143,14 +143,7 @@ namespace EmpowerHealthyStudents.Controllers
                 BlogPostId = comments.BlogPostId
             };
 
-            //var blogPost = await _context.BlogPost.FindAsync(id);
-
-            //var comment = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
-            //comment.Text = comment.Text;
-            //comment.Date = comment.Date;
-            //comment.BlogPostId = id;
-
-
+           
             if (user != null)
 
             {
@@ -164,26 +157,6 @@ namespace EmpowerHealthyStudents.Controllers
             }
         }
 
-
-        //{
-        //    var user = await GetCurrentUserAsync();
-        //    var comment = await _context.Comment.FirstOrDefaultAsync(c => c.Id == id);
-        //    comment.Text = comment.Text;
-        //    comment.Date = comment.Date;
-
-        //    if (user != null)
-
-        //    {
-        //        return View(comment);
-
-        //    }
-
-        //    else
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //}
 
         // POST: Books/Edit/5
         [HttpPost]
