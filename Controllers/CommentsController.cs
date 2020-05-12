@@ -143,6 +143,7 @@ namespace EmpowerHealthyStudents.Controllers
                 BlogPostId = comments.BlogPostId
             };
 
+           
             if (user != null)
 
             {
