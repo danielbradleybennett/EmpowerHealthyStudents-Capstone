@@ -7,40 +7,40 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-<a  asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+
 
 <div>
-    <h4>BlogPost</h4>
+    <h1>April's Blog</h1>
+    
+    <h4>
+        @Html.DisplayFor(model => model.Date)
+    </h4> 
+       
+    
+    <div>
+        @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+        {
+            
+          <a asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>  <a asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+          
+        }
+       
+    </div>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
+            <h4>
+                @Html.DisplayFor(model => model.Title)
+            </h4>
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Blog)
-        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Blog)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-      
         <dd class="col-sm-10">
             @foreach (var comment in Model.Comments)
             {
-            <dd class="col-sm-10">
-                @Html.DisplayFor(modelitem => comment.User.FirstName)
-            </dd>
             <td>
-                @Html.DisplayFor(modelItem => comment.Text)
+                @Html.DisplayFor(modelitem => comment.User.FirstName): @Html.DisplayFor(modelItem => comment.Text)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => comment.Date)
@@ -49,34 +49,19 @@
 
                 @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                 {
-                    <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
-                    <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
-
+                    <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a> <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
                 }
-
             </td>
-
         }
-
-
+        </dl>
             @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
             {
-
-                <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
-
-
+                <div>
+                    <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
+                </div>
+               
             }
-
-
-
-        </dl>
 </div>
 <div>
-
-    @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-    {
-        <a asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        <a asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-    }
     <a asp-action="Index">Back to List</a>
 </div>
