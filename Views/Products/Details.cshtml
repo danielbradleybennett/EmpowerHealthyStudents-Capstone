@@ -43,10 +43,14 @@
 
                 <div class="card-body">
                     <p>
-                        <button>
-                            <a href="~/files/@Model.File" target="_blank">Click Here To Download</a>
-                        </button>
-                    </p>
+                        @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
+                        {
+                            <button>
+                                <a href="~/files/@Model.File" target="_blank">Click Here To Download</a>
+                            </button>
+                        }
+                        </p>
+                        
                 </div>
                 <hr />
               
