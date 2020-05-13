@@ -1,4 +1,4 @@
-﻿@model EmpowerHealthyStudents.Models.Product
+﻿@model EmpowerHealthyStudents.Models.Product;
 @using Microsoft.AspNetCore.Identity;
 @inject UserManager<ApplicationUser> userMan;
 
@@ -6,82 +6,135 @@
     ViewData["Title"] = "Details";
 }
 
-<div>
-    <h4>Product</h4>
-    <td>
-        @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-        {
-            
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-        }
-
-    </td>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-
-        <dd class="col-sm-10">
-            <img src="~/images/@Model.Image" style="max-height: 75px; max-width: 75px;" />
-        </dd>
-        <tbody>
-            <td>
-            <tr>
-                <td>
-                    @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-                    {
-                        <a href="~/images/@Model.File" target="_blank">Click Here To Download</a>
-                        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-                    }
-
-                </td>
-            </tr>
-
-        </tbody>
-        <dd class="col-sm-10">
-            @foreach (var review in Model.ProductReviews)
+    <div>
+        <h2>Curriculum</h2>
+        
+          <div class="curriculum-edit-delete">
+            @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
             {
-            <dd class="col-sm-10">
-                @Html.DisplayFor(modelitem => review.User.FirstName): @Html.DisplayFor(modelItem => review.Comment)
-            </dd>
-            <td>
-
-                @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-                {
-
-                    <a asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a> <a asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
-
-                }
-
-            </td>
-
-        }
-
-            @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
-            {
-
-                <a asp-route-id="@Model.Id" asp-controller="ProductReviews" asp-action="Create">Add Comment</a>
+                <button>
+                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                </button>
+                <button>
+                    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                </button>
             }
+           </div>
+
+            <div class="card mb-3">
+                <h3 class="card-header"> @Html.DisplayFor(model => model.Name)</h3>
+            </div>
+            
+            <div class="image-desc">
+                <img src="~/images/@Model.Image" style="max-height: 150px; max-width: 150px;" />
+
+                <div class="card-body">
+                    <h6 class="card-title Subjects">Subjects</h6>
+                    <h6 class="card-title Grades">Grades</h6>
+                    <h6 class="card-title Types">Types</h6>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <p>
+                    @Html.DisplayNameFor(model => model.Description)
+                </p>
+            </div>
+
+                <div class="card-body">
+                    <p>
+                        <button>
+                            <a href="~/images/@Model.File" target="_blank">Click Here To Download</a>
+                        </button>
+                    </p>
+                </div>
+                <hr />
+              
+                <ul class="list-group list-group-flush">
+                    @foreach (var review in Model.ProductReviews)
+                    {
+
+                       <p>
+                        <li class="list-group-item comment-edit-delete">
+                            <p>
+                                @Html.DisplayFor(modelitem => review.User.FirstName): @Html.DisplayFor(modelItem => review.Comment)
+                            </p>
+                            <p class="review-edit-delete">
+                                @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+                                {
+                                    <button>
+                                        <a asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
+                                    </button>
+                                    <button>
+                                        <a asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
+                                    </button>
+                                        }
+                                </p>
+                        </li>
+                       </p>
 
 
-        </dl>
-    </div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                    }
+                </ul>
+                
+
+                <div class="card-footer text-muted">
+                    @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
+                    {
+
+                        <a asp-route-id="@Model.Id" asp-controller="ProductReviews" asp-action="Create">Add Comment</a>
+                    }
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+
+
+
+            @*
+
+                @*</td>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+
+
+
+
+                    <dd class="col-sm-10">
+                        <img src="~/images/@Model.Image" style="max-height: 75px; max-width: 75px;" />
+                    </dd>
+                    <tbody>
+                        <td>
+                        <tr>
+                            <td>
+                                @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+                                {
+
+                                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                                }
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+
+
+
+
+                </dl>
+            </div>*@
 
 
 

@@ -72,7 +72,9 @@ namespace EmpowerHealthyStudents.Data
                     Id = 1,
                     Name = "Making Healthy Choices",
                     Description = "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!",
-                    UserId = user.Id
+                    UserId = user.Id,
+                    File = "Mind_flayer.jpg",
+                    Image = "Mind_flayer.jpg"
                 },
                 new Product()
                 {
