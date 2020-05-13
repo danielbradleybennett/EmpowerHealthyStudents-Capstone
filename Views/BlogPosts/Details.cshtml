@@ -7,10 +7,17 @@
     ViewData["Title"] = "Details";
 }
 <h1>April's Blog</h1>
+<br />
 @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
 {
-
-    <a asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <a asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+   <div class="blogPost-edit-delete">
+    <button>
+        <a asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    </button>
+    <button>
+        <a asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    </button>
+   </div>
 
 }
 
@@ -38,7 +45,14 @@
                 </p>
                 @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                 {
-                    <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a> <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
+                  <div class="comments-edit-delete">
+                    <button>
+                        <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a> 
+                    </button>
+                    <button>
+                        <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
+                    </button>
+                  </div>
                 }
             </li>
         }
@@ -47,7 +61,9 @@
         @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
         {
             <div>
-                <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
+                <button class="add-comment">
+                    <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
+                </button>
             </div>
 
         }

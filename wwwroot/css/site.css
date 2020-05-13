@@ -93,6 +93,31 @@ body {
     flex-direction: row
 }
 
+/*BlogPost*/
+.comments-edit-delete {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row
+}
+
+.blogPost-edit-delete {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row
+}
+
+.add-comment {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row
+}
+
+.nav-button {
+    
+    margin-left: 15px;
+    
+}
+
 
 
 
