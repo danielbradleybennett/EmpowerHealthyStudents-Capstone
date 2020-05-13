@@ -4,14 +4,16 @@ using EmpowerHealthyStudents.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200513041852_pics")]
+    partial class pics
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fe342d1a-d6ce-4273-98f8-40c10b2949f8",
+                            ConcurrencyStamp = "63289863-0010-4976-9e77-9bb1052dc8d3",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -108,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAWIHW3zBOi+2h00AKS+MB4ElN2OuqVI90SE+y28yZk7oTYlIoVx/QTPNPSGDT7HlQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO/w6T2Ar/qXwhmF9qH4+aHD6vxfrmsUzUErnBNPosn2VDURDZu7NvJFAHE+FcjrLQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -307,7 +309,6 @@ namespace EmpowerHealthyStudents.Migrations
                             Id = 1,
                             Description = "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!",
                             File = "Mind_flayer.jpg",
-                            Image = "Mind_flayer.jpg",
                             Name = "Making Healthy Choices",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
                         },
