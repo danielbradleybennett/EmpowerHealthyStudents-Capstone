@@ -35,7 +35,7 @@ namespace EmpowerHealthyStudents.Controllers
             var comments = await _context.Comment
                 .Include(c => c.User)
                 .ToListAsync();
-            return View(comments);
+            return View(comments.OrderByDescending(e => e.Date));
         }
 
         //// GET: Comments/Details/5
