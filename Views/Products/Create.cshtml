@@ -22,19 +22,35 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="FileType" class="control-label"></label>
+                <input asp-for="FileType" class="form-control" />
+                <span asp-validation-for="FileType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+
+            </div>
             @*the div that contains the image upload*@
             <div class="form-group">
                 <label asp-for="File" class="control-label"></label>
                 <input asp-for="File" type="file" class="form-control" />
                 <span asp-validation-for="File" class="text-danger"></span>
             </div>
-           
+
 
             <div class="form-group">
-            <label asp-for="Image" class="control-label"></label>
-            <input asp-for="Image" type="file" class="form-control" />
-            <span asp-validation-for="Image" class="text-danger"></span>
-        </div>
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
 
 
             <div class="form-group">

@@ -206,8 +206,12 @@ namespace EmpowerHealthyStudents.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    ImagePath = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    File = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: false),
+                    Grade = table.Column<string>(nullable: false),
+                    FileType = table.Column<string>(nullable: false),
+                    Subject = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -248,10 +252,37 @@ namespace EmpowerHealthyStudents.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ProductReview",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Comment = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    ProductId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductReview", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductReview_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductReview_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "e99f86e3-bc8b-497e-a3a9-c77b90a2ffbd", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEEwbApydFHMZWiNUyfUHbHpgaa1HwT1UXyzIPwuRXAK81bWBbNUvYIVyNxj6S3nZuQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "cde65e78-fdab-49ef-ae95-3cd6fc451e3d", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAELNEUrIqczD3/H3Vmh4gx8Bi9wv2wQt2n17kiCde3Mq+XaapC7f7rYA1La4dSh3U1Q==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "BlogPost",
@@ -274,18 +305,23 @@ namespace EmpowerHealthyStudents.Migrations
 
             migrationBuilder.InsertData(
                 table: "Product",
-                columns: new[] { "Id", "Description", "ImagePath", "Name", "UserId" },
+                columns: new[] { "Id", "Description", "File", "FileType", "Grade", "Image", "Name", "Subject", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!", null, "Making Healthy Choices", "10000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 2, "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!", null, "Ten Tips To Build Your Resilience", "10000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 3, "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!", null, "Hamlet Character Smackdown: Roleplay Lesson", "10000000-ffff-ffff-ffff-ffffffffffff" }
+                    { 1, "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!", "Mind_flayer.jpg", "Word Document", "11th", "Mind_flayer.jpg", "Making Healthy Choices", "English", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 2, "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!", null, "Power Point", "11th", null, "Ten Tips To Build Your Resilience", "English", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 3, "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!", null, "Word Document", "11th", null, "Hamlet Character Smackdown: Roleplay Lesson", "English", "10000000-ffff-ffff-ffff-ffffffffffff" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Comment",
                 columns: new[] { "Id", "BlogPostId", "Date", "Text", "UserId" },
                 values: new object[] { 1, 1, new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000000-ffff-ffff-ffff-ffffffffffff" });
+
+            migrationBuilder.InsertData(
+                table: "ProductReview",
+                columns: new[] { "Id", "Comment", "ProductId", "UserId" },
+                values: new object[] { 1, "You are a Godsend.", 1, "10000000-ffff-ffff-ffff-ffffffffffff" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -350,6 +386,16 @@ namespace EmpowerHealthyStudents.Migrations
                 name: "IX_Product_UserId",
                 table: "Product",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductReview_ProductId",
+                table: "ProductReview",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductReview_UserId",
+                table: "ProductReview",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -376,13 +422,16 @@ namespace EmpowerHealthyStudents.Migrations
                 name: "Event");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "ProductReview");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "BlogPost");
+
+            migrationBuilder.DropTable(
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpowerHealthyStudents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200511185357_review")]
-    partial class review
+    [Migration("20200513155441_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,7 +101,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6a0228a5-996f-4434-b712-57ba6029aa03",
+                            ConcurrencyStamp = "cde65e78-fdab-49ef-ae95-3cd6fc451e3d",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -110,7 +110,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKijrWTacw17iI0I6DCayhA8Ww36JFGyC3M1GpHAjOxsCed1QPxLlEbQ4dZ2xwT5Eg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELNEUrIqczD3/H3Vmh4gx8Bi9wv2wQt2n17kiCde3Mq+XaapC7f7rYA1La4dSh3U1Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -286,10 +286,22 @@ namespace EmpowerHealthyStudents.Migrations
                     b.Property<string>("File")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Grade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -308,21 +320,32 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = 1,
                             Description = "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!",
+                            File = "Mind_flayer.jpg",
+                            FileType = "Word Document",
+                            Grade = "11th",
+                            Image = "Mind_flayer.jpg",
                             Name = "Making Healthy Choices",
+                            Subject = "English",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 2,
                             Description = "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!",
+                            FileType = "Power Point",
+                            Grade = "11th",
                             Name = "Ten Tips To Build Your Resilience",
+                            Subject = "English",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 3,
                             Description = "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!",
+                            FileType = "Word Document",
+                            Grade = "11th",
                             Name = "Hamlet Character Smackdown: Roleplay Lesson",
+                            Subject = "English",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
@@ -351,6 +374,15 @@ namespace EmpowerHealthyStudents.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ProductReview");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Comment = "You are a Godsend.",
+                            ProductId = 1,
+                            UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

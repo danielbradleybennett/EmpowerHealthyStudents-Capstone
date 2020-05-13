@@ -119,7 +119,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,File,Image")] ProductViewModels productViewModel)
+        public async Task<ActionResult> Create([Bind("Id,Name,Description,UserId,FileType,File,Image,Grade,Type,Subject")] ProductViewModels productViewModel)
         {
             try
             {
@@ -134,7 +134,12 @@ namespace EmpowerHealthyStudents.Controllers
                     Id = productViewModel.Id,
                     Name = productViewModel.Name,
                     Description = productViewModel.Description,
-                    UserId = user.Id
+                    UserId = user.Id,
+                    Grade = productViewModel.Grade,
+                    FileType = productViewModel.FileType,
+                    Subject = productViewModel.Subject
+                    
+                    
                     
 
                 };
@@ -210,6 +215,9 @@ namespace EmpowerHealthyStudents.Controllers
             pvm.UserId = product.UserId;
             pvm.FilePath = product.File;
             pvm.ImagePath = product.Image;
+            pvm.Grade = product.Grade;
+            pvm.Subject = product.Subject;
+            pvm.FileType = product.FileType;
 
 
 
@@ -256,6 +264,9 @@ namespace EmpowerHealthyStudents.Controllers
                 product.UserId = user.Id;
                 product.Name = productViewModel.Name;
                 product.Description = productViewModel.Description;
+                product.Grade = productViewModel.Grade;
+                product.FileType = productViewModel.FileType;
+                product.Subject = productViewModel.Subject;
 
                 if (productViewModel.Image != null && productViewModel.Image.Length > 0)
                 {

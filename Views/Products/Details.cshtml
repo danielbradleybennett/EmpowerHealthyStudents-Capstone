@@ -29,9 +29,9 @@
                 <img src="~/images/@Model.Image" style="max-height: 150px; max-width: 150px;" />
 
                 <div class="card-body">
-                    <h6 class="card-title Subjects">Subjects</h6>
-                    <h6 class="card-title Grades">Grades</h6>
-                    <h6 class="card-title Types">Types</h6>
+                    <h6 class="card-title Subjects">Subject:@Html.DisplayFor(model => model.Subject)</h6>
+                    <h6 class="card-title Grades">Grades:@Html.DisplayFor(model => model.Grade)</h6>
+                    <h6 class="card-title Types">Type:@Html.DisplayFor(model => model.FileType)</h6>
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <p>
                         <button>
-                            <a href="~/images/@Model.File" target="_blank">Click Here To Download</a>
+                            <a href="~/files/@Model.File" target="_blank">Click Here To Download</a>
                         </button>
                     </p>
                 </div>

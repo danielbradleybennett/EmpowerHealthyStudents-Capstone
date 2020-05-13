@@ -115,9 +115,15 @@ body {
 .nav-button {
     
     margin-left: 15px;
-    
 }
 
+.anchor {
+    text-decoration: none;
+}
+
+.a:link {
+    text-decoration: none !important;
+}
 
 
 

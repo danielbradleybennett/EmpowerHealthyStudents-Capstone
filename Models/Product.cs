@@ -24,6 +24,15 @@ namespace EmpowerHealthyStudents.Models
         [Required]
         public string UserId { get; set; }
 
+        [Required]
+        public string Grade { get; set; }
+        [Required]
+
+        public string FileType { get; set; }
+        [Required]
+
+        public string Subject { get; set; }
+
         public virtual ICollection<ProductReview> ProductReviews { get; set; }
 
 

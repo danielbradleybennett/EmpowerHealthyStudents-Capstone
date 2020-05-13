@@ -74,21 +74,30 @@ namespace EmpowerHealthyStudents.Data
                     Description = "This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!",
                     UserId = user.Id,
                     File = "Mind_flayer.jpg",
-                    Image = "Mind_flayer.jpg"
+                    Image = "Mind_flayer.jpg",
+                    Grade = "11th",
+                    Subject = "English",
+                    FileType = "Word Document"
                 },
                 new Product()
                 {
                     Id = 2,
                     Name = "Ten Tips To Build Your Resilience",
                     Description = "These ten tips come in a.pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!",
-                    UserId = user.Id
+                    UserId = user.Id,
+                    Grade = "11th",
+                    Subject = "English",
+                    FileType = "Power Point"
                 },
                 new Product()
                 {
                     Id = 3,
                     Name = "Hamlet Character Smackdown: Roleplay Lesson",
                     Description = "In this post - reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play.After each smackdown match - up, the class will vote on who does a better job of defending themselves.The winner will move on to the next round. The process will be completed until there is only one student left standing.Feel free to crate a championship belt for the winner of this activity!",
-                    UserId = user.Id
+                    UserId = user.Id,
+                    Grade = "11th",
+                    Subject = "English",
+                    FileType = "Word Document"
                 });
             modelBuilder.Entity<Event>().HasData(
                 new Event()
@@ -97,6 +106,7 @@ namespace EmpowerHealthyStudents.Data
                     Location = "SEL Teacher Conference: Phoenix, Arizona",
                     Date = DateTime.Parse("06/20/2020"),
                     UserId = user.Id
+                   
 
                 },
                 new Event()

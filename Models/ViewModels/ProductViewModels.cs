@@ -25,7 +25,11 @@ namespace EmpowerHealthyStudents.Models.ViewModels
         public ApplicationUser User { get; set; }
         [Required]
         public string UserId { get; set; }
-
-       
+        [Required]
+        public string Grade { get; set; }
+        [Required]
+        public string Subject { get; set; }
+        [Required]
+        public string FileType { get; set; }
     }
 }
