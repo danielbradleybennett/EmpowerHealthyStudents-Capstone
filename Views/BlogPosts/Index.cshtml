@@ -8,37 +8,22 @@
 
 
 <table class="table">
-    <thead>
-        <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.Title)
-            </td>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
 
-
-
-            <th></th>
-        </tr>
-    </thead>
     <tbody>
-        <body>
+        <div>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Title)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+
+                </tr>
             }
 
-        </body>
+        </div>
     </tbody>
 </table>
