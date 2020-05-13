@@ -35,6 +35,10 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.blogPost-header {
+    background-color: #c7efcf !important;
+}
+
 *,
 *::before,
 *::after {
@@ -4584,8 +4588,10 @@ input[type="button"].btn-block {
   padding: 1.25rem;
 }
 
+
 .card-title {
   margin-bottom: 0.75rem;
+  color: yellow !important;
 }
 
 .card-subtitle {
@@ -4608,7 +4614,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: #c7efcf !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 

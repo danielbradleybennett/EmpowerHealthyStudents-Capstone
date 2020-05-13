@@ -25,25 +25,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-
-
-            <td class="col-sm-10">
+            <td>
                 <img src="~/images/@item.Image" style="max-height: 75px; max-width: 75px;" />
             </td>
 
-            <td>
-                
-                <a href="~/files/@item.File" target="_blank">Click Here To Download</a>
-
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+           
         </tr>
 }
     </tbody>

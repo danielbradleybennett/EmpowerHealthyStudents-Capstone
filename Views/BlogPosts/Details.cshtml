@@ -6,62 +6,53 @@
 @{
     ViewData["Title"] = "Details";
 }
+<h1>April's Blog</h1>
+@if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+{
 
+    <a asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <a asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 
+}
 
-<div>
-    <h1>April's Blog</h1>
-    
-    <h4>
-        @Html.DisplayFor(model => model.Date)
-    </h4> 
-       
-    
-    <div>
-        @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-        {
-            
-          <a asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>  <a asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-          
-        }
-       
+<div class="card mb-3">
+    <h3 class="card-header blogPost-header"> @Html.DisplayFor(model => model.Title)</h3>
+    <div class="card-body">
+        <h5 class="card-title"> @Html.DisplayFor(model => model.Date)</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">@Html.DisplayFor(model => model.Blog)</p>
     </div>
     <hr />
-    <dl class="row">
-        <dd class="col-sm-10">
-            <h4>
-                @Html.DisplayFor(model => model.Title)
-            </h4>
-        </dd>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Blog)
-        </dd>
-        <dd class="col-sm-10">
-            @foreach (var comment in Model.Comments)
-            {
-            <td>
-                @Html.DisplayFor(modelitem => comment.User.FirstName): @Html.DisplayFor(modelItem => comment.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => comment.Date)
-            </td>
-            <td>
+    <ul class="list-group list-group-flush">
+        @foreach (var comment in Model.Comments)
+        {
 
+
+
+            <li class="list-group-item">
+                <p>
+                    @Html.DisplayFor(modelitem => comment.User.FirstName): @Html.DisplayFor(modelItem => comment.Text)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => comment.Date)
+                </p>
                 @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                 {
                     <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a> <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
                 }
-            </td>
+            </li>
         }
-        </dl>
-            @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
-            {
-                <div>
-                    <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
-                </div>
-               
-            }
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
+    </ul>
+    <div class="card-body">
+        @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
+        {
+            <div>
+                <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
+            </div>
+
+        }
+    </div>
+    <div class="card-footer text-muted">
+        <a asp-action="Index">Back to List</a>  
+    </div>
 </div>
