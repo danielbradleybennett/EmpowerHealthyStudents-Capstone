@@ -29,14 +29,11 @@ namespace EmpowerHealthyStudents.Controllers
             _userManager = userManager;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchString)
         {
 
-            
+           
             var user = await GetCurrentUserAsync();
-            var products = await _context.Product
-             .ToListAsync();
-
             if (user != null)
             {
                 if (user.IsAdmin == true)
@@ -44,28 +41,82 @@ namespace EmpowerHealthyStudents.Controllers
                     return RedirectToAction(nameof(AdminIndex));
                 }
 
-
+                if (string.IsNullOrWhiteSpace(searchString))
+                {
+                    var products = await _context.Product
+                   .ToListAsync();
+                    return View(products);
+                }
                 else
                 {
+                    var products = await _context.Product
+                     .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
+                     .ToListAsync();
                     return View(products);
-
                 }
-            } 
-            else
+            }
+
+            if(user == null)
             {
+            if (string.IsNullOrWhiteSpace(searchString))
+            {
+                var products = await _context.Product
+               .ToListAsync();
                 return View(products);
             }
+            else
+            {
+                var products = await _context.Product
+                 .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
+                 .ToListAsync();
+                return View(products);
+            }
+
+            }
+            else
+            {
+                return View();
+            }
+        
         }
 
-        public async Task<ActionResult> AdminIndex()
-        {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+            public async Task<ActionResult> AdminIndex(string searchString)
+            {
 
             var user = await GetCurrentUserAsync();
-            var products = await _context.Product
-                .Where(p => p.UserId == user.Id)
-                .ToListAsync();
-            
-            return View(products);
+         
+
+            if (string.IsNullOrWhiteSpace(searchString))
+            {
+                var adminProducts = await _context.Product
+                 .ToListAsync();
+                return View(adminProducts);
+            }
+            else
+            {
+                var adminProducts = await _context.Product
+                 .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
+                 .ToListAsync();
+                return View(adminProducts);
+            }
+
+          
         }
 
         //// GET: Products/Details/5
