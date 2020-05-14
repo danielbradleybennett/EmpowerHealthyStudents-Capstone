@@ -43,17 +43,20 @@
                 <p>
                     @Html.DisplayFor(modelItem => comment.Date)
                 </p>
+                <div class="comments-edit-delete">
+                @if (comment.UserId == userMan.GetUserId(User))
+                {
+                        <button>
+                            <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
+                        </button>
+                 }
                 @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                 {
-                  <div class="comments-edit-delete">
-                    <button>
-                        <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a> 
-                    </button>
                     <button>
                         <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
                     </button>
-                  </div>
                 }
+                </div>
             </li>
         }
     </ul>

@@ -5,18 +5,22 @@
 
 <!DOCTYPE html>
 <html lang="en">
+   
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EmpowerHealthyStudents</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-flatly.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <div class="container-fluid banner text-center">
+            <img src="~/images/Banner.jpg" />
+        </div>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
-                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EmpowerHealthyStudents</a>*@
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,7 +29,7 @@
                 <div class="searchWrapper">
                     @*the name in the input must match the variable name for the controller*@
                     <form class="searchBox" asp-controller="Products" asp-action="Index">
-                        <input class="form-control mr-sm-2" type="text" name="searchString" placeholder="Search Product " aria-label="Search" asp-controller="Products" asp-action="Index, AdminIndex">
+                        <input class="form-control mr-sm-2" type="text" name="searchString" placeholder="Search Curriculum " aria-label="Search" asp-controller="Products" asp-action="Index, AdminIndex">
                     </form>
                 </div>
 
@@ -46,10 +50,10 @@
                             </button>
                         </li>
                         @*<li class="nav-item">
-                    <button class="nav-button">
-                       <a class="nav-link text-dark" asp-area="" asp-controller="Resources" asp-action="Index">Resources</a>
-                    </button>
-                </li>*@
+                                <button class="nav-button">
+                                   <a class="nav-link text-dark" asp-area="" asp-controller="Resources" asp-action="Index">Resources</a>
+                                </button>
+                            </li>*@
                         <li class="nav-item">
                             <button class="nav-button">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Events</a>

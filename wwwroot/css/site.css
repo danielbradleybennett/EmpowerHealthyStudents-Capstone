@@ -125,6 +125,18 @@ body {
     text-decoration: none !important;
 }
 
+/*Layout Page*/
+.navbar {
+    background-color: #546A76 !important;
+}
+
+/*Home Page*/
+.banner {
+    background-size: 100%;
+    background: center;
+    background-color: #FF7900 !important;
+    background: #FF7900 !important;
+}
 
 
 

@@ -139,6 +139,16 @@ namespace EmpowerHealthyStudents.Controllers
                 return NotFound();
             }
 
+            if (user != null)
+            {
+                ViewBag.IsAdmin = user.IsAdmin;
+            }
+
+            else
+            {
+                ViewBag.IsAdmin = false;
+            }
+
             return View(products);
         }
 
