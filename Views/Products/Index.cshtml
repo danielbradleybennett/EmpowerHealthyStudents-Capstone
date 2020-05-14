@@ -8,6 +8,12 @@
 
 <h1>Curriculum</h1>
 
+<p>
+    @if (ViewBag.IsAdmin == true)
+    {
+        <a asp-action="Create">Create New</a>
+    }
+    </p>
 <table class="table">
     <thead>
         <tr>
@@ -23,31 +29,32 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            
-            @if (String.IsNullOrEmpty(@item.Image))
-            {
+            <tr>
                 <td>
-                    <img src="~/images/LogoMakr_0Vw3E3.png" style="max-height: 150px; max-width: 150px;" />
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
-            }
-            else
-            {
-
                 <td>
-                    <img src="~/images/@item.Image" style="max-height: 75px; max-width: 75px;" />
+                    @Html.DisplayFor(modelItem => item.Description)
                 </td>
+                @if (String.IsNullOrEmpty(@item.Image))
+                {
+                    <td>
+                        <img src="~/images/LogoMakr_0Vw3E3.png" style="max-height: 75px; max-width: 75px;" />
+                    </td>
+                }
+                else
+                {
 
-            }
+
+                    <td>
+                        <img src="~/images/@item.Image" alt="" style="max-height: 75px; max-width: 75px;" />
+
+                    </td>
 
 
-        </tr>
+
+                }
+            </tr>
         }
     </tbody>
 </table>

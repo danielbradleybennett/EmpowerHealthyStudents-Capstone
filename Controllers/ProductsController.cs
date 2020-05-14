@@ -37,9 +37,14 @@ namespace EmpowerHealthyStudents.Controllers
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
-                if (user.IsAdmin == true)
+                if (user != null)
                 {
-                    return RedirectToAction(nameof(AdminIndex));
+                    ViewBag.IsAdmin = user.IsAdmin;
+                }
+
+                else
+                {
+                    ViewBag.IsAdmin = false;
                 }
 
                 if (string.IsNullOrWhiteSpace(searchString))
