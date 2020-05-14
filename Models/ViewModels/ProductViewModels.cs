@@ -18,6 +18,8 @@ namespace EmpowerHealthyStudents.Models.ViewModels
         [NotMapped]
         public IFormFile File { get; set; }
         public IFormFile Image { get; set; }
+
+        public string ImageString { get; set; }
         public string FilePath { get; set; }
 
         public string ImagePath { get; set; }

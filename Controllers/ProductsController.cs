@@ -14,6 +14,7 @@ using EmpowerHealthyStudents.Models.ViewModels;
 using System.Runtime.InteropServices.ComTypes;
 using System.IO;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.AspNetCore.Builder.Extensions;
 
 namespace EmpowerHealthyStudents.Controllers
 {
@@ -186,9 +187,6 @@ namespace EmpowerHealthyStudents.Controllers
                     FileType = productViewModel.FileType,
                     Subject = productViewModel.Subject
                     
-                    
-                    
-
                 };
                 if (productViewModel.Image != null && productViewModel.Image.Length > 0)
                 {
@@ -261,13 +259,12 @@ namespace EmpowerHealthyStudents.Controllers
             pvm.Description = product.Description;
             pvm.UserId = product.UserId;
             pvm.FilePath = product.File;
-            pvm.Image = product.Image;
+            pvm.ImagePath = product.Image;
             pvm.Grade = product.Grade;
             pvm.Subject = product.Subject;
             pvm.FileType = product.FileType;
 
-            product.Name = product.Name;
-            product.Description = product.Description;
+            
 
             if (user != null)
             {
@@ -293,7 +290,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind("Id,Grade,FileType,Subject,Name,Description,UserId,File,Image")] ProductViewModels productViewModel)
+        public async Task<ActionResult> Edit(ProductViewModels productViewModel)
         {
             try
             {
@@ -310,6 +307,11 @@ namespace EmpowerHealthyStudents.Controllers
                 product.Grade = productViewModel.Grade;
                 product.FileType = productViewModel.FileType;
                 product.Subject = productViewModel.Subject;
+                
+                if(productViewModel.Image == null)
+                {
+                    product.Image = productViewModel.ImagePath;
+                }
 
                 if (productViewModel.Image != null && productViewModel.Image.Length > 0)
                 {
@@ -329,6 +331,11 @@ namespace EmpowerHealthyStudents.Controllers
                         await productViewModel.Image.CopyToAsync(stream);
                     }
 
+                }
+
+                if (productViewModel.File == null)
+                {
+                    product.File = productViewModel.FilePath;
                 }
 
                 if (productViewModel.File != null && productViewModel.File.Length > 0)

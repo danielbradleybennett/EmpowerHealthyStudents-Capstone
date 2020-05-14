@@ -30,11 +30,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                <img src="~/images/@item.Image" style="max-height: 75px; max-width: 75px;" />
-            </td>
+            @if (String.IsNullOrEmpty(@item.Image))
+            {
+                <td>
+                    <img src="~/images/LogoMakr_0Vw3E3.png" style="max-height: 75px; max-width: 75px;" />
+                </td>
+            }
+            else
+            {
 
-           
+                <td>
+                    <img src="~/images/@item.Image" style="max-height: 75px; max-width: 75px;" />
+                </td>
+
+            }
         </tr>
 }
     </tbody>
