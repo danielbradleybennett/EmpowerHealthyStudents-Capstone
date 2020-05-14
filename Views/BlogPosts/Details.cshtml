@@ -44,18 +44,21 @@
                     @Html.DisplayFor(modelItem => comment.Date)
                 </p>
                 <div class="comments-edit-delete">
-                @if (comment.UserId == userMan.GetUserId(User))
-                {
+                    @if (comment.UserId == userMan.GetUserId(User))
+                    {
+                    <div class="form-group">
+                        <a class="btn"  asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
+                    </div>
+
+
+                        
+                    }
+                    @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+                    {
                         <button>
-                            <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
+                            <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
                         </button>
-                 }
-                @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-                {
-                    <button>
-                        <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
-                    </button>
-                }
+                    }
                 </div>
             </li>
         }

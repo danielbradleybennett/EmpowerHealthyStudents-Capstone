@@ -80,20 +80,6 @@ namespace EmpowerHealthyStudents.Controllers
         
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
            
 
             public async Task<ActionResult> AdminIndex(string searchString)
@@ -275,14 +261,10 @@ namespace EmpowerHealthyStudents.Controllers
             pvm.Description = product.Description;
             pvm.UserId = product.UserId;
             pvm.FilePath = product.File;
-            pvm.ImagePath = product.Image;
+            pvm.Image = product.Image;
             pvm.Grade = product.Grade;
             pvm.Subject = product.Subject;
             pvm.FileType = product.FileType;
-
-
-
-
 
             product.Name = product.Name;
             product.Description = product.Description;
@@ -311,7 +293,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind("Id,Name,Description,UserId,File,Image")] ProductViewModels productViewModel)
+        public async Task<ActionResult> Edit([Bind("Id,Grade,FileType,Subject,Name,Description,UserId,File,Image")] ProductViewModels productViewModel)
         {
             try
             {
