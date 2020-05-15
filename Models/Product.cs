@@ -26,7 +26,7 @@ namespace EmpowerHealthyStudents.Models
 
         [Required]
         public string Grade { get; set; }
-        [Required]
+        
 
         public string FileType { get; set; }
         [Required]

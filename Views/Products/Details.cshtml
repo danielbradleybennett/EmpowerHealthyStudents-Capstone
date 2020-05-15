@@ -13,16 +13,16 @@
             @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
             {
                 <div>
-                    <a class="btn btn-light-grey productEdit" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-light-grey productEdit" asp-action="Edit" asp-route-id="@Model.Id">Edit Curriculum</a>
                 </div>
                 <div>
-                    <a class="btn btn-light-grey productDelete" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                    <a class="btn btn-light-grey productDelete" asp-action="Delete" asp-route-id="@Model.Id">Delete Curriculum</a>
                 </div>
             }
            </div>
 
-            <div class="card mb-3">
-                <h3 class="card-header text-center"> @Html.DisplayFor(model => model.Name)</h3>
+            <div class="card mb-3 ">
+                <h3 class="card-header text-center btn-orange"> @Html.DisplayFor(model => model.Name)</h3>
             </div>
             
             
@@ -51,9 +51,9 @@
             </div>
             </div>
 
-            <div class="card-body">
+            <div class="card-body productDescription">
                 <p>
-                    @Html.DisplayNameFor(model => model.Description)
+                    @Html.DisplayFor(model => model.Description)
                 </p>
             </div>
 

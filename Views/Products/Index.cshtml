@@ -11,7 +11,7 @@
 <div>
     @if (ViewBag.IsAdmin == true)
     {
-        <a class="btn btn-primary" asp-action="Create">Create New</a>
+        <a class="btn btn-light-grey" asp-action="Create">Create New</a>
     }
 </div>
 <br />
@@ -39,10 +39,12 @@
         {
             <tr>
                 <td>
-                    <a class="nav-link" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                    <a class="nav-link text-orange" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                <td class="productDescription">
+                    
+                      @Html.DisplayFor(modelItem => item.Description)
+                    
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Subject)
