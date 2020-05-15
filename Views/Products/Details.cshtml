@@ -45,14 +45,14 @@
 
 
             <div class="card-body">
-                <h6 class="card-title Subjects">Subject:@Html.DisplayFor(model => model.Subject)</h6>
-                <h6 class="card-title Grades">Grades:@Html.DisplayFor(model => model.Grade)</h6>
-                <h6 class="card-title Types">Type:@Html.DisplayFor(model => model.FileType)</h6>
+                <h6 class="card-title Subjects font-weight-bold">Subject: @Html.DisplayFor(model => model.Subject)</h6>
+                <h6 class="card-title Grades font-weight-bold">Grades: @Html.DisplayFor(model => model.Grade)</h6>
+                <h6 class="card-title Types font-weight-bold">Type: @Html.DisplayFor(model => model.FileType)</h6>
             </div>
             </div>
 
             <div class="card-body productDescription">
-                <p>
+                <p class="font-weight-bold">
                     @Html.DisplayFor(model => model.Description)
                 </p>
             </div>
@@ -70,7 +70,7 @@
                 </div>
                 <hr />
               
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush font-weight-bold reviewComment">
                     @foreach (var review in Model.ProductReviews)
                     {
 
