@@ -19,7 +19,7 @@
            
             <div class="form-group">
                 <input type="hidden" name="id" asp-for="@Model.ProductId" />
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-light-grey" />
             </div>
         </form>
     </div>
@@ -27,7 +27,7 @@
 
 <div>
     <input type="hidden" name="id" asp-for="@Model.ProductId" />
-    <a asp-controller="Products" asp-route-id="@Model.ProductId" asp-action="Details">Back to List</a>
+    <a class="btn btn-light-grey" asp-controller="Products" asp-route-id="@Model.ProductId" asp-action="Details">Back to List</a>
 </div>
 
 @section Scripts {

@@ -170,9 +170,7 @@ body {
     white-space: pre-wrap;
 }
 
-.body {
-    font-size:large !important;
-}
+
 
 .currName {
     width: 25%;
@@ -207,6 +205,12 @@ body {
     border-radius: 50%;
 
 }
+
+.commentCard {
+    background-color: #C7EFCF;
+}
+
+
 
 
 

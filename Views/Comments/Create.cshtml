@@ -28,7 +28,7 @@
 
 <div>
     <input type="hidden" name="id" asp-for="@Model.BlogPostId" />
-    <a asp-controller="BlogPosts" asp-route-id="@Model.BlogPostId" asp-action="Details">Back to List</a>
+    <a class="btn btn-light-grey" asp-controller="BlogPosts" asp-route-id="@Model.BlogPostId" asp-action="Details">Back to List</a>
 </div>
 
 @section Scripts {
