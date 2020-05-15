@@ -31,7 +31,7 @@ namespace EmpowerHealthyStudents.Models.ViewModels
         public string Grade { get; set; }
         [Required]
         public string Subject { get; set; }
-        [Required]
+       
         public string FileType { get; set; }
     }
 }

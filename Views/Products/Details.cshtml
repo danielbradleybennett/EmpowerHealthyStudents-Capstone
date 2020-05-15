@@ -13,16 +13,16 @@
             @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
             {
                 <div>
-                    <a class="btn btn-light-grey productEdit" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-light-grey productEdit" asp-action="Edit" asp-route-id="@Model.Id">Edit Curriculum</a>
                 </div>
                 <div>
-                    <a class="btn btn-light-grey productDelete" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                    <a class="btn btn-light-grey productDelete" asp-action="Delete" asp-route-id="@Model.Id">Delete Curriculum</a>
                 </div>
             }
            </div>
 
-            <div class="card mb-3">
-                <h3 class="card-header text-center"> @Html.DisplayFor(model => model.Name)</h3>
+            <div class="card mb-3 ">
+                <h3 class="card-header text-center btn-orange"> @Html.DisplayFor(model => model.Name)</h3>
             </div>
             
             
@@ -45,15 +45,15 @@
 
 
             <div class="card-body">
-                <h6 class="card-title Subjects">Subject:@Html.DisplayFor(model => model.Subject)</h6>
-                <h6 class="card-title Grades">Grades:@Html.DisplayFor(model => model.Grade)</h6>
-                <h6 class="card-title Types">Type:@Html.DisplayFor(model => model.FileType)</h6>
+                <h6 class="card-title Subjects font-weight-bold">Subject: @Html.DisplayFor(model => model.Subject)</h6>
+                <h6 class="card-title Grades font-weight-bold">Grades: @Html.DisplayFor(model => model.Grade)</h6>
+                <h6 class="card-title Types font-weight-bold">Type: @Html.DisplayFor(model => model.FileType)</h6>
             </div>
             </div>
 
-            <div class="card-body">
-                <p>
-                    @Html.DisplayNameFor(model => model.Description)
+            <div class="card-body productDescription">
+                <p class="font-weight-bold">
+                    @Html.DisplayFor(model => model.Description)
                 </p>
             </div>
 
@@ -70,7 +70,7 @@
                 </div>
                 <hr />
               
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush font-weight-bold reviewComment">
                     @foreach (var review in Model.ProductReviews)
                     {
 

@@ -11,17 +11,17 @@
 {
    <div class="blogPost-edit-delete">
     <div>
-        <a class="btn btn-light-grey blogEdit text-center"  asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+        <a class="btn btn-light-grey blogEdit text-center"  asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit Blog</a> 
     </div>
       
     <div>
-        <a class="btn btn-light-grey blogDelete text-center" asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        <a class="btn btn-light-grey blogDelete text-center" asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete Blog</a>
     </div>
    </div>
 
 }
 
-<div>
+<div class="font-weight-bold">
 <div class="card mb-3">
     <h3 class="card-header btn-orange text-center"> @Html.DisplayFor(model => model.Title)</h3>
     <div class="card-body">
@@ -64,15 +64,14 @@
             </li>
         }
     </ul>
-    <div">
+    <div>
         @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
         {
-            <div>
-                    <a class="btn btn-light-grey"  asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
-            </div>
-
+           <div>
+            <a class="btn btn-light-grey" asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
+          </div>
+            
         }
-    </div>
     <div class="card-footer">
         <a class="btn btn-light-grey"  asp-action="Index">Back to List</a>  
     </div>

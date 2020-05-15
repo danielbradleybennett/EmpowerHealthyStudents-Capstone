@@ -167,7 +167,13 @@ body {
 
 .blog {
     word-break:normal;
-    white-space: pre-wrap;
+    
+    white-space: pre-line;
+}
+
+.productDescription {
+    word-break: normal;
+    white-space: pre-line;
 }
 
 
@@ -210,7 +216,13 @@ body {
     background-color: #C7EFCF;
 }
 
+.text-orange {
+    color: #FF7900 !important;
+}
 
+.reviewBackground {
+    background-color: #C7EFCF;
+}
 
 
 

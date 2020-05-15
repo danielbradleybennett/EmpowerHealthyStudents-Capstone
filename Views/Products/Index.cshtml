@@ -11,7 +11,7 @@
 <div>
     @if (ViewBag.IsAdmin == true)
     {
-        <a class="btn btn-primary" asp-action="Create">Create New</a>
+        <a class="btn btn-light-grey" asp-action="Create">Add Curriculum</a>
     }
 </div>
 <br />
@@ -39,15 +39,17 @@
         {
             <tr>
                 <td>
-                    <a class="nav-link" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                    <a class="nav-link text-orange font-weight-bold" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                <td class="productDescription font-weight-bold">
+                    
+                      @Html.DisplayFor(modelItem => item.Description)
+                    
                 </td>
-                <td>
+                <td class="font-weight-bold">
                     @Html.DisplayFor(modelItem => item.Subject)
                 </td>
-                <td>
+                <td class="font-weight-bold">
                     @Html.DisplayFor(modelItem => item.Grade)
                 </td>
                 @if (String.IsNullOrEmpty(@item.Image))

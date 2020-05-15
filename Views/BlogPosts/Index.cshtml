@@ -7,7 +7,7 @@
 <h1 class="blogPostHeader text-center">Blog Posts</h1>
 
 <div class="container">
-<table class="table">
+<table class="table font-weight-bold">
 
     <tbody>
         <div>
@@ -15,7 +15,7 @@
             {
                 <tr>
                     <td>
-                        <a class="nav-link text-dark" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Title)</a>
+                        <a class="nav-link text-orange" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Title)</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Date)
