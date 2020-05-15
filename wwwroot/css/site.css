@@ -109,9 +109,7 @@ body {
    
 }
 
-.blogPostHeader {
-    
-}
+
 
 .blogPost-edit-delete {
     display: flex;
@@ -203,6 +201,11 @@ body {
 
 .registerButton {
     margin-right: 10px;
+}
+
+.aprilPic {
+    border-radius: 50%;
+
 }
 
 
