@@ -7,16 +7,16 @@
     ViewData["Title"] = "Details";
 }
 <h1>April's Blog</h1>
-<br />
 @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
 {
    <div class="blogPost-edit-delete">
-    <button>
-        <a asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
-    </button>
-    <button>
-        <a asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-    </button>
+    <div>
+        <a class="btn btn-light-grey blogEdit"  asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    </div>
+      
+    <div>
+        <a class="btn btn-light-grey blogDelete" asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    </div>
    </div>
 
 }
@@ -46,18 +46,17 @@
                 <div class="comments-edit-delete">
                     @if (comment.UserId == userMan.GetUserId(User))
                     {
-                    <div class="form-group">
-                        <a class="btn"  asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
+                     <div>
+                        <a class="btn btn-orange editComment"  asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
                     </div>
+                    <br />
 
-
-                        
                     }
                     @if (comment.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
                     {
-                        <button>
-                            <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
-                        </button>
+                        <div>
+                            <a class="btn btn-orange deleteComment"  asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id">Delete</a>
+                        </div>
                     }
                 </div>
             </li>
@@ -67,14 +66,12 @@
         @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
         {
             <div>
-                <button class="add-comment">
-                    <a asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
-                </button>
+                    <a class="btn btn-light-grey"  asp-route-id="@Model.Id" asp-controller="Comments" asp-action="Create">Add Comment</a>
             </div>
 
         }
     </div>
     <div class="card-footer text-muted">
-        <a asp-action="Index">Back to List</a>  
+        <a class="btn btn-light-grey"  asp-action="Index">Back to List</a>  
     </div>
 </div>

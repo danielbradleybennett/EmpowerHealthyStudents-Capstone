@@ -78,38 +78,59 @@ body {
 .image-desc {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
 }
 
 .review-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
 }
 
 .curriculum-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
+}
+
+.reviewDelete {
+    margin-left: 10px;
+}
+
+.productDelete {
+    margin-left: 10px;
 }
 
 /*BlogPost*/
 .comments-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
+   
+}
+
+.blogPostHeader {
+    
 }
 
 .blogPost-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
 }
 
 .add-comment {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
+}
+
+.deleteComment {
+    margin-left: 10px;
+}
+
+.blogDelete {
+    margin-left: 10px;
 }
 
 .nav-button {
@@ -128,6 +149,10 @@ body {
 /*Layout Page*/
 .navbar {
     background-color: #546A76 !important;
+}
+
+.searchBox {
+    margin-right: 50px;
 }
 
 /*Home Page*/
@@ -166,6 +191,18 @@ body {
 
 .currSubject {
     width: 25%;
+}
+
+.btn-orange {
+    background-color: #FF7900 !important;
+}
+
+.btn-light-grey {
+    background-color: #88A0A8;
+}
+
+.registerButton {
+    margin-right: 10px;
 }
 
 

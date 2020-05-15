@@ -12,12 +12,12 @@
           <div class="curriculum-edit-delete">
             @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
             {
-                <button>
-                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-                </button>
-                <button>
-                    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-                </button>
+                <div>
+                    <a class="btn btn-light-grey productEdit" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                </div>
+                <div>
+                    <a class="btn btn-light-grey productDelete" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                </div>
             }
            </div>
 
@@ -30,9 +30,9 @@
 
                 @if (String.IsNullOrEmpty(@Model.Image))
                 {
-                    <td>
+                    <div>
                         <img src="~/images/LogoMakr_0Vw3E3.png" style="max-height: 150px; max-width: 150px;" />
-                    </td>
+                    </div>
                 }
                 else
                 {
@@ -61,9 +61,9 @@
                     <p>
                         @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
                     {
-                            <button>
-                                <a href="~/files/@Model.File" target="_blank">Click Here To Download</a>
-                            </button>
+                            
+                                <a class="btn btn-orange" href="~/files/@Model.File" target="_blank">Click Here To Download</a>
+                            
                         }
                         </p>
                         
@@ -79,25 +79,22 @@
                             <p>
                                 @Html.DisplayFor(modelitem => review.User.FirstName): @Html.DisplayFor(modelItem => review.Comment)
                             </p>
-                            <p class="review-edit-delete">
+                            <div class="review-edit-delete">
                                 <div>
                                 @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-                    {
-                                    <button>
-                                        <a asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
-                                    </button>
-                                }
+                                    {
+                                            <a class="btn btn-orange reviewEdit" asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
+                                    }
                                 </div>
                                 <div>
                                     @if (review.UserId == userMan.GetUserId(User))
-                    {
-                                        <button>
-                                            <a asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
-                                        </button>
+                                     {
+                                        <a class="btn btn-orange reviewDelete" asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
+                                           
                                     }
-                                    </div>
+                                 </div>
                                         
-                                </p>
+                                </div>
                         </li>
                        </p>
 
@@ -110,7 +107,7 @@
                     @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
                 {
 
-                        <a asp-route-id="@Model.Id" asp-controller="ProductReviews" asp-action="Create">Add Comment</a>
+                        <a class="btn btn-light-grey" asp-route-id="@Model.Id" asp-controller="ProductReviews" asp-action="Create">Add Review</a>
                     }
                 </div>
             </div>
