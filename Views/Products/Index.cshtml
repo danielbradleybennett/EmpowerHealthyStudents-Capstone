@@ -6,7 +6,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Curriculum</h1>
+<h1 class="text-center">Curriculum</h1>
 
 <div>
     @if (ViewBag.IsAdmin == true)
@@ -14,8 +14,9 @@
         <a class="btn btn-primary" asp-action="Create">Create New</a>
     }
 </div>
-    <br />
-<table class="table">
+<br />
+<div class="productIndex">
+ <table class="table">
     <thead>
         <tr>
             <th class="currName">
@@ -36,38 +37,39 @@
     <tbody class="curriculum-table">
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                <a class="nav-link" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Grade)
-            </td>
-            @if (String.IsNullOrEmpty(@item.Image))
-            {
+            <tr>
                 <td>
-                    <img src="~/images/LogoMakr_0Vw3E3.png" style="max-height: 75px; max-width: 75px;" />
+                    <a class="nav-link" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
-            }
-            else
-            {
-
-
                 <td>
-                    <img src="~/images/@item.Image" alt="" style="max-height: 75px; max-width: 75px;" />
-
+                    @Html.DisplayFor(modelItem => item.Description)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                @if (String.IsNullOrEmpty(@item.Image))
+                {
+                    <td>
+                        <img src="~/images/LogoMakr_0Vw3E3.png" style="max-height: 75px; max-width: 75px;" />
+                    </td>
+                }
+                else
+                {
+
+
+                    <td>
+                        <img src="~/images/@item.Image" alt="" style="max-height: 75px; max-width: 75px;" />
+
+                    </td>
 
 
 
-            }
-        </tr>
+                }
+            </tr>
         }
     </tbody>
-</table>
+   </table>
+</div>

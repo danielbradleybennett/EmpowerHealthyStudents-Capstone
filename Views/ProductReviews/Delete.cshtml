@@ -22,8 +22,8 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Delete" class="btn btn-light=grey" /> |
         <input type="hidden" name="id" asp-for="@Model.ProductId" />
-        <a asp-controller="Products" asp-route-id="@Model.ProductId" asp-action="Details">Back to List</a>
+        <a class="btn btn-light-grey" asp-controller="Products" asp-route-id="@Model.ProductId" asp-action="Details">Back to List</a>
     </form>
 </div>

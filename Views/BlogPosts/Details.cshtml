@@ -6,23 +6,24 @@
 @{
     ViewData["Title"] = "Details";
 }
-<h1>April's Blog</h1>
+
 @if (@Model.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
 {
    <div class="blogPost-edit-delete">
     <div>
-        <a class="btn btn-light-grey blogEdit"  asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+        <a class="btn btn-light-grey blogEdit text-center"  asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
     </div>
       
     <div>
-        <a class="btn btn-light-grey blogDelete" asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        <a class="btn btn-light-grey blogDelete text-center" asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
     </div>
    </div>
 
 }
 
+<div>
 <div class="card mb-3">
-    <h3 class="card-header blogPost-header"> @Html.DisplayFor(model => model.Title)</h3>
+    <h3 class="card-header btn-orange text-center"> @Html.DisplayFor(model => model.Title)</h3>
     <div class="card-body">
         <h5 class="card-title"> @Html.DisplayFor(model => model.Date)</h5>
     </div>
@@ -30,13 +31,14 @@
         <p class="card-text blog">@Html.DisplayFor(model => model.Blog)</p>
     </div>
     <hr />
+    <br />
     <ul class="list-group list-group-flush">
         @foreach (var comment in Model.Comments.OrderByDescending(c => c.Date))
         {
 
 
 
-            <li class="list-group-item">
+            <li class="list-group-item commentCard">
                 <p>
                     @Html.DisplayFor(modelitem => comment.User.FirstName): @Html.DisplayFor(modelItem => comment.Text)
                 </p>
@@ -62,7 +64,7 @@
             </li>
         }
     </ul>
-    <div class="card-body">
+    <div">
         @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
         {
             <div>
@@ -71,7 +73,10 @@
 
         }
     </div>
-    <div class="card-footer text-muted">
+    <div class="card-footer">
         <a class="btn btn-light-grey"  asp-action="Index">Back to List</a>  
     </div>
 </div>
+</div>
+
+
