@@ -4,9 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Comment</h4>
+<h4>Edit Comment</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,7 +26,8 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <input type="hidden" name="id" asp-for="@Model.BlogPostId" />
+    <a asp-controller="BlogPosts" asp-route-id="@Model.BlogPostId" asp-action="Details">Back to List</a>
 </div>
 
 @section Scripts {

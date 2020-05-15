@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Blog Posts</h1>
+<h1 class="blogPostHeader">Blog Posts</h1>
 
 
 <table class="table">
@@ -15,7 +15,7 @@
             {
                 <tr>
                     <td>
-                        <a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Title)</a>
+                        <a class="nav-link text-dark" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Title)</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Date)

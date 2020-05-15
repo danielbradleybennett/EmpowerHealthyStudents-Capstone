@@ -26,7 +26,8 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <input type="hidden" name="id" asp-for="@Model.ProductId" />
+    <a asp-controller="Products" asp-route-id="@Model.ProductId" asp-action="Details">Back to List</a>
 </div>
 
 @section Scripts {

@@ -78,38 +78,57 @@ body {
 .image-desc {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
 }
 
 .review-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
 }
 
 .curriculum-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
+}
+
+.reviewDelete {
+    margin-left: 10px;
+}
+
+.productDelete {
+    margin-left: 10px;
 }
 
 /*BlogPost*/
 .comments-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
+   
 }
+
+
 
 .blogPost-edit-delete {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
 }
 
 .add-comment {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
+}
+
+.deleteComment {
+    margin-left: 10px;
+}
+
+.blogDelete {
+    margin-left: 10px;
 }
 
 .nav-button {
@@ -125,8 +144,69 @@ body {
     text-decoration: none !important;
 }
 
+/*Layout Page*/
+.navbar {
+    background-color: #546A76 !important;
+}
 
+.searchBox {
+    margin-right: 50px;
+}
 
+/*Home Page*/
+.banner {
+    background-size: 100%;
+    background: center;
+    background-color: #FF7900 !important;
+    background: #FF7900 !important;
+}
+
+.button {
+    background-color: #C7EFCF !important;
+}
+
+.blog {
+    word-break:normal;
+    white-space: pre-wrap;
+}
+
+.body {
+    font-size:large !important;
+}
+
+.currName {
+    width: 25%;
+}
+
+.currDescription{
+    width: 40%
+}
+
+.currGrade {
+    width: 25%;
+
+}
+
+.currSubject {
+    width: 25%;
+}
+
+.btn-orange {
+    background-color: #FF7900 !important;
+}
+
+.btn-light-grey {
+    background-color: #88A0A8;
+}
+
+.registerButton {
+    margin-right: 10px;
+}
+
+.aprilPic {
+    border-radius: 50%;
+
+}
 
 
 

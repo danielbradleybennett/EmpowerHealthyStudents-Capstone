@@ -8,34 +8,66 @@
 
 <h1>Curriculum</h1>
 
+<div>
+    @if (ViewBag.IsAdmin == true)
+    {
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    }
+</div>
+    <br />
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="currName">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th class="currDescription">
                 @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="currSubject">
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th class="currGrade">
+                @Html.DisplayNameFor(model => model.Grade)
             </th>
 
         </tr>
     </thead>
-    <tbody>
+    <tbody class="curriculum-table">
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
+            <td>
+                <a class="nav-link" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            @if (String.IsNullOrEmpty(@item.Image))
+            {
                 <td>
-                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                    <img src="~/images/LogoMakr_0Vw3E3.png" style="max-height: 75px; max-width: 75px;" />
                 </td>
+            }
+            else
+            {
+
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <img src="~/images/@item.Image" style="max-height: 75px; max-width: 75px;" />
+                    <img src="~/images/@item.Image" alt="" style="max-height: 75px; max-width: 75px;" />
+
                 </td>
 
 
-            </tr>
+
+            }
+        </tr>
         }
     </tbody>
 </table>

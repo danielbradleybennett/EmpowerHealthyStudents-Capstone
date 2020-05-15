@@ -83,10 +83,10 @@ namespace EmpowerHealthyStudents.Controllers
             
             else
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "BlogPosts", new { id = id });
             }
         }
-
+        
         // POST: Comments/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

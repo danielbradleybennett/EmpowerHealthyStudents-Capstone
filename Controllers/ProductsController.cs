@@ -14,6 +14,7 @@ using EmpowerHealthyStudents.Models.ViewModels;
 using System.Runtime.InteropServices.ComTypes;
 using System.IO;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.AspNetCore.Builder.Extensions;
 
 namespace EmpowerHealthyStudents.Controllers
 {
@@ -36,9 +37,14 @@ namespace EmpowerHealthyStudents.Controllers
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
-                if (user.IsAdmin == true)
+                if (user != null)
                 {
-                    return RedirectToAction(nameof(AdminIndex));
+                    ViewBag.IsAdmin = user.IsAdmin;
+                }
+
+                else
+                {
+                    ViewBag.IsAdmin = false;
                 }
 
                 if (string.IsNullOrWhiteSpace(searchString))
@@ -79,20 +85,6 @@ namespace EmpowerHealthyStudents.Controllers
             }
         
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
            
 
@@ -137,6 +129,16 @@ namespace EmpowerHealthyStudents.Controllers
             if (products == null)
             {
                 return NotFound();
+            }
+
+            if (user != null)
+            {
+                ViewBag.IsAdmin = user.IsAdmin;
+            }
+
+            else
+            {
+                ViewBag.IsAdmin = false;
             }
 
             return View(products);
@@ -190,9 +192,6 @@ namespace EmpowerHealthyStudents.Controllers
                     FileType = productViewModel.FileType,
                     Subject = productViewModel.Subject
                     
-                    
-                    
-
                 };
                 if (productViewModel.Image != null && productViewModel.Image.Length > 0)
                 {
@@ -270,12 +269,7 @@ namespace EmpowerHealthyStudents.Controllers
             pvm.Subject = product.Subject;
             pvm.FileType = product.FileType;
 
-
-
-
-
-            product.Name = product.Name;
-            product.Description = product.Description;
+            
 
             if (user != null)
             {
@@ -301,7 +295,7 @@ namespace EmpowerHealthyStudents.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind("Id,Name,Description,UserId,File,Image")] ProductViewModels productViewModel)
+        public async Task<ActionResult> Edit(ProductViewModels productViewModel)
         {
             try
             {
@@ -318,6 +312,11 @@ namespace EmpowerHealthyStudents.Controllers
                 product.Grade = productViewModel.Grade;
                 product.FileType = productViewModel.FileType;
                 product.Subject = productViewModel.Subject;
+                
+                if(productViewModel.Image == null)
+                {
+                    product.Image = productViewModel.ImagePath;
+                }
 
                 if (productViewModel.Image != null && productViewModel.Image.Length > 0)
                 {
@@ -337,6 +336,11 @@ namespace EmpowerHealthyStudents.Controllers
                         await productViewModel.Image.CopyToAsync(stream);
                     }
 
+                }
+
+                if (productViewModel.File == null)
+                {
+                    product.File = productViewModel.FilePath;
                 }
 
                 if (productViewModel.File != null && productViewModel.File.Length > 0)
