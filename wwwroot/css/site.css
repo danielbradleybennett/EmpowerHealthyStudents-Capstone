@@ -142,6 +142,32 @@ body {
     background-color: #C7EFCF !important;
 }
 
+.blog {
+    word-break:normal;
+    white-space: pre-wrap;
+}
+
+.body {
+    font-size:large !important;
+}
+
+.currName {
+    width: 25%;
+}
+
+.currDescription{
+    width: 40%
+}
+
+.currGrade {
+    width: 25%;
+
+}
+
+.currSubject {
+    width: 25%;
+}
+
 
 
 
