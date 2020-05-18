@@ -140,7 +140,8 @@ namespace EmpowerHealthyStudents.Controllers
             var view = new Comment()
             {
                 Text = comments.Text,
-                BlogPostId = comments.BlogPostId
+                BlogPostId = comments.BlogPostId,
+                Date = DateTime.Now
             };
 
            

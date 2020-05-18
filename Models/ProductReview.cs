@@ -20,6 +20,9 @@ namespace EmpowerHealthyStudents.Models
 
         public int ProductId { get; set; }
 
+        [DataType(DataType.Date)]
+        public DateTime Date { get; set; }
+
 
     }
 }

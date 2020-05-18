@@ -104,7 +104,7 @@ namespace EmpowerHealthyStudents.Controllers
                 //represented here as "productViewModel"
                 var productReviews = new ProductReview
                 {
-
+                    Date = DateTime.Now,
                     Comment = productReview.Comment,
                     UserId = user.Id,
                     ProductId = id

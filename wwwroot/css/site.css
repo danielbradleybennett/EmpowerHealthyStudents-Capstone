@@ -173,7 +173,7 @@ body {
 
 .productDescription {
     word-break: normal;
-    white-space: pre-line;
+    white-space: normal;
 }
 
 

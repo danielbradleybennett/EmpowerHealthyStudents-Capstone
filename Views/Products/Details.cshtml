@@ -58,45 +58,50 @@
             </div>
 
                 <div class="card-body">
-                    <p>
+                    <div>
                         @if (User.Identity.IsAuthenticated || ViewBag.IsAdmin == true)
                     {
                             
                                 <a class="btn btn-orange" href="~/files/@Model.File" target="_blank">Click Here To Download</a>
                             
                         }
-                        </p>
+                        </div>
                         
                 </div>
                 <hr />
               
-                <ul class="list-group list-group-flush font-weight-bold reviewComment">
+                <ul class="list-group list-group-flush font-weight-bold ">
                     @foreach (var review in Model.ProductReviews)
                     {
 
-                       <p>
-                        <li class="list-group-item comment-edit-delete">
-                            <p>
-                                @Html.DisplayFor(modelitem => review.User.FirstName): @Html.DisplayFor(modelItem => review.Comment)
-                            </p>
-                            <div class="review-edit-delete">
-                                <div>
-                                @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
-                                    {
-                                            <a class="btn btn-orange reviewEdit" asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
-                                    }
-                                </div>
-                                <div>
-                                    @if (review.UserId == userMan.GetUserId(User))
-                                     {
-                                        <a class="btn btn-orange reviewDelete" asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
-                                           
-                                    }
-                                 </div>
-                                        
-                                </div>
-                        </li>
-                       </p>
+                       <div>
+                       <li class="list-group-item comment-edit-delete reviewBackground">
+                           <div>
+                               @Html.DisplayFor(modelItem => review.User.FirstName): @Html.DisplayFor(modelItem => review.Comment)
+                           </div>
+                           <div>
+                               @Html.DisplayFor(modelItem => review.Date)
+                           </div>
+                           @*<div>
+                               @Html.DisplayFor(modelItem => review.Date)
+                           </div>*@
+                           <div class="review-edit-delete">
+                               <div>
+                                   @if (review.UserId == userMan.GetUserId(User) || ViewBag.IsAdmin == true)
+                                   {
+                                       <a class="btn btn-orange reviewEdit" asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@review.Id">Edit</a>
+                                   }
+                               </div>
+                               <div>
+                                   @if (review.UserId == userMan.GetUserId(User))
+                                   {
+                                       <a class="btn btn-orange reviewDelete" asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@review.Id">Delete</a>
+
+                                   }
+                               </div>
+                            </div>
+                       </li>
+                       </div>
 
 
                     }
