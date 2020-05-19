@@ -167,15 +167,8 @@ body {
 
 .blog {
     word-break:normal;
-    
     white-space: pre-line;
 }
-
-.productDescription {
-    word-break: normal;
-    white-space: pre-line;
-}
-
 
 
 .currName {

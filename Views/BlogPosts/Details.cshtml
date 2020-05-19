@@ -35,9 +35,6 @@
     <ul class="list-group list-group-flush">
         @foreach (var comment in Model.Comments.OrderByDescending(c => c.Date))
         {
-
-
-
             <li class="list-group-item commentCard">
                 <p>
                     @Html.DisplayFor(modelitem => comment.User.FirstName): @Html.DisplayFor(modelItem => comment.Text)

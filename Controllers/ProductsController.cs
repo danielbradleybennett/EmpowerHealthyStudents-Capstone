@@ -33,7 +33,8 @@ namespace EmpowerHealthyStudents.Controllers
         public async Task<ActionResult> Index(string searchString)
         {
 
-           
+            var productList = await _context.Product
+                .ToListAsync();
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
@@ -51,14 +52,14 @@ namespace EmpowerHealthyStudents.Controllers
                 {
                     var products = await _context.Product
                    .ToListAsync();
-                    return View(products);
+                    return View(products.OrderByDescending(p => p.Id));
                 }
                 else
                 {
                     var products = await _context.Product
                      .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
                      .ToListAsync();
-                    return View(products);
+                    return View(products.OrderByDescending(p => p.Id));
                 }
             }
 
@@ -68,50 +69,25 @@ namespace EmpowerHealthyStudents.Controllers
             {
                 var products = await _context.Product
                .ToListAsync();
-                return View(products);
+                return View(products.OrderByDescending(p => p.Id));
             }
             else
             {
                 var products = await _context.Product
                  .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
                  .ToListAsync();
-                return View(products);
+                return View(products.OrderByDescending(p => p.Id));
             }
 
             }
             else
             {
-                return View();
+                return View(productList.OrderByDescending(p => p.Id));
             }
         
         }
 
            
-
-            public async Task<ActionResult> AdminIndex(string searchString)
-            {
-
-            var user = await GetCurrentUserAsync();
-         
-
-            if (string.IsNullOrWhiteSpace(searchString))
-            {
-                var adminProducts = await _context.Product
-                 .ToListAsync();
-                return View(adminProducts);
-            }
-            else
-            {
-                var adminProducts = await _context.Product
-                 .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
-                 .ToListAsync();
-                return View(adminProducts);
-            }
-
-          
-        }
-
-        //// GET: Products/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             
@@ -368,7 +344,7 @@ namespace EmpowerHealthyStudents.Controllers
                 await _context.SaveChangesAsync();
 
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = product.Id });
             }
             catch (Exception ex)
             {
