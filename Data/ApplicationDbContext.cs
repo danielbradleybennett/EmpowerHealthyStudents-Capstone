@@ -40,18 +40,6 @@ namespace EmpowerHealthyStudents.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            
-
-            //modelBuilder.Entity<Comment>()
-            //    .HasMany(c => c.BlogComment)
-            //    .WithOne(l => l.Comment)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            //modelBuilder.Entity<Order>()
-            //    .HasMany(o => o.OrderProducts)
-            //    .WithOne(l => l.Order)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
 
             ApplicationUser user = new ApplicationUser
             {
@@ -76,7 +64,7 @@ namespace EmpowerHealthyStudents.Data
                 FirstName = "Karen",
                 LastName = "Karen",
                 UserName = "karen@karen.com",
-                IsAdmin = true,
+                IsAdmin = false,
                 NormalizedUserName = "KAREN@KAREN.COM",
                 Email = "karen@karen.com",
                 NormalizedEmail = "KAREN@KAREN.COM",
@@ -86,7 +74,7 @@ namespace EmpowerHealthyStudents.Data
                 Id = "10000001-ffff-ffff-ffff-ffffffffffff"
             };
             var passwordHash1 = new PasswordHasher<ApplicationUser>();
-            user.PasswordHash = passwordHash1.HashPassword(user1, "Admin8*");
+            user1.PasswordHash = passwordHash1.HashPassword(user1, "Admin8*");
             modelBuilder.Entity<ApplicationUser>().HasData(user1);
 
             ApplicationUser user2 = new ApplicationUser
@@ -94,7 +82,7 @@ namespace EmpowerHealthyStudents.Data
                 FirstName = "Luke",
                 LastName = "Luke",
                 UserName = "luke@luke.com",
-                IsAdmin = true,
+                IsAdmin = false,
                 NormalizedUserName = "  LUKE@LUKE.COM",
                 Email = "luke@luke.com",
                 NormalizedEmail = "LUKE@LUKE.COM",
@@ -104,7 +92,7 @@ namespace EmpowerHealthyStudents.Data
                 Id = "10000002-ffff-ffff-ffff-ffffffffffff"
             };
             var passwordHash2 = new PasswordHasher<ApplicationUser>();
-            user.PasswordHash = passwordHash2.HashPassword(user2, "Admin8*");
+            user2.PasswordHash = passwordHash2.HashPassword(user2, "Admin8*");
             modelBuilder.Entity<ApplicationUser>().HasData(user2);
 
             ApplicationUser user3 = new ApplicationUser
@@ -112,7 +100,7 @@ namespace EmpowerHealthyStudents.Data
                 FirstName = "Seleste",
                 LastName = "Seleste",
                 UserName = "seleste@seleste.com",
-                IsAdmin = true,
+                IsAdmin = false,
                 NormalizedUserName = "  SELESTE@SELESTE.COM",
                 Email = "seleste@seleste.com",
                 NormalizedEmail = "SELESTE@SELESTE.COM",
@@ -122,7 +110,7 @@ namespace EmpowerHealthyStudents.Data
                 Id = "10000003-ffff-ffff-ffff-ffffffffffff"
             };
             var passwordHash3 = new PasswordHasher<ApplicationUser>();
-            user.PasswordHash = passwordHash3.HashPassword(user3, "Admin8*");
+            user3.PasswordHash = passwordHash3.HashPassword(user3, "Admin8*");
             modelBuilder.Entity<ApplicationUser>().HasData(user3);
 
             modelBuilder.Entity<Product>().HasData(
@@ -422,110 +410,119 @@ namespace EmpowerHealthyStudents.Data
                      UserId = "10000001-ffff-ffff-ffff-ffffffffffff",
                      BlogPostId = 7
                  },
+
                  new Comment()
                  {
                      Id = 8,
                      Text = "This is great stuff.",
                      Date = DateTime.Parse("04/11/20"),
-                     UserId = "10000002 - ffff - ffff - ffff - ffffffffffff",
+                     UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
                      BlogPostId = 1
-                 }, new Comment()
-                 {
-                     Id = 9,
-                     Text = "Great advice.",
-                     Date = DateTime.Parse("04/15/20"),
-                     UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 2
-                 }, new Comment()
-                 {
-                     Id = 10,
-                     Text = "This is great stuff.",
-                     Date = DateTime.Parse("04/20/20"),
-                     UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 3
                  },
-                 new Comment()
-                 {
-                     Id = 11,
-                     Text = "Wonderful Advice.",
-                     Date = DateTime.Parse("04/25/20"),
-                     UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 4
-                 },
-                 new Comment()
-                 {
-                     Id = 12,
-                     Text = "This is great stuff.",
-                     Date = DateTime.Parse("05/01/20"),
-                     UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 5
-                 }, new Comment()
-                 {
-                     Id = 13,
-                     Text = "Great advice.",
-                     Date = DateTime.Parse("05/3/20"),
-                     UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 6
-                 }, new Comment()
-                 {
-                     Id = 14,
-                     Text = "Lovely Advice.",
-                     Date = DateTime.Parse("05/10/20"),
-                     UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 7
-                 },
-                  new Comment()
-                  {
-                      Id = 15,
-                      Text = "This is great stuff.",
-                      Date = DateTime.Parse("04/11/20"),
-                      UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
-                      BlogPostId = 1
-                  }, new Comment()
-                  {
-                      Id = 16,
-                      Text = "Great advice.",
-                      Date = DateTime.Parse("04/15/20"),
-                      UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
-                      BlogPostId = 2
-                  }, new Comment()
-                  {
-                      Id = 17,
-                      Text = "This is great stuff.",
-                      Date = DateTime.Parse("04/20/20"),
-                      UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
-                      BlogPostId = 3
-                  },
-                 new Comment()
-                 {
-                     Id = 18,
-                     Text = "Wonderful Advice.",
-                     Date = DateTime.Parse("04/25/20"),
-                     UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 4
-                 },
-                 new Comment()
-                 {
-                     Id = 19,
-                     Text = "This is great stuff.",
-                     Date = DateTime.Parse("05/01/20"),
-                     UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 5
-                 }, new Comment()
-                 {
-                     Id = 20,
-                     Text = "Great advice.",
-                     Date = DateTime.Parse("05/03/20"),
-                     UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 6
-                 }, new Comment()
-                 {
-                     Id = 21,
-                     Text = "Lovely Advice.",
-                     Date = DateTime.Parse("04/10/20"),
-                     UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
-                     BlogPostId = 7
-                 });
+                     new Comment()
+                     {
+                         Id = 9,
+                         Text = "Great advice.",
+                         Date = DateTime.Parse("04/15/20"),
+                         UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 2
+                     },
+                     new Comment()
+                     {
+                         Id = 10,
+                         Text = "This is great stuff.",
+                         Date = DateTime.Parse("04/20/20"),
+                         UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 3
+                     },
+                     new Comment()
+                     {
+                         Id = 11,
+                         Text = "Wonderful Advice.",
+                         Date = DateTime.Parse("04/25/20"),
+                         UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 4
+                     },
+                     new Comment()
+                     {
+                         Id = 12,
+                         Text = "This is great stuff.",
+                         Date = DateTime.Parse("05/01/20"),
+                         UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 5
+                     },
+                     new Comment()
+                     {
+                         Id = 13,
+                         Text = "Great advice.",
+                         Date = DateTime.Parse("05/3/20"),
+                         UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 6
+                     },
+                     new Comment()
+                     {
+                         Id = 14,
+                         Text = "Lovely Advice.",
+                         Date = DateTime.Parse("05/10/20"),
+                         UserId = "10000002-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 7
+                     },
+                     new Comment()
+                     {
+                         Id = 15,
+                         Text = "This is great stuff.",
+                         Date = DateTime.Parse("04/11/20"),
+                         UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 1
+                     },
+                     new Comment()
+                     {
+                         Id = 16,
+                         Text = "Great advice.",
+                         Date = DateTime.Parse("04/15/20"),
+                         UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 2
+                     },
+                     new Comment()
+                     {
+                         Id = 17,
+                         Text = "This is great stuff.",
+                         Date = DateTime.Parse("04/20/20"),
+                         UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 3
+                     },
+                     new Comment()
+                     {
+                         Id = 18,
+                         Text = "Wonderful Advice.",
+                         Date = DateTime.Parse("04/25/20"),
+                         UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 4
+                     },
+                     new Comment()
+                     {
+                         Id = 19,
+                         Text = "This is great stuff.",
+                         Date = DateTime.Parse("05/01/20"),
+                         UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 5
+                     },
+                     new Comment()
+                     {
+                         Id = 20,
+                         Text = "Great advice.",
+                         Date = DateTime.Parse("05/03/20"),
+                         UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 6
+                     },
+                     new Comment()
+                     {
+                         Id = 21,
+                         Text = "Lovely Advice.",
+                         Date = DateTime.Parse("04/10/20"),
+                         UserId = "10000003-ffff-ffff-ffff-ffffffffffff",
+                         BlogPostId = 7
+                     });
             modelBuilder.Entity<ProductReview>().HasData(
                 new ProductReview()
                 {

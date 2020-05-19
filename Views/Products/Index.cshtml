@@ -22,9 +22,7 @@
             <th class="currName">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th class="currDescription">
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+           
             <th class="currSubject">
                 @Html.DisplayNameFor(model => model.Subject)
             </th>
@@ -41,11 +39,7 @@
                 <td>
                     <a class="nav-link text-orange font-weight-bold" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
-                <td class="productDescription font-weight-bold">
-                    
-                      @Html.DisplayFor(modelItem => item.Description)
-                    
-                </td>
+                
                 <td class="font-weight-bold">
                     @Html.DisplayFor(modelItem => item.Subject)
                 </td>

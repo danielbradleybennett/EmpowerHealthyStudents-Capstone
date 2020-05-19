@@ -285,10 +285,10 @@ namespace EmpowerHealthyStudents.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "67ad88a7-d0ec-4b9d-a689-08bfb16748cf", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAECJphNcK4EsxPEARykMMjVY0y4Qx/c3Xp+P7PFu3X8/BApHEhwFS/7H7Y379l4lSCQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" },
-                    { "10000001-ffff-ffff-ffff-ffffffffffff", 0, "147ec19e-78df-49a8-8404-f849c1dbecd6", "karen@karen.com", true, "Karen", true, "Karen", false, null, "KAREN@KAREN.COM", "KAREN@KAREN.COM", null, null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "karen@karen.com" },
-                    { "10000002-ffff-ffff-ffff-ffffffffffff", 0, "e772e266-7574-4f93-9be0-2310bb78dae0", "luke@luke.com", true, "Luke", true, "Luke", false, null, "LUKE@LUKE.COM", "  LUKE@LUKE.COM", null, null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "luke@luke.com" },
-                    { "10000003-ffff-ffff-ffff-ffffffffffff", 0, "32fb23ea-52a5-4ed9-8f83-92425f0de40f", "seleste@seleste.com", true, "Seleste", true, "Seleste", false, null, "SELESTE@SELESTE.COM", "  SELESTE@SELESTE.COM", null, null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "seleste@seleste.com" }
+                    { "10000000-ffff-ffff-ffff-ffffffffffff", 0, "01493bb2-dc53-43cc-a32f-e0874324bf5f", "admin@admin.com", true, "April", true, "Crenshaw", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEDCGXW6Y9T8m8cK3La3ed9ARu9EZR20GF8b3TV8PpDpHgmcVB2y0tW2Dlit6HXCHOQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" },
+                    { "10000001-ffff-ffff-ffff-ffffffffffff", 0, "0371d1a1-2e87-407a-b4eb-0151657bc851", "karen@karen.com", true, "Karen", false, "Karen", false, null, "KAREN@KAREN.COM", "KAREN@KAREN.COM", "AQAAAAEAACcQAAAAEPRO+k9shQ69JLYhKECSzQFECBdQi3x6/CWTEpyBnCjhX0Lj5IFjnVCBM0NE9bCWhg==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "karen@karen.com" },
+                    { "10000002-ffff-ffff-ffff-ffffffffffff", 0, "2713d0d5-b3ff-498e-99bf-70182ffbb52e", "luke@luke.com", true, "Luke", false, "Luke", false, null, "LUKE@LUKE.COM", "  LUKE@LUKE.COM", "AQAAAAEAACcQAAAAEJpeFc7wMe/y2ju0kxekpuWUg8VVi4sbKxcUxDX7wfXWwIacPYbUbPqmoaXnEdn0aQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "luke@luke.com" },
+                    { "10000003-ffff-ffff-ffff-ffffffffffff", 0, "fb89ac08-4f35-4071-895f-c59891c23724", "seleste@seleste.com", true, "Seleste", false, "Seleste", false, null, "SELESTE@SELESTE.COM", "  SELESTE@SELESTE.COM", "AQAAAAEAACcQAAAAEMZ+2Ne3PLzKmN/tCLmWtmpM/aRpjhRO07fuDmqiCyy5xw+78OiQuj3m3Hyow9y+yQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "seleste@seleste.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -296,7 +296,9 @@ namespace EmpowerHealthyStudents.Migrations
                 columns: new[] { "Id", "Blog", "Date", "Title", "UserId" },
                 values: new object[,]
                 {
-                    { 1, @"Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine:
+                    { 1, @"Teaching In Quarantine: How Do I Stay Motivated ?
+                Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation. Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over. If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine:
+
                 1.	Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 
                 2.	Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear!
                 3.	Connect with friends and family each day
@@ -317,9 +319,13 @@ namespace EmpowerHealthyStudents.Migrations
                 Once you connect with students, you can try these simple, free mini-lessons to help them gain strategies for self-regulation.
 
                 •	Strategy 1: Teach students about their brains. Just as we help students understand how puberty changes their bodies, we should help them understand how it changes their minds. Teach ""Understanding the Parts of the Brain."" Then discuss how the reward center (the limbic system) is fully developed in the teenage brain, which is why teenagers experience emotion so profoundly. Afterward discuss how the prefrontal cortex is still rapidly developing—the spot that is transforming them from 13 year olds to adults.
+
                 •	Strategy 2: Help students connect with their emotional centers. Instead of repressing students' feelings, we should recognize them and help students understand them. Teach ""Checking the Emotional Thermometer"" to give students a quick way to gauge the intensity of happiness, sadness, hurt, anger, love, or other feelings. Then discuss how feelings aren't right or wrong—they just are. The right or wrong part comes into play when people choose what to do with their feelings.
+
                 •	Strategy 3: Teach the 5-5-5 breathing strategy. Given that emotions are more intense during the teenage years, students need strategies that help them manage stress, anxiety, anger, and other intense feelings. Teach ""Using 5-5-5 Breathing to Calm Down."" Afterward, ask students to share stories about situations in their day so far (or yesterday, if it's first hour), when they could have used such a strategy. Have them watch for situations that arise later in the day and try 5-5-5 breathing.
+
                 •	Strategy 4: Promote positive self-talk. If a student is feeling bad, persistent negative thoughts can create a downward spiral. Help students recognize these thoughts, stop them, and replace them with positive thoughts—a first step in self-regulation. Teach ""Using Positive Self-Talk."" Discuss how this strategy helps break a negative fixed mindset and develop a positive growth mindset.
+
                 •	Strategy 5: Help students set goals. Self-regulation begins in the moment, with recognizing moods and dealing with them appropriately. Self-regulation, however, can also grow into the future. Teach ""Setting and Reaching Goals."" Discuss how students can set goals in school and beyond. Ask them to think about who they want to become in one month, one year, and five years. Then ask them what doable steps they can take in the short term and long term to reach their goals.
                 ", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "5 Strategies to Help Your Students Self - Regulate", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 3, @"Some kids are ‘naturally’ more resilient than others. Straight off the bat, those with an optimistic personality will generally find change far more manageable than the more pessimistic among us. Luckily, there are lots of things we can do to nurture that natural resilience, or even create it from scratch, in our pessimists.
@@ -460,7 +466,7 @@ namespace EmpowerHealthyStudents.Migrations
                     { 9, @"In this post-reading activity for Shakespeare's Hamlet, the students will roleplay as different characters. They will be pitted against each other and attempt to defend their character's right to exist within the play. After each smackdown match-up, the class will vote on who does a better job of defending themselves. The winner will move on to the next round. The process will be completed until there is only one student left standing. Feel free to crate a championship belt for the winner of this activity!
 
                 Note: You will need to provide slips of paper with character names.
-                ", null, "Presentation(Powerpoint) File", "7th, 8th, 9th, 10th, 11th, 12th", null, "Hamlet Character Smackdown: Roleplay Lesson", "Reading, Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                ", "HamletCharacterSmackdownRoleplayLesson(1)(1).ppt", "Presentation(Powerpoint) File", "7th, 8th, 9th, 10th, 11th, 12th", "LogoMakr_0Vw3E3.png", "Hamlet Character Smackdown: Roleplay Lesson", "Reading, Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 1, @"This guided handout allows adolescents to identify the unhealthy coping skills they use when their emotions are overwhelming and to choose from 50 healthy coping skills instead!
 
                 This resource features:
@@ -473,28 +479,28 @@ namespace EmpowerHealthyStudents.Migrations
                 Perfect for school counselors, social workers, or therapists to help students reflect on their behavior, choose new coping skills, and reflect on why the chosen skills can help! It could also be used as a contract for behavior improvement.
 
                 Keep on file, update during each session, and use alongside CBT and DBT!
-                ", "Mind_flayer.jpg", "PDF", "9th, 10th, 11th, 12th", "Mind_flayer.jpg", "Making Healthy Choices: Coping Skill Worksheet For Adolescents", "School Counseling, Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                ", "Making Healthy Choices.pdf", "PDF", "9th, 10th, 11th, 12th", "CopingSkill.jpg", "Making Healthy Choices: Coping Skill Worksheet For Adolescents", "School Counseling, Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 2, @"This product contains one powerpoint presentation with ten journal prompts to get students thinking about resilience.Could be used for bell ringer activities, within dedicated SEL time, or individually.
 
-                Includes BONUS ""Additional Resources"" pages with articles, websites, and literature that discuss conflict.", null, "PowerPoint", "8th, 9th, 10th, 11th, 12th", null, "Social Emotional Learning Journal Prompts Unit 2: Conflict", "School Counseling, Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                Includes BONUS ""Additional Resources"" pages with articles, websites, and literature that discuss conflict.", "SEL Journal Prompts Unit 2 Conflict.pptx", "PowerPoint", "8th, 9th, 10th, 11th, 12th", "10JournalPrompts2.jpg", "Social Emotional Learning Journal Prompts Unit 2: Conflict", "School Counseling, Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 3, @"-Customizable in Powerpoint
 
                 This literary element project is a post-reading exploration of characterization, conflict, fable, satire, foreshadowing, symbolism, irony, and propaganda within the novel Animal Farm by George Orwell. Students will complete various activities that improve comprehension of the novel as well as analysis of major literary elements. Graphic organizers and creative responses, including writing an original fable, help keep student interest high as they learn more about this important novel.
 
                 This project was originally designed for an English II Standard and Inclusion class, but will work great for students at any level.
 
-                Please note that there is no rubric for this resource.", null, "PowerPoint", "7th, 8th, 9th, 10th, 11th, 12th", null, "Animal Farm Literary Elements Project", "Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                Please note that there is no rubric for this resource.", "AnimalFarmLiteraryElementsProject(1).docx", "PowerPoint", "7th, 8th, 9th, 10th, 11th, 12th", "AnimalFarm.jpg", "Animal Farm Literary Elements Project", "Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 4, @"This product contains one powerpoint presentation with ten journal prompts to get students thinking about resilience. Could be used for bell ringer activities, within dedicated SEL time, or individually.
 
-                Includes BONUS ""Additional Resources"" pages with articles, websites, and literature that discuss resilience.", null, "Presentation (Powerpoint) File", "9th, 10th, 11th, 12th", null, "Social Emotional Learning Journal Prompts Unit 1: Resilience", "Life Skills, Character Education, School Psychology", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                Includes BONUS ""Additional Resources"" pages with articles, websites, and literature that discuss resilience.", "SEL Journal Prompts Unit 1 Resilience.pptx", "Presentation (Powerpoint) File", "9th, 10th, 11th, 12th", "10SocialEmotionalLearningJournalPrompts.jpg", "Social Emotional Learning Journal Prompts Unit 1: Resilience", "Life Skills, Character Education, School Psychology", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 5, @"50 unique positive affirmation coloring pages! These affirmations focus on choice, behavior, positivity, challenges, hope, and resilience. Each affirmation was written by me and are in standard 8.5x11 paper.
 
-                Students can decorate and color these pages, and would look great as classroom art. They can also be used as a mindfulness or calming practice!", null, "Presentation (Powerpoint) File", "7th, 8th, 9th, 10th, 11th, 12th", null, "50 Positive Affirmation Coloring Pages", "School Counseling, Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                Students can decorate and color these pages, and would look great as classroom art. They can also be used as a mindfulness or calming practice!", "EmpowerHealthPositive Affirmation Coloring Pages Thumbnail(1).pptx", "Presentation (Powerpoint) File", "7th, 8th, 9th, 10th, 11th, 12th", "50 positive affirmation coloring pages.jpg", "50 Positive Affirmation Coloring Pages", "School Counseling, Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 6, @"The English ""Best Friend"" is a cheat sheet for your students to keep all year. It features commonly confused words, a list of words to use instead of ""said"", how to be concise in academic writing, errors in construction notes, common logical fallacies, literary terms and definitions, and more! It includes two text boxes reserved for specific information relating to your class or school.
 
                 I printed these on brightly colored paper and named them after cartoon and literary characters, and we had an ""adoption"" ceremony at the beginning of the year. I allow my students to use these on any test!
 
-                This is a two page document. The file name reads ""English IV"" but it's great for any level 7th-12th.", null, "Word Document File", "7th, 8th, 9th, 10th, 11th, 12th", null, "English Best Friend Cheat Sheet", "English, Literature, Writing", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                This is a two page document. The file name reads ""English IV"" but it's great for any level 7th-12th.", "EnglishBestFriendCheatSheet(1).docx", "Word Document File", "7th, 8th, 9th, 10th, 11th, 12th", "LogoMakr_0Vw3E3.png", "English Best Friend Cheat Sheet", "English, Literature, Writing", "10000000-ffff-ffff-ffff-ffffffffffff" },
                     { 7, @"-Now in PowerPoint form
 
                 -Fully customizable
@@ -505,9 +511,9 @@ namespace EmpowerHealthyStudents.Migrations
 
                 Student choice is featured in this post-reading cumulative project for the book 1984 by George Orwell. Students choose from over 20 activities of various point values in order to get 100 points. Multiple intelligences are recognized within the activities, which range from creative writing to graphic design.
 
-                This project was originally designed for an English IV standard and inclusion class, but may be adapted for higher levels.", null, "Presentation (Powerpoint) File", "7th, 8th, 9th, 10th, 11th, 12th", null, "1984 100 Point Project", "Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 8, "In this post-reading activity for Shakespeare's Hamlet, the student will create an epithet for one of the (many) dead characters. This activity reinforces comprehension and students have fun choosing symbols and quotes to draw on the picture of the grave.", null, "Word Document File", "7th, 8th, 9th, 10th, 11th, 12th", null, "Hamlet Character Epithet", "Reading, Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 10, "These ten tips come in a .pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!", null, "PDF", "5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th", null, "Ten Tips to Build Your Resilience", "Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" }
+                This project was originally designed for an English IV standard and inclusion class, but may be adapted for higher levels.", "1984100PointProject.doc", "Presentation (Powerpoint) File", "7th, 8th, 9th, 10th, 11th, 12th", "1984.jpg", "1984 100 Point Project", "Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 8, "In this post-reading activity for Shakespeare's Hamlet, the student will create an epithet for one of the (many) dead characters. This activity reinforces comprehension and students have fun choosing symbols and quotes to draw on the picture of the grave.", "HamletCharacterEpithet(1).docx", "Word Document File", "7th, 8th, 9th, 10th, 11th, 12th", "LogoMakr_0Vw3E3.png", "Hamlet Character Epithet", "Reading, Literature", "10000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 10, "These ten tips come in a .pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!", "10 Tips to Build Resilience.pdf", "PDF", "5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th", "LogoMakr_0Vw3E3.png", "Ten Tips to Build Your Resilience", "Character Education", "10000000-ffff-ffff-ffff-ffffffffffff" }
                 });
 
             migrationBuilder.InsertData(
@@ -516,14 +522,61 @@ namespace EmpowerHealthyStudents.Migrations
                 values: new object[,]
                 {
                     { 1, 1, new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000001-ffff-ffff-ffff-ffffffffffff" },
-                    { 2, 1, new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Thank you for this advice.", "10000001-ffff-ffff-ffff-ffffffffffff" },
-                    { 3, 1, new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000001-ffff-ffff-ffff-ffffffffffff" }
+                    { 21, 7, new DateTime(2020, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lovely Advice.", "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 14, 7, new DateTime(2020, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lovely Advice.", "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 7, 7, new DateTime(2020, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 20, 6, new DateTime(2020, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great advice.", "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 6, 6, new DateTime(2020, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 19, 5, new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 12, 5, new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 5, 5, new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Thank you for this advice.", "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 18, 4, new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful Advice.", "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 13, 6, new DateTime(2020, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great advice.", "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 4, 4, new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "You are a Godsend.", "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 17, 3, new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 10, 3, new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 3, 3, new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 16, 2, new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great advice.", "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 9, 2, new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great advice.", "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 2, 2, new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Thank you for this advice.", "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 15, 1, new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 8, 1, new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is great stuff.", "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 11, 4, new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful Advice.", "10000002-ffff-ffff-ffff-ffffffffffff" }
                 });
 
             migrationBuilder.InsertData(
                 table: "ProductReview",
                 columns: new[] { "Id", "Comment", "Date", "ProductId", "UserId" },
-                values: new object[] { 1, "This is so inspiring.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "10000001-ffff-ffff-ffff-ffffffffffff" });
+                values: new object[,]
+                {
+                    { 6, "Love this.", new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 15, "Love this.", new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 24, "Exactly what I needed.", new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 7, "This is so inspiring.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 16, "This is so inspiring.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 9, "Love this.", new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 8, "Cool. Thanks", new DateTime(2020, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 17, "Cool. Thanks", new DateTime(2020, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 26, "Cool. Thanks", new DateTime(2020, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 23, "Perfect.", new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 25, "Love this.", new DateTime(2020, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 14, "Thanks.", new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 19, "Thanks.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 22, "Awesome.", new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 13, "So Amazing.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 4, "So Amazing.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 21, "This is a great idea.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 12, "This is a great idea.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 3, "This is a great idea.", new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 20, "Great Idea.", new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "10000002-ffff-ffff-ffff-ffffffffffff" },
+                    { 11, "My class enjoyed this.", new DateTime(2020, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 2, "My class enjoyed this.", new DateTime(2020, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 18, "Love this.", new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 10, "Thanks. Great resource.", new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "10000003-ffff-ffff-ffff-ffffffffffff" },
+                    { 1, "Thanks. Great resource.", new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 5, "Thanks.", new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "10000001-ffff-ffff-ffff-ffffffffffff" },
+                    { 27, "Love this.", new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, "10000002-ffff-ffff-ffff-ffffffffffff" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

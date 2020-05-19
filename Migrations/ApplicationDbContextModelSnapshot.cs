@@ -99,7 +99,7 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "67ad88a7-d0ec-4b9d-a689-08bfb16748cf",
+                            ConcurrencyStamp = "01493bb2-dc53-43cc-a32f-e0874324bf5f",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "April",
@@ -108,7 +108,7 @@ namespace EmpowerHealthyStudents.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECJphNcK4EsxPEARykMMjVY0y4Qx/c3Xp+P7PFu3X8/BApHEhwFS/7H7Y379l4lSCQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDCGXW6Y9T8m8cK3La3ed9ARu9EZR20GF8b3TV8PpDpHgmcVB2y0tW2Dlit6HXCHOQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -118,15 +118,16 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000001-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "147ec19e-78df-49a8-8404-f849c1dbecd6",
+                            ConcurrencyStamp = "0371d1a1-2e87-407a-b4eb-0151657bc851",
                             Email = "karen@karen.com",
                             EmailConfirmed = true,
                             FirstName = "Karen",
-                            IsAdmin = true,
+                            IsAdmin = false,
                             LastName = "Karen",
                             LockoutEnabled = false,
                             NormalizedEmail = "KAREN@KAREN.COM",
                             NormalizedUserName = "KAREN@KAREN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPRO+k9shQ69JLYhKECSzQFECBdQi3x6/CWTEpyBnCjhX0Lj5IFjnVCBM0NE9bCWhg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -136,15 +137,16 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000002-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e772e266-7574-4f93-9be0-2310bb78dae0",
+                            ConcurrencyStamp = "2713d0d5-b3ff-498e-99bf-70182ffbb52e",
                             Email = "luke@luke.com",
                             EmailConfirmed = true,
                             FirstName = "Luke",
-                            IsAdmin = true,
+                            IsAdmin = false,
                             LastName = "Luke",
                             LockoutEnabled = false,
                             NormalizedEmail = "LUKE@LUKE.COM",
                             NormalizedUserName = "  LUKE@LUKE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJpeFc7wMe/y2ju0kxekpuWUg8VVi4sbKxcUxDX7wfXWwIacPYbUbPqmoaXnEdn0aQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -154,15 +156,16 @@ namespace EmpowerHealthyStudents.Migrations
                         {
                             Id = "10000003-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "32fb23ea-52a5-4ed9-8f83-92425f0de40f",
+                            ConcurrencyStamp = "fb89ac08-4f35-4071-895f-c59891c23724",
                             Email = "seleste@seleste.com",
                             EmailConfirmed = true,
                             FirstName = "Seleste",
-                            IsAdmin = true,
+                            IsAdmin = false,
                             LastName = "Seleste",
                             LockoutEnabled = false,
                             NormalizedEmail = "SELESTE@SELESTE.COM",
                             NormalizedUserName = "  SELESTE@SELESTE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMZ+2Ne3PLzKmN/tCLmWtmpM/aRpjhRO07fuDmqiCyy5xw+78OiQuj3m3Hyow9y+yQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -202,7 +205,9 @@ namespace EmpowerHealthyStudents.Migrations
                         new
                         {
                             Id = 1,
-                            Blog = @"Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation.Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over.If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine:
+                            Blog = @"Teaching In Quarantine: How Do I Stay Motivated ?
+Distance learning has now been in effect for several weeks, and I know many teachers who are struggling to maintain motivation. Let’s face it - it’s springtime, the weather is getting nicer, and it’s those last few weeks before school is over. If you’re anything like me, it’s hard to get motivated right now! Here are ten tips that I use daily to stay motivated during quarantine:
+
 1.	Maintain a daily schedule.Go to bed and get up at the same time each day and take scheduled breaks and lunch. 
 2.	Keep a To - Do List.Marking off items on a list helps me to keep going until the list is clear!
 3.	Connect with friends and family each day
@@ -230,9 +235,13 @@ First of all, recognize the amazing energy and potential in your students. Teena
 Once you connect with students, you can try these simple, free mini-lessons to help them gain strategies for self-regulation.
 
 •	Strategy 1: Teach students about their brains. Just as we help students understand how puberty changes their bodies, we should help them understand how it changes their minds. Teach ""Understanding the Parts of the Brain."" Then discuss how the reward center (the limbic system) is fully developed in the teenage brain, which is why teenagers experience emotion so profoundly. Afterward discuss how the prefrontal cortex is still rapidly developing—the spot that is transforming them from 13 year olds to adults.
+
 •	Strategy 2: Help students connect with their emotional centers. Instead of repressing students' feelings, we should recognize them and help students understand them. Teach ""Checking the Emotional Thermometer"" to give students a quick way to gauge the intensity of happiness, sadness, hurt, anger, love, or other feelings. Then discuss how feelings aren't right or wrong—they just are. The right or wrong part comes into play when people choose what to do with their feelings.
+
 •	Strategy 3: Teach the 5-5-5 breathing strategy. Given that emotions are more intense during the teenage years, students need strategies that help them manage stress, anxiety, anger, and other intense feelings. Teach ""Using 5-5-5 Breathing to Calm Down."" Afterward, ask students to share stories about situations in their day so far (or yesterday, if it's first hour), when they could have used such a strategy. Have them watch for situations that arise later in the day and try 5-5-5 breathing.
+
 •	Strategy 4: Promote positive self-talk. If a student is feeling bad, persistent negative thoughts can create a downward spiral. Help students recognize these thoughts, stop them, and replace them with positive thoughts—a first step in self-regulation. Teach ""Using Positive Self-Talk."" Discuss how this strategy helps break a negative fixed mindset and develop a positive growth mindset.
+
 •	Strategy 5: Help students set goals. Self-regulation begins in the moment, with recognizing moods and dealing with them appropriately. Self-regulation, however, can also grow into the future. Teach ""Setting and Reaching Goals."" Discuss how students can set goals in school and beyond. Ask them to think about who they want to become in one month, one year, and five years. Then ask them what doable steps they can take in the short term and long term to reach their goals.
 ",
                             Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -430,7 +439,7 @@ Eget mi proin sed libero enim sed faucibus. Volutpat commodo sed egestas egestas
                         new
                         {
                             Id = 2,
-                            BlogPostId = 1,
+                            BlogPostId = 2,
                             Date = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Text = "Thank you for this advice.",
                             UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
@@ -438,10 +447,154 @@ Eget mi proin sed libero enim sed faucibus. Volutpat commodo sed egestas egestas
                         new
                         {
                             Id = 3,
-                            BlogPostId = 1,
-                            Date = new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BlogPostId = 3,
+                            Date = new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Text = "This is great stuff.",
                             UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BlogPostId = 4,
+                            Date = new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "You are a Godsend.",
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BlogPostId = 5,
+                            Date = new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Thank you for this advice.",
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BlogPostId = 6,
+                            Date = new DateTime(2020, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BlogPostId = 7,
+                            Date = new DateTime(2020, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BlogPostId = 1,
+                            Date = new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BlogPostId = 2,
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Great advice.",
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BlogPostId = 3,
+                            Date = new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BlogPostId = 4,
+                            Date = new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Wonderful Advice.",
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BlogPostId = 5,
+                            Date = new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BlogPostId = 6,
+                            Date = new DateTime(2020, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Great advice.",
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BlogPostId = 7,
+                            Date = new DateTime(2020, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Lovely Advice.",
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BlogPostId = 1,
+                            Date = new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            BlogPostId = 2,
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Great advice.",
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            BlogPostId = 3,
+                            Date = new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            BlogPostId = 4,
+                            Date = new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Wonderful Advice.",
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            BlogPostId = 5,
+                            Date = new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "This is great stuff.",
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            BlogPostId = 6,
+                            Date = new DateTime(2020, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Great advice.",
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            BlogPostId = 7,
+                            Date = new DateTime(2020, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Text = "Lovely Advice.",
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
 
@@ -580,10 +733,10 @@ Perfect for school counselors, social workers, or therapists to help students re
 
 Keep on file, update during each session, and use alongside CBT and DBT!
 ",
-                            File = "Mind_flayer.jpg",
+                            File = "Making Healthy Choices.pdf",
                             FileType = "PDF",
                             Grade = "9th, 10th, 11th, 12th",
-                            Image = "Mind_flayer.jpg",
+                            Image = "CopingSkill.jpg",
                             Name = "Making Healthy Choices: Coping Skill Worksheet For Adolescents",
                             Subject = "School Counseling, Character Education",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -594,8 +747,10 @@ Keep on file, update during each session, and use alongside CBT and DBT!
                             Description = @"This product contains one powerpoint presentation with ten journal prompts to get students thinking about resilience.Could be used for bell ringer activities, within dedicated SEL time, or individually.
 
 Includes BONUS ""Additional Resources"" pages with articles, websites, and literature that discuss conflict.",
+                            File = "SEL Journal Prompts Unit 2 Conflict.pptx",
                             FileType = "PowerPoint",
                             Grade = "8th, 9th, 10th, 11th, 12th",
+                            Image = "10JournalPrompts2.jpg",
                             Name = "Social Emotional Learning Journal Prompts Unit 2: Conflict",
                             Subject = "School Counseling, Character Education",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -610,8 +765,10 @@ This literary element project is a post-reading exploration of characterization,
 This project was originally designed for an English II Standard and Inclusion class, but will work great for students at any level.
 
 Please note that there is no rubric for this resource.",
+                            File = "AnimalFarmLiteraryElementsProject(1).docx",
                             FileType = "PowerPoint",
                             Grade = "7th, 8th, 9th, 10th, 11th, 12th",
+                            Image = "AnimalFarm.jpg",
                             Name = "Animal Farm Literary Elements Project",
                             Subject = "Literature",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -622,8 +779,10 @@ Please note that there is no rubric for this resource.",
                             Description = @"This product contains one powerpoint presentation with ten journal prompts to get students thinking about resilience. Could be used for bell ringer activities, within dedicated SEL time, or individually.
 
 Includes BONUS ""Additional Resources"" pages with articles, websites, and literature that discuss resilience.",
+                            File = "SEL Journal Prompts Unit 1 Resilience.pptx",
                             FileType = "Presentation (Powerpoint) File",
                             Grade = "9th, 10th, 11th, 12th",
+                            Image = "10SocialEmotionalLearningJournalPrompts.jpg",
                             Name = "Social Emotional Learning Journal Prompts Unit 1: Resilience",
                             Subject = "Life Skills, Character Education, School Psychology",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -634,8 +793,10 @@ Includes BONUS ""Additional Resources"" pages with articles, websites, and liter
                             Description = @"50 unique positive affirmation coloring pages! These affirmations focus on choice, behavior, positivity, challenges, hope, and resilience. Each affirmation was written by me and are in standard 8.5x11 paper.
 
 Students can decorate and color these pages, and would look great as classroom art. They can also be used as a mindfulness or calming practice!",
+                            File = "EmpowerHealthPositive Affirmation Coloring Pages Thumbnail(1).pptx",
                             FileType = "Presentation (Powerpoint) File",
                             Grade = "7th, 8th, 9th, 10th, 11th, 12th",
+                            Image = "50 positive affirmation coloring pages.jpg",
                             Name = "50 Positive Affirmation Coloring Pages",
                             Subject = "School Counseling, Character Education",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -648,8 +809,10 @@ Students can decorate and color these pages, and would look great as classroom a
 I printed these on brightly colored paper and named them after cartoon and literary characters, and we had an ""adoption"" ceremony at the beginning of the year. I allow my students to use these on any test!
 
 This is a two page document. The file name reads ""English IV"" but it's great for any level 7th-12th.",
+                            File = "EnglishBestFriendCheatSheet(1).docx",
                             FileType = "Word Document File",
                             Grade = "7th, 8th, 9th, 10th, 11th, 12th",
+                            Image = "LogoMakr_0Vw3E3.png",
                             Name = "English Best Friend Cheat Sheet",
                             Subject = "English, Literature, Writing",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -668,8 +831,10 @@ This is a two page document. The file name reads ""English IV"" but it's great f
 Student choice is featured in this post-reading cumulative project for the book 1984 by George Orwell. Students choose from over 20 activities of various point values in order to get 100 points. Multiple intelligences are recognized within the activities, which range from creative writing to graphic design.
 
 This project was originally designed for an English IV standard and inclusion class, but may be adapted for higher levels.",
+                            File = "1984100PointProject.doc",
                             FileType = "Presentation (Powerpoint) File",
                             Grade = "7th, 8th, 9th, 10th, 11th, 12th",
+                            Image = "1984.jpg",
                             Name = "1984 100 Point Project",
                             Subject = "Literature",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -678,8 +843,10 @@ This project was originally designed for an English IV standard and inclusion cl
                         {
                             Id = 8,
                             Description = "In this post-reading activity for Shakespeare's Hamlet, the student will create an epithet for one of the (many) dead characters. This activity reinforces comprehension and students have fun choosing symbols and quotes to draw on the picture of the grave.",
+                            File = "HamletCharacterEpithet(1).docx",
                             FileType = "Word Document File",
                             Grade = "7th, 8th, 9th, 10th, 11th, 12th",
+                            Image = "LogoMakr_0Vw3E3.png",
                             Name = "Hamlet Character Epithet",
                             Subject = "Reading, Literature",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -691,8 +858,10 @@ This project was originally designed for an English IV standard and inclusion cl
 
 Note: You will need to provide slips of paper with character names.
 ",
+                            File = "HamletCharacterSmackdownRoleplayLesson(1)(1).ppt",
                             FileType = "Presentation(Powerpoint) File",
                             Grade = "7th, 8th, 9th, 10th, 11th, 12th",
+                            Image = "LogoMakr_0Vw3E3.png",
                             Name = "Hamlet Character Smackdown: Roleplay Lesson",
                             Subject = "Reading, Literature",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -701,8 +870,10 @@ Note: You will need to provide slips of paper with character names.
                         {
                             Id = 10,
                             Description = "These ten tips come in a .pdf format and can be printed as a poster in your classroom, given to students, or displayed on a screen!",
+                            File = "10 Tips to Build Resilience.pdf",
                             FileType = "PDF",
                             Grade = "5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th",
+                            Image = "LogoMakr_0Vw3E3.png",
                             Name = "Ten Tips to Build Your Resilience",
                             Subject = "Character Education",
                             UserId = "10000000-ffff-ffff-ffff-ffffffffffff"
@@ -741,10 +912,218 @@ Note: You will need to provide slips of paper with character names.
                         new
                         {
                             Id = 1,
-                            Comment = "This is so inspiring.",
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Comment = "Thanks. Great resource.",
+                            Date = new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProductId = 1,
                             UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Comment = "My class enjoyed this.",
+                            Date = new DateTime(2020, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 2,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Comment = "This is a great idea.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 3,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Comment = "So Amazing.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 4,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Comment = "Thanks.",
+                            Date = new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 5,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Comment = "Love this.",
+                            Date = new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 6,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Comment = "This is so inspiring.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 7,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Comment = "Cool. Thanks",
+                            Date = new DateTime(2020, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 8,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Comment = "Love this.",
+                            Date = new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 9,
+                            UserId = "10000001-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Comment = "Thanks. Great resource.",
+                            Date = new DateTime(2020, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 1,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Comment = "My class enjoyed this.",
+                            Date = new DateTime(2020, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 2,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Comment = "This is a great idea.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 3,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Comment = "So Amazing.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 4,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Comment = "Thanks.",
+                            Date = new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 5,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Comment = "Love this.",
+                            Date = new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 6,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Comment = "This is so inspiring.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 7,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Comment = "Cool. Thanks",
+                            Date = new DateTime(2020, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 8,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Comment = "Love this.",
+                            Date = new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 9,
+                            UserId = "10000003-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Comment = "Thanks.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 1,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Comment = "Great Idea.",
+                            Date = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 2,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Comment = "This is a great idea.",
+                            Date = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 3,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Comment = "Awesome.",
+                            Date = new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 4,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Comment = "Perfect.",
+                            Date = new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 5,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Comment = "Exactly what I needed.",
+                            Date = new DateTime(2020, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 6,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Comment = "Love this.",
+                            Date = new DateTime(2020, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 7,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Comment = "Cool. Thanks",
+                            Date = new DateTime(2020, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 8,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Comment = "Love this.",
+                            Date = new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = 9,
+                            UserId = "10000002-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
 
