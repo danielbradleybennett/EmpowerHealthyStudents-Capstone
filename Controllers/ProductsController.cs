@@ -57,7 +57,7 @@ namespace EmpowerHealthyStudents.Controllers
                 else
                 {
                     var products = await _context.Product
-                     .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
+                     .Where(p => p.Name.ToLower().Contains(searchString.ToLower()) || p.Grade.Contains(searchString) || p.Subject.ToLower().Contains(searchString.ToLower()))
                      .ToListAsync();
                     return View(products.OrderByDescending(p => p.Id));
                 }
@@ -74,7 +74,7 @@ namespace EmpowerHealthyStudents.Controllers
             else
             {
                 var products = await _context.Product
-                 .Where(p => p.Name.Contains(searchString) || p.Grade.Contains(searchString) || p.Subject.Contains(searchString))
+                     .Where(p => p.Name.ToLower().Contains(searchString.ToLower()) || p.Grade.Contains(searchString) || p.Subject.ToLower().Contains(searchString.ToLower()))
                  .ToListAsync();
                 return View(products.OrderByDescending(p => p.Id));
             }
